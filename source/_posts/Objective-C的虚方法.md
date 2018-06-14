@@ -2,7 +2,7 @@
 title: Objective-C的虚方法
 date: 2015-12-28 19:59:59
 categories: Objective-C
-tags: 
+tags: objc
 ---
 
 >OC 的方法都是虚方法:

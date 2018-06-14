@@ -2,7 +2,7 @@
 title: Closures in Swift
 date: 2016-11-25 16:48:43
 categories: Swift
-tags:
+tags: swift
 ---
 
 闭包是 Swift 中的重要语法，与 Objective-C 中的 block 类似，本文主要总结 Swift 中闭包的基本用法。主要参考了 *Swift Apprentice* 和 *The Swift Programming Language*，关于自动闭包的部分则参考了 [*bestswifter*](http://www.jianshu.com/p/f9ba4c41d9c7) 的文章。主要内容包括：

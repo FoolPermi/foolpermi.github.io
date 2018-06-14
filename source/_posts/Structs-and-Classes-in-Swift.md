@@ -2,7 +2,7 @@
 title: Structs and Classes in Swift
 date: 2016-11-21 23:15:36
 categories: Swift
-tags:
+tags: swift
 ---
 
 在 Swift 中**结构体 (struct)** 和**类 (class)** 有很多相似的地方，也有一些不同之处，下面记录并总结。内容主要参考了 *Swift Apprentice*。

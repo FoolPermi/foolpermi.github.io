@@ -2,7 +2,7 @@
 title: Objective-C的内存管理
 date: 2015-12-26 19:00:27
 categories: Objective-C
-tags:
+tags: objc
 ---
 
 >首先谢谢 [LonelyRoamer](http://blog.csdn.net/lonelyroamer/article/details/7666851)   ，它的文章让我明白一些事情。整理如下，分享给大家：           

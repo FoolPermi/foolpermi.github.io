@@ -2,7 +2,7 @@
 title: Properties in Swift
 date: 2016-11-20 16:41:01
 categories: Swift
-tags:
+tags: swift
 ---
 
 最近读了*Swift Apprentice*, 将其中一些关于 Property 的知识总结一下。主要包括以下几个部分:

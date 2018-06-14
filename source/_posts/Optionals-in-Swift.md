@@ -2,7 +2,7 @@
 title: Optionals in Swift
 date: 2016-11-22 21:37:25
 categories: Swift
-tags:
+tags: swift
 ---
 
 Swift 中有一种实用也很容易迷惑的特性**可选类型 (Optional)**，所谓的 Optional 就是一个变量或者常量，这个变量或常量可以有值，也可以为 nil，只能为这两种情况。相当于有一个盒子，盒子只有两种状态，盒子中有个物体或者盒子为空，不管盒子中有没有物体，盒子一直都存在。
