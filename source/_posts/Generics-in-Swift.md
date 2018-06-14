@@ -7,7 +7,7 @@ tags: swift
 
 **泛型 (Generics)** 是 Swift 中最强大的特性之一，许多 Swift 的标准库也都是基于泛型的代码构建的。使用泛型可以让你根据自定义的需求，编写出适用于任意类型、灵活可重用的函数和类型。例如 Swift 中的 Array 和 Dictionary 都是泛型集合，你可以创建一个 Int 数组，也可以创建一个 String 数组，还可以创建其它类型的数组。当然，也可以创建任意指定类型的字典，本文的主要内容包括：
 
-- 泛型解决的问题 (The problem generics solve)
+- 泛型解决的问题 (The problems generic solve)
 - 泛型函数 (Generic functions)
 - 泛型类型 (Generic types)
 - 扩展泛型类型 (Extending a generic type)

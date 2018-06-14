@@ -83,3 +83,14 @@ deploy:
   type: git
   repository: git@github.com:FoolPermi/foolpermi.github.io.git
   branch:
+
+rss: 
+
+feed:
+  type: atom
+  path: atom.xml
+  limit: 10
+  hub:
+  content:
+  content_limit: 140
+  content_limit_delim: ' '
