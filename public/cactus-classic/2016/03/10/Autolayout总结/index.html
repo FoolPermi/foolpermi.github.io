@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="Autolayout最近两天看了几篇博客，查了相关的文档，认真研究了一下 Autolayout。很难想象我自学 iOS 这么久一直都没有系统地研究 Autolayout。因此决定写个总结。随着苹果的产品线的扩展，屏幕尺寸越来越多，Autolayout 的出现就是为了解决不同尺寸的屏幕的适配问题，还有后来的 sizeclass 技术，有关 sizeclass 的使用将在另外的文章中进行描述。Auto">
+<meta name="keywords" content="cocoa">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Autolayout总结">
+<meta property="og:url" content="http://foolpermi.github.io/2016/03/10/Autolayout总结/index.html">
+<meta property="og:site_name" content="FoolPermi">
+<meta property="og:description" content="Autolayout最近两天看了几篇博客，查了相关的文档，认真研究了一下 Autolayout。很难想象我自学 iOS 这么久一直都没有系统地研究 Autolayout。因此决定写个总结。随着苹果的产品线的扩展，屏幕尺寸越来越多，Autolayout 的出现就是为了解决不同尺寸的屏幕的适配问题，还有后来的 sizeclass 技术，有关 sizeclass 的使用将在另外的文章中进行描述。Auto">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-06-14T08:26:10.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Autolayout总结">
+<meta name="twitter:description" content="Autolayout最近两天看了几篇博客，查了相关的文档，认真研究了一下 Autolayout。很难想象我自学 iOS 这么久一直都没有系统地研究 Autolayout。因此决定写个总结。随着苹果的产品线的扩展，屏幕尺寸越来越多，Autolayout 的出现就是为了解决不同尺寸的屏幕的适配问题，还有后来的 sizeclass 技术，有关 sizeclass 的使用将在另外的文章中进行描述。Auto">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/cactus-classic/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/cactus-classic/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/cactus-classic/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>Autolayout总结</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/cactus-classic/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/cactus-classic/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/cactus-classic/">Home</a></li>
+         
+          <li><a href="/cactus-classic/about/">About</a></li>
+         
+          <li><a href="/cactus-classic/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/FoolPermi">Projects</a></li>
+         
+          <li><a href="/cactus-classic/Search/">Search</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/cactus-classic/2016/11/04/iOS中使用外部字体/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/cactus-classic/2015/12/28/Objective-C的虚方法/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://foolpermi.github.io/2016/03/10/Autolayout总结/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://foolpermi.github.io/2016/03/10/Autolayout总结/&text=Autolayout总结"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://foolpermi.github.io/2016/03/10/Autolayout总结/&title=Autolayout总结"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://foolpermi.github.io/2016/03/10/Autolayout总结/&is_video=false&description=Autolayout总结"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Autolayout总结&body=Check out this article: http://foolpermi.github.io/2016/03/10/Autolayout总结/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://foolpermi.github.io/2016/03/10/Autolayout总结/&title=Autolayout总结"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://foolpermi.github.io/2016/03/10/Autolayout总结/&title=Autolayout总结"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://foolpermi.github.io/2016/03/10/Autolayout总结/&title=Autolayout总结"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://foolpermi.github.io/2016/03/10/Autolayout总结/&title=Autolayout总结"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://foolpermi.github.io/2016/03/10/Autolayout总结/&name=Autolayout总结&description=&lt;h2 id=&#34;Autolayout&#34;&gt;&lt;a href=&#34;#Autolayout&#34; class=&#34;headerlink&#34; title=&#34;Autolayout&#34;&gt;&lt;/a&gt;Autolayout&lt;/h2&gt;&lt;p&gt;最近两天看了几篇博客，查了相关的文档，认真研究了一下 Autolayout。很难想象我自学 iOS 这么久一直都没有系统地研究 Autolayout。因此决定写个总结。随着苹果的产品线的扩展，屏幕尺寸越来越多，Autolayout 的出现就是为了解决不同尺寸的屏幕的适配问题，还有后来的 sizeclass 技术，有关 sizeclass 的使用将在另外的文章中进行描述。Autolayout 的实现方式有很多种，苹果最初的 API，之后的 VFL，storyboard 以及第三方的 Masonry。&lt;br&gt;"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Autolayout"><span class="toc-number">1.</span> <span class="toc-text">Autolayout</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码实现Autolayout"><span class="toc-number">2.</span> <span class="toc-text">代码实现Autolayout</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Autolayout动画"><span class="toc-number">3.</span> <span class="toc-text">Autolayout动画</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#VFL实现Autolayout"><span class="toc-number">4.</span> <span class="toc-text">VFL实现Autolayout</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Masonry实现Autolayout"><span class="toc-number">5.</span> <span class="toc-text">Masonry实现Autolayout</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index my4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Autolayout总结
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">FoolPermi</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2016-03-10T14:59:38.000Z" itemprop="datePublished">10 Mar 2016</time>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/cactus-classic/tags/cocoa/">cocoa</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h2 id="Autolayout"><a href="#Autolayout" class="headerlink" title="Autolayout"></a>Autolayout</h2><p>最近两天看了几篇博客，查了相关的文档，认真研究了一下 Autolayout。很难想象我自学 iOS 这么久一直都没有系统地研究 Autolayout。因此决定写个总结。随着苹果的产品线的扩展，屏幕尺寸越来越多，Autolayout 的出现就是为了解决不同尺寸的屏幕的适配问题，还有后来的 sizeclass 技术，有关 sizeclass 的使用将在另外的文章中进行描述。Autolayout 的实现方式有很多种，苹果最初的 API，之后的 VFL，storyboard 以及第三方的 Masonry。<br><a id="more"></a><br>在此之前，先给 Autolayout 一个总结，这个总结将贯穿全文。</p>
+<ul>
+<li>Autolayout 里有两个词，<strong>约束</strong>和<strong>参照</strong></li>
+<li>要想显示一个控件，需要知道两个东西，<strong>位置</strong>和<strong>尺寸</strong>，对应于以前 frame 的 origin 和 size</li>
+<li>添加的约束不宜过多，当约束足以确定控件的<strong>位置</strong>和<strong>尺寸</strong>，就足够了</li>
+<li><strong>约束</strong>就是对控件的大小或位置进行约束，<strong>参照</strong>就是以某个控件的位置进行约束，两者并没有明确的区别，它们都可以对控件的<strong>位置</strong>和<strong>尺寸</strong>起到作用</li>
+<li>所有控件，都离不开<strong>位置</strong>和<strong>尺寸</strong>，Autolayout 就是干这个的，后面的例子以UIView为例</li>
+</ul>
+<h2 id="代码实现Autolayout"><a href="#代码实现Autolayout" class="headerlink" title="代码实现Autolayout"></a>代码实现Autolayout</h2><ul>
+<li><p>先从一个简单的例子开始学习通过 Autolayout 代码来完成一个控件的<strong>位置</strong>和<strong>尺寸</strong></p>
+</li>
+<li><p>我要在界面的左下方放置一个宽高各为50的红色 View，它距离屏幕左边缘和下边缘距离都是20</p>
+</li>
+<li><p>在此之前先介绍一个方法</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">*  这个是系统默认添加约束的方法，它是NSLayoutConstraint的类方法</span></span><br><span class="line"><span class="comment">*</span></span><br><span class="line"><span class="comment">*  @param view1      传入想要添加约束的控件</span></span><br><span class="line"><span class="comment">*  @param attr1      传入想要添加约束的方向，这个枚举值有很多，可以自己看看</span></span><br><span class="line"><span class="comment">*  @param relation   传入与约束值的关系，大于，等于还是小于</span></span><br><span class="line"><span class="comment">*  @param view2      传入被参照对象</span></span><br><span class="line"><span class="comment">*  @param attr2      传入被参照对象所被参照的方向，如顶部，左边，右边等等</span></span><br><span class="line"><span class="comment">*  @param multiplier 传入想要的间距倍数关系</span></span><br><span class="line"><span class="comment">*  @param c          传入最终的差值</span></span><br><span class="line"><span class="comment">*</span></span><br><span class="line"><span class="comment">*  @return NSLayoutConstraint对象</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">+(<span class="keyword">instancetype</span>)constraintWithItem:(<span class="keyword">id</span>)view1 attribute:(<span class="built_in">NSLayoutAttribute</span>)attr1 relatedBy:(<span class="built_in">NSLayoutRelation</span>)relation toItem:(<span class="keyword">id</span>)view2 attribute:(<span class="built_in">NSLayoutAttribute</span>)attr2 multiplier:(<span class="built_in">CGFloat</span>)multiplier constant:(<span class="built_in">CGFloat</span>)c</span><br><span class="line"><span class="comment">//一部分NSLayoutAttribute的枚举值</span></span><br><span class="line"><span class="built_in">NSLayoutAttributeLeft</span> = <span class="number">1</span>,<span class="comment">//控件左边</span></span><br><span class="line"><span class="built_in">NSLayoutAttributeRight</span>,<span class="comment">//控件右边</span></span><br><span class="line"><span class="built_in">NSLayoutAttributeTop</span>,<span class="comment">//控件上边</span></span><br><span class="line"><span class="built_in">NSLayoutAttributeBottom</span>,<span class="comment">//控件下边</span></span><br><span class="line"><span class="built_in">NSLayoutAttributeLeading</span>,<span class="comment">//控件左边</span></span><br><span class="line"><span class="built_in">NSLayoutAttributeTrailing</span>,<span class="comment">//控件右边</span></span><br><span class="line"><span class="built_in">NSLayoutAttributeWidth</span>,<span class="comment">//控件的宽</span></span><br><span class="line"><span class="built_in">NSLayoutAttributeHeight</span>,<span class="comment">//控件的高</span></span><br><span class="line"><span class="built_in">NSLayoutAttributeCenterX</span>,<span class="comment">//竖直方向的中点</span></span><br><span class="line"><span class="built_in">NSLayoutAttributeCenterY</span>,<span class="comment">//水平方向的中点</span></span><br><span class="line"><span class="comment">//下面看具体的用法</span></span><br><span class="line"><span class="comment">//创建redView</span></span><br><span class="line"><span class="built_in">UIView</span> *redView = [[<span class="built_in">UIView</span> alloc]init];</span><br><span class="line">redView.backgroundColor = [<span class="built_in">UIColor</span> redColor];</span><br><span class="line">redView.translatesAutoresizingMaskIntoConstraints = <span class="literal">NO</span>;</span><br><span class="line">[<span class="keyword">self</span>.view addSubview:redView];    </span><br><span class="line"><span class="comment">//1.创建redView的第一个约束，相对self.view的左边缘间距为20</span></span><br><span class="line"><span class="built_in">NSLayoutConstraint</span> *redLeftC = [<span class="built_in">NSLayoutConstraint</span> constraintWithItem:redView attribute:<span class="built_in">NSLayoutAttributeLeft</span> relatedBy:<span class="built_in">NSLayoutRelationEqual</span> toItem:<span class="keyword">self</span>.view attribute:<span class="built_in">NSLayoutAttributeLeft</span> multiplier:<span class="number">1.0</span>f constant:<span class="number">20.0</span>f];</span><br><span class="line"><span class="comment">//只有在没有参照控件的时候，约束才加到自己身上，否则加到父控件上</span></span><br><span class="line">[<span class="keyword">self</span>.view addConstraint:redLeftC];</span><br><span class="line"><span class="comment">//2.创建redView的第二个约束，相对self.view的底边缘间距为20</span></span><br><span class="line"><span class="built_in">NSLayoutConstraint</span> *redBottomC = [<span class="built_in">NSLayoutConstraint</span> constraintWithItem:redView attribute:<span class="built_in">NSLayoutAttributeBottom</span> relatedBy:<span class="built_in">NSLayoutRelationEqual</span> toItem:<span class="keyword">self</span>.view attribute:<span class="built_in">NSLayoutAttributeBottom</span> multiplier:<span class="number">1.0</span>f constant:<span class="number">-20.0</span>f];</span><br><span class="line">[<span class="keyword">self</span>.view addConstraint:redBottomC];</span><br><span class="line"><span class="comment">//创建redView的第三个约束，设置自身的宽，宽可以参照其它控件进行设置，比如self.view的一半</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">[NSLayoutConstraint constraintWithItem:redView attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeWidth multiplier:0.5f constant:0.0f];</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="comment">//3.这里直接设置宽为50</span></span><br><span class="line"><span class="built_in">NSLayoutConstraint</span> *redWidthC = [<span class="built_in">NSLayoutConstraint</span> constraintWithItem:redView attribute:<span class="built_in">NSLayoutAttributeWidth</span> relatedBy:<span class="built_in">NSLayoutRelationEqual</span> toItem:<span class="literal">nil</span> attribute:<span class="built_in">NSLayoutAttributeNotAnAttribute</span> multiplier:<span class="number">1.0</span>f constant:<span class="number">50.0</span>f];</span><br><span class="line"><span class="comment">//由于没有参照物，约束加到自己身上</span></span><br><span class="line">[redView addConstraint:redWidthC];</span><br><span class="line"><span class="comment">//4.创建最后一个约束，自身的高</span></span><br><span class="line"><span class="built_in">NSLayoutConstraint</span> *redHeightC = [<span class="built_in">NSLayoutConstraint</span> constraintWithItem:redView attribute:<span class="built_in">NSLayoutAttributeHeight</span> relatedBy:<span class="built_in">NSLayoutRelationEqual</span> toItem:<span class="literal">nil</span> attribute:<span class="built_in">NSLayoutAttributeNotAnAttribute</span> multiplier:<span class="number">1.0</span>f constant:<span class="number">50.0</span>f];</span><br><span class="line"><span class="comment">//由于没有参照物，约束加到自己身上</span></span><br><span class="line">[redView addConstraint:redHeightC];</span><br><span class="line"><span class="comment">//这时候，redView的位置和尺寸都可以确定了，如下图</span></span><br></pre></td></tr></table></figure>
+<p>&lt;img src=”<a href="http://ww2.sinaimg.cn/large/8f27fe81jw1f1s71iciw1j20hs0vk3yl.jpg&quot;/" target="_blank" rel="noopener">http://ww2.sinaimg.cn/large/8f27fe81jw1f1s71iciw1j20hs0vk3yl.jpg&quot;/</a> width=”320” height=”568”&gt;</p>
+</li>
+<li><p>现在继续增加需求，我们在红色方块右边离它20间距，离 self.view 底部也20个间距，放置一个宽高相等的蓝色方块</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//先创建一个蓝色的视图</span></span><br><span class="line"><span class="built_in">UIView</span> *blueView = [[<span class="built_in">UIView</span> alloc]init];</span><br><span class="line">blueView.backgroundColor = [<span class="built_in">UIColor</span> blueColor];</span><br><span class="line">blueView.translatesAutoresizingMaskIntoConstraints = <span class="literal">NO</span>;</span><br><span class="line">[<span class="keyword">self</span>.view addSubview:blueView];</span><br><span class="line"><span class="comment">//1.创建第一个约束，左边间距，由于是想要与红色有20的间距，那么参数"toItem"就应该填redView</span></span><br><span class="line"><span class="built_in">NSLayoutConstraint</span> *blueLeft = [<span class="built_in">NSLayoutConstraint</span> constraintWithItem:blueView attribute:<span class="built_in">NSLayoutAttributeLeft</span> relatedBy:<span class="built_in">NSLayoutRelationEqual</span> toItem:redView attribute:<span class="built_in">NSLayoutAttributeRight</span> multiplier:<span class="number">1.0</span>f constant:<span class="number">20.0</span>f];</span><br><span class="line">[<span class="keyword">self</span>.view addConstraint:blueLeft];</span><br><span class="line"><span class="comment">//2.创建第二个约束，底边约束，由于是想与底边有20的间距，比self.view的坐标小，所以为-20</span></span><br><span class="line"><span class="built_in">NSLayoutConstraint</span> *blueBottom = [<span class="built_in">NSLayoutConstraint</span> constraintWithItem:blueView attribute:<span class="built_in">NSLayoutAttributeBottom</span> relatedBy:<span class="built_in">NSLayoutRelationEqual</span> toItem:<span class="keyword">self</span>.view attribute:<span class="built_in">NSLayoutAttributeBottom</span> multiplier:<span class="number">1.0</span>f constant:<span class="number">-20.0</span>f];</span><br><span class="line">[<span class="keyword">self</span>.view addConstraint:blueBottom];</span><br><span class="line"><span class="comment">//3.创建第三个约束，确定蓝色视图的宽</span></span><br><span class="line"><span class="built_in">NSLayoutConstraint</span> *blueWidth = [<span class="built_in">NSLayoutConstraint</span> constraintWithItem:blueView attribute:<span class="built_in">NSLayoutAttributeWidth</span> relatedBy:<span class="built_in">NSLayoutRelationEqual</span> toItem:redView attribute:<span class="built_in">NSLayoutAttributeWidth</span> multiplier:<span class="number">1.0</span>f constant:<span class="number">0.0</span>f];</span><br><span class="line">[<span class="keyword">self</span>.view addConstraint:blueWidth];</span><br><span class="line"><span class="comment">//4.创建第四个约束，确定蓝色视图的高</span></span><br><span class="line"><span class="built_in">NSLayoutConstraint</span> *blueHeight = [<span class="built_in">NSLayoutConstraint</span> constraintWithItem:blueView attribute:<span class="built_in">NSLayoutAttributeHeight</span> relatedBy:<span class="built_in">NSLayoutRelationEqual</span> toItem:redView attribute:<span class="built_in">NSLayoutAttributeHeight</span> multiplier:<span class="number">1.0</span>f constant:<span class="number">0.0</span>f];</span><br><span class="line">[<span class="keyword">self</span>.view addConstraint:blueHeight];</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>&lt;img src=”<a href="http://ww1.sinaimg.cn/large/8f27fe81jw1f1s8sd1dyzj20hs0vkt8t.jpg&quot;/" target="_blank" rel="noopener">http://ww1.sinaimg.cn/large/8f27fe81jw1f1s8sd1dyzj20hs0vkt8t.jpg&quot;/</a> width=”320” height=”568”&gt;</p>
+<ul>
+<li>其实 Autolayout 的思想还是比较简单，刚开始使用的时候不要想着一气呵成，可以一个控件一个控件的实现依赖，分别满足其位置和尺寸的需求，如果几个控件一起弄得话，需要思路非常清晰，往往大家犯错是因为约束加多了，而不是加少了</li>
+<li>就如上面的例子，很多人在设置了与红色等高等宽以后，还同时设置顶部和底部对齐，这样高度就重复设置了。因为上下同时对齐不仅给予了垂直位置，也给予了高度，所以思路必须清晰。</li>
+</ul>
+<h2 id="Autolayout动画"><a href="#Autolayout动画" class="headerlink" title="Autolayout动画"></a>Autolayout动画</h2><ul>
+<li><p>最后在原来的例子上做个小动画，让大家了解 Autolayout 是怎么做动画的</p>
+</li>
+<li><p>需求：将在蓝色方块的右边再加个同样大小的黄色方块，然后要求点击屏幕，蓝色的方块被移除，黄色方块取代蓝色方块的位置</p>
+</li>
+<li><p>这个例子主要涉及到 Autolayout 的另一个知识点：<strong>优先级(priority)</strong></p>
+</li>
+<li><p>好了，下面添加黄色的方块</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//先添加黄色View</span></span><br><span class="line"><span class="built_in">UIView</span> *yellowView = [[<span class="built_in">UIView</span> alloc]init];</span><br><span class="line">yellowView.backgroundColor = [<span class="built_in">UIColor</span> yellowColor];</span><br><span class="line">yellowView.translatesAutoresizingMaskIntoConstraints = <span class="literal">NO</span>;</span><br><span class="line">[<span class="keyword">self</span>.view addSubview:yellowView];</span><br><span class="line"><span class="comment">//1.创建第一个约束，左边间距</span></span><br><span class="line"><span class="built_in">NSLayoutConstraint</span> *yellowLeft = [<span class="built_in">NSLayoutConstraint</span> constraintWithItem:yellowView attribute:<span class="built_in">NSLayoutAttributeLeft</span> relatedBy:<span class="built_in">NSLayoutRelationEqual</span> toItem:blueView attribute:<span class="built_in">NSLayoutAttributeRight</span> multiplier:<span class="number">1.0</span>f constant:<span class="number">20.0</span>f];</span><br><span class="line">[<span class="keyword">self</span>.view addConstraint:yellowLeft];</span><br><span class="line"><span class="comment">//2.创建第二个约束，底部间距</span></span><br><span class="line"><span class="built_in">NSLayoutConstraint</span> *yellowBottom = [<span class="built_in">NSLayoutConstraint</span> constraintWithItem:yellowView attribute:<span class="built_in">NSLayoutAttributeBottom</span> relatedBy:<span class="built_in">NSLayoutRelationEqual</span> toItem:<span class="keyword">self</span>.view attribute:<span class="built_in">NSLayoutAttributeBottom</span> multiplier:<span class="number">1.0</span>f constant:<span class="number">-20.0</span>f];</span><br><span class="line">[<span class="keyword">self</span>.view addConstraint:yellowBottom];</span><br><span class="line"><span class="comment">//3.创建第三个约束，宽度</span></span><br><span class="line"><span class="built_in">NSLayoutConstraint</span> *yellowWidth = [<span class="built_in">NSLayoutConstraint</span> constraintWithItem:yellowView attribute:<span class="built_in">NSLayoutAttributeWidth</span> relatedBy:<span class="built_in">NSLayoutRelationEqual</span> toItem:<span class="literal">nil</span> attribute:<span class="built_in">NSLayoutAttributeNotAnAttribute</span> multiplier:<span class="number">1.0</span>f constant:<span class="number">50.0</span>f];</span><br><span class="line">[yellowView addConstraint:yellowWidth];</span><br><span class="line"><span class="comment">//4.创建第四个约束，高度</span></span><br><span class="line"><span class="built_in">NSLayoutConstraint</span> *yellowHeight = [<span class="built_in">NSLayoutConstraint</span> constraintWithItem:yellowView attribute:<span class="built_in">NSLayoutAttributeHeight</span> relatedBy:<span class="built_in">NSLayoutRelationEqual</span> toItem:<span class="literal">nil</span> attribute:<span class="built_in">NSLayoutAttributeNotAnAttribute</span> multiplier:<span class="number">1.0</span>f constant:<span class="number">50.0</span>f];</span><br><span class="line">[yellowView addConstraint:yellowHeight];</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>&lt;img src=”<a href="http://ww1.sinaimg.cn/large/8f27fe81jw1f1wtgnd62fj20hs0vkglq.jpg&quot;/" target="_blank" rel="noopener">http://ww1.sinaimg.cn/large/8f27fe81jw1f1wtgnd62fj20hs0vkglq.jpg&quot;/</a> width=”320” height=”568”&gt;</p>
+<ul>
+<li><p>接下来给黄色添加一个约束，这个约束涉及到优先级，代码如下</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//1.yellowView创建另一个左边约束</span></span><br><span class="line"><span class="built_in">NSLayoutConstraint</span> *yellowAnotherLeft = [<span class="built_in">NSLayoutConstraint</span> constraintWithItem:yellowView attribute:<span class="built_in">NSLayoutAttributeLeft</span> relatedBy:<span class="built_in">NSLayoutRelationEqual</span> toItem:redView attribute:<span class="built_in">NSLayoutAttributeRight</span> multiplier:<span class="number">1.0</span>f constant:<span class="number">20.</span>f];</span><br><span class="line"><span class="comment">//2.设置优先级</span></span><br><span class="line"><span class="built_in">UILayoutPriority</span> priority = <span class="number">250</span>;</span><br><span class="line">yellowAnotherLeft.priority = priority;</span><br><span class="line"><span class="comment">//3.约束添加到父视图上</span></span><br><span class="line">[<span class="keyword">self</span>.view addConstraint:yellowAnotherLeft];</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>约束的优先级的范围是0~1000，数值越大优先级越高，在不设置的情况下默认值是1000</p>
+</li>
+<li>这说明，最后添加的约束的优先级是低的，这个约束只有在它的冲突约束被抹掉以后，它才能实现</li>
+<li>也就是说，我把蓝色 view 移除以后，黄色 view相对于蓝色 view 左间距20这个约束就不成立了，那么黄色 view 会自动地变为与红色 view 的间距为20</li>
+</ul>
+<p>&lt;img src=”<a href="http://ww1.sinaimg.cn/large/8f27fe81jw1f1wu344poqj20hs0vkt8t.jpg&quot;/" target="_blank" rel="noopener">http://ww1.sinaimg.cn/large/8f27fe81jw1f1wu344poqj20hs0vkt8t.jpg&quot;/</a> width=”320” height=”568”&gt;</p>
+<ul>
+<li><p>最后加几行代码来实现这个动画吧</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>)touchesBegan:(<span class="built_in">NSSet</span> *)touches withEvent:(<span class="built_in">UIEvent</span> *)event&#123;</span><br><span class="line"><span class="comment">//1.先把蓝色从父视图上移除</span></span><br><span class="line">    [<span class="keyword">self</span>.blueView removeFromSuperview];</span><br><span class="line">    <span class="comment">//2.重新布局页面</span></span><br><span class="line">    [<span class="built_in">UIView</span> animateWithDuration:<span class="number">1.0</span> animations:^&#123;</span><br><span class="line">        [<span class="keyword">self</span>.view layoutIfNeeded];</span><br><span class="line">    &#125;];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="VFL实现Autolayout"><a href="#VFL实现Autolayout" class="headerlink" title="VFL实现Autolayout"></a>VFL实现Autolayout</h2><ul>
+<li><p>之前介绍了使用苹果原始 API 实现 Autolayout，现在介绍使用 VFL (Visual Format Language) 来实现 Autolayout</p>
+</li>
+<li><p>VFL 的思想与其它的实现方式有所不同，它更为宏观化，它将约束分成了两块：<strong>水平方向 (H:) </strong>和<strong>垂直方向 (V:)</strong></p>
+</li>
+<li><p>也就是说在创建约束的时候，得把水平方向和垂直方向用字符串一并表示出来而不是一个一个的添加</p>
+</li>
+<li><p>下面看 VFL 的 API，它的 API 短了一些，但是要筹齐参数是件很麻烦的事情</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">*  VFL创建约束的API</span></span><br><span class="line"><span class="comment">*</span></span><br><span class="line"><span class="comment">*  @param format  传入某种格式构成的字符串，用以表达想要添加的约束，如@"H:|-margin-[redView(50)]"，水平方向上，redView与父控件左边缘保持“margin”间距，redView的宽为50</span></span><br><span class="line"><span class="comment">*  @param opts    对齐方式，是个枚举值</span></span><br><span class="line"><span class="comment">*  @param metrics 一般传入以间距为KEY的字典，如： @&#123; @"margin":@20&#125;，KEY要与format参数里所填写的“margin”相同</span></span><br><span class="line"><span class="comment">*  @param views   传入约束中提到的View，也是要传入字典，但是KEY一定要和format参数里所填写的View名字相同，如：上面填的是redView，所以KEY是@“redView”</span></span><br><span class="line"><span class="comment">*</span></span><br><span class="line"><span class="comment">*  @return 返回约束的数组</span></span><br><span class="line"><span class="comment">*/</span>(<span class="built_in">NSArray</span> *)constraintsWithVisualFormat:(<span class="built_in">NSString</span> *)format options:(<span class="built_in">NSLayoutFormatOptions</span>)opts metrics:(<span class="built_in">NSDictionary</span> *)metrics views:(<span class="built_in">NSDictionary</span> *)views;</span><br><span class="line"><span class="comment">//部分NSLayoutFormatOptions的枚举选项</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">NSLayoutFormatAlignAllLeft = (1 &lt;&lt; NSLayoutAttributeLeft),//左边缘对齐</span></span><br><span class="line"><span class="comment">NSLayoutFormatAlignAllRight = (1 &lt;&lt; NSLayoutAttributeRight),//右边缘对齐    </span></span><br><span class="line"><span class="comment">NSLayoutFormatAlignAllTop = (1 &lt;&lt; NSLayoutAttributeTop),//上边缘对齐</span></span><br><span class="line"><span class="comment">NSLayoutFormatAlignAllBottom = (1 &lt;&lt; NSLayoutAttributeBottom),//下边缘对齐</span></span><br><span class="line"><span class="comment">NSLayoutFormatAlignAllLeading = (1 &lt;&lt; NSLayoutAttributeLeading),//左边缘对齐</span></span><br><span class="line"><span class="comment">NSLayoutFormatAlignAllTrailing = (1 &lt;&lt; NSLayoutAttributeTrailing),//右边缘对齐</span></span><br><span class="line"><span class="comment">NSLayoutFormatAlignAllCenterX = (1 &lt;&lt; NSLayoutAttributeCenterX),//垂直方向中心对齐</span></span><br><span class="line"><span class="comment">NSLayoutFormatAlignAllCenterY = (1 &lt;&lt; NSLayoutAttributeCenterY),//水平方向中心对齐</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>里面最重要的就是 <strong>format</strong> 参数，这个参数的难点在于其书写格式</p>
+</li>
+<li><p>通过例子来看 API 的使用，现在要在界面上添加一个红色的方块，高100，宽50，与父视图顶部边缘和左边缘距离为20</p>
+</li>
+<li><p>来看看代码是怎么实现的</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">UIView</span> *redView = [[<span class="built_in">UIView</span> alloc]init];</span><br><span class="line">redView.backgroundColor = [<span class="built_in">UIColor</span> redColor];</span><br><span class="line">redView.translatesAutoresizingMaskIntoConstraints = <span class="literal">NO</span>;</span><br><span class="line">[<span class="keyword">self</span>.view addSubview:redView];</span><br><span class="line"><span class="comment">//接下来开始写API所需要的参数了</span></span><br><span class="line"><span class="comment">//format参数</span></span><br><span class="line"><span class="comment">//Hvfl与Vvfl分别是水平方向与垂直方向的约束，等下之后会有解析</span></span><br><span class="line"><span class="built_in">NSString</span> *Hvfl = <span class="string">@"H:|-margin-[redView(50)]"</span>;</span><br><span class="line"><span class="built_in">NSString</span> *Vvfl = <span class="string">@"V:|-margin-[redView(100)]"</span>;</span><br><span class="line"><span class="comment">//设置margin的数值</span></span><br><span class="line"><span class="built_in">NSDictionary</span> *metrics = @&#123; <span class="string">@"margin"</span>:@<span class="number">20</span>&#125;;</span><br><span class="line"><span class="comment">//把要添加约束的View转成字典</span></span><br><span class="line"><span class="built_in">NSDictionary</span> *views = <span class="built_in">NSDictionaryOfVariableBindings</span>(redView);<span class="comment">//这个方法会自动把传入的参数以字典的形式返回，字典的KEY就是其本身的名字</span></span><br><span class="line"><span class="comment">//如@&#123;@"redView"：redView&#125;</span></span><br><span class="line"><span class="comment">//添加对齐方式，</span></span><br><span class="line"><span class="built_in">NSLayoutFormatOptions</span> ops = <span class="built_in">NSLayoutFormatAlignAllLeft</span> | <span class="built_in">NSLayoutFormatAlignAllTop</span>;<span class="comment">//左边与顶部</span></span><br><span class="line"><span class="comment">//参数已经设置完了，接收返回的数组，用以self.view添加</span></span><br><span class="line"><span class="built_in">NSArray</span> *Hconstraints = [<span class="built_in">NSLayoutConstraint</span> constraintsWithVisualFormat:Hvfl options:ops metrics:metrics views:views];</span><br><span class="line"><span class="built_in">NSArray</span> *Vconstraints = [<span class="built_in">NSLayoutConstraint</span> constraintsWithVisualFormat:Vvfl options:ops metrics:metrics views:views];</span><br><span class="line"><span class="comment">//self.view分别添加水平与垂直方向的约束</span></span><br><span class="line">[<span class="keyword">self</span>.view addConstraints:Hconstraints];</span><br><span class="line">[<span class="keyword">self</span>.view addConstraints:Vconstraints];</span><br><span class="line"><span class="comment">//运行结果如下图</span></span><br></pre></td></tr></table></figure>
+<p>   &lt;img src=”<a href="http://ww1.sinaimg.cn/large/8f27fe81jw1f1zn41jtmkj20hs0vk0st.jpg&quot;/" target="_blank" rel="noopener">http://ww1.sinaimg.cn/large/8f27fe81jw1f1zn41jtmkj20hs0vk0st.jpg&quot;/</a> width=”320” height=”568”&gt;</p>
+</li>
+<li><p>如图，需求已经实现了，下面解释一下<strong>format</strong>里面奇怪的语法</p>
+<ul>
+<li>每个前面都要加 <strong>@”H:”</strong> 或者 <strong>@”V:”</strong>，分别表示水平和垂直方向</li>
+<li><strong>@”|”</strong>代表着边界，很形象</li>
+<li><strong>@”-“</strong>用来表示间隙，一般以这样的形式出现<strong>@”-20-“</strong>，这代表20的间距，也可以填写表示，如 <strong>@”-margin-“</strong>，之后设置替换参数 <strong>metrics**</strong></li>
+<li><strong>@”[]”</strong>中括号里放的是要添加约束的 View，如上边例子的 <strong>redView</strong>，要想设置宽度和高度就这样 <strong>[redView(50)]</strong>，水平方向上 <strong>(H:)</strong> 表示的数字是宽，垂直方向上 <strong>(V:)</strong> 表示的数字是高</li>
+</ul>
+</li>
+<li><p>基本的用法就是这样，更多的东西要在代码中体会，现在做一个稍微复杂的例子，这个例子和以前使用苹果原始 API实现的例子一样，就是在距离 self.view 的底部20间距的地方放置3个方块，红、蓝、黄分别间距20，宽高相同，都为50</p>
+</li>
+<li><p>接下来看代码</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//translatesAutoresizingMaskIntoConstraints属性设置为NO，防止苹果把默认设置的Autoresizing属性转成Autolayout，造成错误</span></span><br><span class="line"><span class="comment">//依次创建三个View</span></span><br><span class="line"><span class="built_in">UIView</span> *redView = [[<span class="built_in">UIView</span> alloc]init];</span><br><span class="line">    redView.backgroundColor = [<span class="built_in">UIColor</span> redColor];</span><br><span class="line">    redView.translatesAutoresizingMaskIntoConstraints = <span class="literal">NO</span>;</span><br><span class="line">    [<span class="keyword">self</span>.view addSubview:redView];</span><br><span class="line"></span><br><span class="line">    <span class="built_in">UIView</span> *blueView = [[<span class="built_in">UIView</span> alloc]init];</span><br><span class="line">    blueView.backgroundColor = [<span class="built_in">UIColor</span> blueColor];</span><br><span class="line">    blueView.translatesAutoresizingMaskIntoConstraints = <span class="literal">NO</span>;</span><br><span class="line">    [<span class="keyword">self</span>.view addSubview:blueView];</span><br><span class="line"></span><br><span class="line">    <span class="built_in">UIView</span> *yellowView = [[<span class="built_in">UIView</span> alloc]init];</span><br><span class="line">    yellowView.backgroundColor = [<span class="built_in">UIColor</span> yellowColor];</span><br><span class="line">    yellowView.translatesAutoresizingMaskIntoConstraints = <span class="literal">NO</span>;</span><br><span class="line">    [<span class="keyword">self</span>.view addSubview:yellowView];</span><br><span class="line"><span class="comment">//view添加完了，开始创建约束</span></span><br><span class="line"><span class="comment">//1.创建水平方向约束</span></span><br><span class="line"><span class="built_in">NSString</span> *Hvfl = <span class="string">@"H:|-margin-[redView(50)]-margin-[blueView(==redView)]-margin-[yellowView(==redView)]"</span>;</span><br><span class="line"><span class="comment">//大家认真体会一下上面这个字符串</span></span><br><span class="line"><span class="comment">//如果翻译过来就是，边缘-间距-红色view（宽50）-间距-蓝色View（宽等于红色View的宽）-间距-黄色View（宽等于红色View的宽）</span></span><br><span class="line"><span class="comment">//设置间距要替换的数值，用字典形式</span></span><br><span class="line"><span class="built_in">NSDictionary</span> *metrics = @&#123; <span class="string">@"margin"</span>:@<span class="number">20</span>&#125;;</span><br><span class="line"><span class="comment">//把要添加约束的View都转成字典形式</span></span><br><span class="line"><span class="built_in">NSDictionary</span> *views = <span class="built_in">NSDictionaryOfVariableBindings</span>(redView,blueView,yellowView);</span><br><span class="line"><span class="comment">//设置对齐方式，顶部与底部都与红色View对齐</span></span><br><span class="line"><span class="built_in">NSLayoutFormatOptions</span> ops = <span class="built_in">NSLayoutFormatAlignAllTop</span>|<span class="built_in">NSLayoutFormatAlignAllBottom</span>;</span><br><span class="line"><span class="comment">//创建水平方向约束</span></span><br><span class="line"><span class="built_in">NSArray</span> *Hconstraints = [<span class="built_in">NSLayoutConstraint</span> constraintsWithVisualFormat:Hvfl options:ops metrics:metrics views:views];</span><br><span class="line"><span class="comment">//这里依然要设置红色view的高，因为水平方向的约束没有设置红色View的高，其他View仅仅是与它顶部底部对齐，但是高依然未知</span></span><br><span class="line"><span class="built_in">NSString</span> *Vvfl = <span class="string">@"V:[redView(50)]-margin-|"</span>;</span><br><span class="line"><span class="comment">//创建垂直方向约束</span></span><br><span class="line"><span class="built_in">NSArray</span> *Vconstraints = [<span class="built_in">NSLayoutConstraint</span> constraintsWithVisualFormat:Vvfl options:ops metrics:metrics views:views];</span><br><span class="line"><span class="comment">//父控件添加约束</span></span><br><span class="line">[<span class="keyword">self</span>.view addConstraints:Hconstraints];</span><br><span class="line">[<span class="keyword">self</span>.view addConstraints:Vconstraints];</span><br><span class="line"><span class="comment">//最终效果图如下:</span></span><br></pre></td></tr></table></figure>
+<p>   &lt;img src=”<a href="http://ww1.sinaimg.cn/large/8f27fe81jw1f1wtgnd62fj20hs0vkglq.jpg&quot;/" target="_blank" rel="noopener">http://ww1.sinaimg.cn/large/8f27fe81jw1f1wtgnd62fj20hs0vkglq.jpg&quot;/</a> width=”320” height=”568”&gt;</p>
+</li>
+</ul>
+<h2 id="Masonry实现Autolayout"><a href="#Masonry实现Autolayout" class="headerlink" title="Masonry实现Autolayout"></a>Masonry实现Autolayout</h2><p>Masonry 是 iOS 和 OS X 平台上非常优秀的第三方 Autolayout 框架，采用更优雅的链式语法对原生 API 进行封装，简洁明了并具有很高的可读性。</p>
+<p>先看一段 sample code 来认识 Masonry:</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">UIEdgeInsets</span> padding = <span class="built_in">UIEdgeInsetsMake</span>(<span class="number">10</span>, <span class="number">10</span>, <span class="number">10</span>, <span class="number">10</span>);</span><br><span class="line">[view1 mas_makeConstraints:^(MASConstraintMaker *make) &#123;</span><br><span class="line">	make.edges.equalTo(superview).with.insets(padding);</span><br><span class="line">&#125;];</span><br></pre></td></tr></table></figure>
+<p>看看 block 里面的那句话:<em>make edges equalTo superview with insets</em>,通过类似于自然语言的几行代码就把 view1 约束好了，通俗易懂。</p>
+<p>先看看 Masonry 支持哪些属性</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">strong</span>, <span class="keyword">readonly</span>) MASConstraint *left; <span class="comment">//左侧</span></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">strong</span>, <span class="keyword">readonly</span>) MASConstraint *right; <span class="comment">//右侧</span></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">strong</span>, <span class="keyword">readonly</span>) MASConstraint *top; <span class="comment">//上侧</span></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">strong</span>, <span class="keyword">readonly</span>) MASConstraint *bottom; <span class="comment">//下侧</span></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">strong</span>, <span class="keyword">readonly</span>) MASConstraint *leading; <span class="comment">//首部</span></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">strong</span>, <span class="keyword">readonly</span>) MASConstraint *trailing; <span class="comment">//尾部</span></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">strong</span>, <span class="keyword">readonly</span>) MASConstraint *width; <span class="comment">//宽</span></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">strong</span>, <span class="keyword">readonly</span>) MASConstraint *height; <span class="comment">//高</span></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">strong</span>, <span class="keyword">readonly</span>) MASConstraint *centerX; <span class="comment">//横向中点</span></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">strong</span>, <span class="keyword">readonly</span>) MASConstraint *centerY; <span class="comment">//纵向中点</span></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">strong</span>, <span class="keyword">readonly</span>) MASConstraint *baseline; <span class="comment">//文本基线</span></span><br></pre></td></tr></table></figure>
+<p>其中 leading 与 left、trailing 与 right 在正常情况下是等价的，除了一些特殊情况下，比如阿拉伯文，正常使用情况下基本上可以不理不用，用 left 和 right 就好了。下面通过一些简单的实例来学习如何愉快的使用 Masonry:</p>
+<p><strong>1.居中显示一个 view</strong></p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>)viewDidLoad&#123;</span><br><span class="line">  [<span class="keyword">super</span> viewDidLoad];</span><br><span class="line">  <span class="built_in">UIView</span> *sv = [[<span class="built_in">UIView</span> alloc]init];</span><br><span class="line">  sv.backgroundColor = [<span class="built_in">UIColor</span> redColor];</span><br><span class="line">  [<span class="keyword">self</span>.view addSubview:sv];</span><br><span class="line">  [sv mas_makeConstraints:^(MASConstraintMaker *make)&#123;</span><br><span class="line">    	make.center.equalTo(<span class="keyword">self</span>.view);</span><br><span class="line">    	make.size.mas_equalTo(<span class="built_in">CGSizeMake</span>(<span class="number">300</span>,<span class="number">300</span>));</span><br><span class="line">  &#125;];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>参考：</p>
+<p>1.<a href="http://www.jianshu.com/p/d7a4790090f1" target="_blank" rel="noopener">iOS Autolayout之Apple原生代码实现</a> </p>
+<p>2.<a href="http://www.jianshu.com/p/757cc57fd9ea" target="_blank" rel="noopener">iOS Autolayout之VFL</a> </p>
+<p>3.<a href="http://adad184.com/2014/09/28/use-masonry-to-quick-solve-autolayout/" target="_blank" rel="noopener">Masonry介绍与使用</a></p>
+
+  </div>
+</article>
+
+
+
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/cactus-classic/">Home</a></li>
+         
+          <li><a href="/cactus-classic/about/">About</a></li>
+         
+          <li><a href="/cactus-classic/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/FoolPermi">Projects</a></li>
+         
+          <li><a href="/cactus-classic/Search/">Search</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Autolayout"><span class="toc-number">1.</span> <span class="toc-text">Autolayout</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码实现Autolayout"><span class="toc-number">2.</span> <span class="toc-text">代码实现Autolayout</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Autolayout动画"><span class="toc-number">3.</span> <span class="toc-text">Autolayout动画</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#VFL实现Autolayout"><span class="toc-number">4.</span> <span class="toc-text">VFL实现Autolayout</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Masonry实现Autolayout"><span class="toc-number">5.</span> <span class="toc-text">Masonry实现Autolayout</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://foolpermi.github.io/2016/03/10/Autolayout总结/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://foolpermi.github.io/2016/03/10/Autolayout总结/&text=Autolayout总结"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://foolpermi.github.io/2016/03/10/Autolayout总结/&title=Autolayout总结"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://foolpermi.github.io/2016/03/10/Autolayout总结/&is_video=false&description=Autolayout总结"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Autolayout总结&body=Check out this article: http://foolpermi.github.io/2016/03/10/Autolayout总结/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://foolpermi.github.io/2016/03/10/Autolayout总结/&title=Autolayout总结"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://foolpermi.github.io/2016/03/10/Autolayout总结/&title=Autolayout总结"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://foolpermi.github.io/2016/03/10/Autolayout总结/&title=Autolayout总结"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://foolpermi.github.io/2016/03/10/Autolayout总结/&title=Autolayout总结"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://foolpermi.github.io/2016/03/10/Autolayout总结/&name=Autolayout总结&description=&lt;h2 id=&#34;Autolayout&#34;&gt;&lt;a href=&#34;#Autolayout&#34; class=&#34;headerlink&#34; title=&#34;Autolayout&#34;&gt;&lt;/a&gt;Autolayout&lt;/h2&gt;&lt;p&gt;最近两天看了几篇博客，查了相关的文档，认真研究了一下 Autolayout。很难想象我自学 iOS 这么久一直都没有系统地研究 Autolayout。因此决定写个总结。随着苹果的产品线的扩展，屏幕尺寸越来越多，Autolayout 的出现就是为了解决不同尺寸的屏幕的适配问题，还有后来的 sizeclass 技术，有关 sizeclass 的使用将在另外的文章中进行描述。Autolayout 的实现方式有很多种，苹果最初的 API，之后的 VFL，storyboard 以及第三方的 Masonry。&lt;br&gt;"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2018 FoolPermi
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/cactus-classic/">Home</a></li>
+         
+          <li><a href="/cactus-classic/about/">About</a></li>
+         
+          <li><a href="/cactus-classic/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/FoolPermi">Projects</a></li>
+         
+          <li><a href="/cactus-classic/Search/">Search</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>
+<!-- styles -->
+<link rel="stylesheet" href="/cactus-classic/lib/font-awesome/css/fontawesome-all.min.css">
+<link rel="stylesheet" href="/cactus-classic/lib/justified-gallery/css/justifiedGallery.min.css">
+
+<!-- jquery -->
+<script src="/cactus-classic/lib/jquery/jquery.min.js"></script>
+<script src="/cactus-classic/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<script src="/cactus-classic/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
