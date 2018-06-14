@@ -6,7 +6,7 @@
   <link href="/cactus-classic/atom.xml" rel="self"/>
   
   <link href="http://foolpermi.github.io/"/>
-  <updated>2018-06-14T10:40:38.000Z</updated>
+  <updated>2018-06-14T13:08:50.360Z</updated>
   <id>http://foolpermi.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://foolpermi.github.io/2016/11/28/Generics-in-Swift/"/>
     <id>http://foolpermi.github.io/2016/11/28/Generics-in-Swift/</id>
     <published>2016-11-28T13:43:52.000Z</published>
-    <updated>2018-06-14T10:40:38.000Z</updated>
+    <updated>2018-06-14T13:08:50.360Z</updated>
     
     <summary type="html">
     
@@ -50,7 +50,7 @@
     <link href="http://foolpermi.github.io/2016/11/27/Enumerations-in-Swift/"/>
     <id>http://foolpermi.github.io/2016/11/27/Enumerations-in-Swift/</id>
     <published>2016-11-27T07:53:47.000Z</published>
-    <updated>2018-06-14T08:26:26.000Z</updated>
+    <updated>2018-06-14T13:08:50.359Z</updated>
     
     <summary type="html">
     
@@ -78,7 +78,7 @@
     <link href="http://foolpermi.github.io/2016/11/25/Closures-in-Swift/"/>
     <id>http://foolpermi.github.io/2016/11/25/Closures-in-Swift/</id>
     <published>2016-11-25T08:48:43.000Z</published>
-    <updated>2018-06-14T08:26:20.000Z</updated>
+    <updated>2018-06-14T13:08:50.359Z</updated>
     
     <summary type="html">
     
@@ -106,7 +106,7 @@
     <link href="http://foolpermi.github.io/2016/11/22/Optionals-in-Swift/"/>
     <id>http://foolpermi.github.io/2016/11/22/Optionals-in-Swift/</id>
     <published>2016-11-22T13:37:25.000Z</published>
-    <updated>2018-06-14T08:27:13.000Z</updated>
+    <updated>2018-06-14T13:08:50.361Z</updated>
     
     <summary type="html">
     
@@ -128,7 +128,7 @@
     <link href="http://foolpermi.github.io/2016/11/21/Structs-and-Classes-in-Swift/"/>
     <id>http://foolpermi.github.io/2016/11/21/Structs-and-Classes-in-Swift/</id>
     <published>2016-11-21T15:15:36.000Z</published>
-    <updated>2018-06-14T08:27:25.000Z</updated>
+    <updated>2018-06-14T13:08:50.362Z</updated>
     
     <summary type="html">
     
@@ -153,7 +153,7 @@
     <link href="http://foolpermi.github.io/2016/11/20/Properties-in-Swift/"/>
     <id>http://foolpermi.github.io/2016/11/20/Properties-in-Swift/</id>
     <published>2016-11-20T08:41:01.000Z</published>
-    <updated>2018-06-14T08:27:18.000Z</updated>
+    <updated>2018-06-14T13:08:50.361Z</updated>
     
     <summary type="html">
     
@@ -180,7 +180,7 @@
     <link href="http://foolpermi.github.io/2016/11/04/iOS%E4%B8%AD%E4%BD%BF%E7%94%A8%E5%A4%96%E9%83%A8%E5%AD%97%E4%BD%93/"/>
     <id>http://foolpermi.github.io/2016/11/04/iOS中使用外部字体/</id>
     <published>2016-11-03T16:42:06.000Z</published>
-    <updated>2018-06-14T08:26:43.000Z</updated>
+    <updated>2018-06-14T13:08:50.363Z</updated>
     
     <summary type="html">
     
@@ -204,7 +204,7 @@
     <link href="http://foolpermi.github.io/2016/03/10/Autolayout%E6%80%BB%E7%BB%93/"/>
     <id>http://foolpermi.github.io/2016/03/10/Autolayout总结/</id>
     <published>2016-03-10T14:59:38.000Z</published>
-    <updated>2018-06-14T08:26:10.000Z</updated>
+    <updated>2018-06-14T13:08:50.359Z</updated>
     
     <summary type="html">
     
@@ -224,13 +224,11 @@
     <link href="http://foolpermi.github.io/2015/12/28/Objective-C%E7%9A%84%E8%99%9A%E6%96%B9%E6%B3%95/"/>
     <id>http://foolpermi.github.io/2015/12/28/Objective-C的虚方法/</id>
     <published>2015-12-28T11:59:59.000Z</published>
-    <updated>2018-06-14T08:27:03.000Z</updated>
+    <updated>2018-06-14T16:42:37.028Z</updated>
     
     <summary type="html">
     
-      &lt;blockquote&gt;
-&lt;p&gt;OC 的方法都是虚方法:&lt;br&gt;1.父类的指针可以指向子类的对象&lt;br&gt;2.调用方法时不看指针看对象    &lt;/p&gt;
-&lt;/blockquote&gt;
+      &lt;p&gt;OC 的方法都是虚方法:&lt;br&gt;1.父类的指针可以指向子类的对象&lt;br&gt;2.调用方法时不看指针看对象    &lt;/p&gt;
     
     </summary>
     
@@ -246,15 +244,12 @@
     <link href="http://foolpermi.github.io/2015/12/26/Objective-C%E7%9A%84%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/"/>
     <id>http://foolpermi.github.io/2015/12/26/Objective-C的内存管理/</id>
     <published>2015-12-26T11:00:27.000Z</published>
-    <updated>2018-06-14T08:26:55.000Z</updated>
+    <updated>2018-06-14T16:39:44.705Z</updated>
     
     <summary type="html">
     
-      &lt;blockquote&gt;
-&lt;p&gt;首先谢谢 &lt;a href=&quot;http://blog.csdn.net/lonelyroamer/article/details/7666851&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;LonelyRoamer&lt;/a&gt;   ，它的文章让我明白一些事情。整理如下，分享给大家：           &lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2 id=&quot;一、内存管理的黄金法则&quot;&gt;&lt;a href=&quot;#一、内存管理的黄金法则&quot; class=&quot;headerlink&quot; title=&quot;一、内存管理的黄金法则:&quot;&gt;&lt;/a&gt;一、内存管理的黄金法则:&lt;/h2&gt;&lt;blockquote&gt;
-&lt;p&gt;如果一个对象使用了  alloc，copy，mutableCopy，retain，new，那你就必须使用相应的 release 或 autorelease.&lt;br&gt;
+      &lt;p&gt;首先谢谢 &lt;a href=&quot;http://blog.csdn.net/lonelyroamer/article/details/7666851&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;LonelyRoamer&lt;/a&gt;   ，它的文章让我明白一些事情。整理如下，分享给大家： &lt;/p&gt;
+&lt;h2 id=&quot;一、内存管理的黄金法则&quot;&gt;&lt;a href=&quot;#一、内存管理的黄金法则&quot; class=&quot;headerlink&quot; title=&quot;一、内存管理的黄金法则:&quot;&gt;&lt;/a&gt;一、内存管理的黄金法则:&lt;/h2&gt;&lt;p&gt;如果一个对象使用了  alloc，copy，mutableCopy，retain，new，那你就必须使用相应的 release 或 autorelease.&lt;br&gt;
     
     </summary>
     
