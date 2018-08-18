@@ -24,6 +24,10 @@ tags: essay
 ```ObjectiveC
 	NSLog(@"Hello,monkeys");
 ```
+```swift
+	print("Hello, world")
+```
+
 ```go
 	fmt.Println("Hello, world")
 ```
