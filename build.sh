@@ -3,9 +3,10 @@ echo "start build"
 echo "remove public folder..."
 rm -rf ./public
 echo "public folder removed..."
-git rm -r public/
 git add source/*
+git add ./build.sh
 git commit -m "add file..."
+git checkout
 git push
 echo "classic..."
 hexo g --config _config_classic.yml
