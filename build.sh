@@ -27,6 +27,7 @@ git checkout master
 echo "remove master public folder..."
 cp -r ~/Documents/Blogs/tmp/  ~/Documents/Blogs/foolpermi.github.io/
 echo "hexo deploy..."
+git add public/
 git commit -a
 echo "git push to master..."
 git pull
