@@ -1,7 +1,7 @@
 echo git checkout develop
 echo "start build"
 echo "remove public folder..."
-rm -rf ./public
+git clean -fd public
 echo "public folder removed..."
 git add source/*
 git add ./build.sh
@@ -28,11 +28,10 @@ echo "remove master public folder..."
 cp -r ~/Documents/Blogs/tmp/  ~/Documents/Blogs/foolpermi.github.io/
 echo "hexo deploy..."
 git commit -a
-echo "git push..."
+echo "git push to master..."
 git pull
 git push
 echo "git switch to develop..."
 git checkout develop
-git stash clear
 rm -rf ~/Documents/Blogs/tmp
 
