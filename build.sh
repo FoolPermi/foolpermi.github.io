@@ -19,14 +19,15 @@ hexo g --config _config_white.yml
 echo "copy public folder..."
 rm -rf ~/Documents/Blogs/tmp
 mkdir ~/Documents/Blogs/tmp
-cp -r ./public ~/Documents/Blogs/tmp
-rm  public/
+cp -r public/ ~/Documents/Blogs/tmp
+rm -r public/
 git checkout 
 echo "git switch to master..."
 git checkout master
 echo "remove master public folder..."
-cp -r ~/Documents/Blogs/tmp/  ~/Documents/Blogs/foolpermi.github.io/
+cp -r ~/Documents/Blogs/tmp/  ./
 echo "hexo deploy..."
+git add public
 git commit -m "updated at `date +%y%m%d`"
 echo "git push to master..."
 git pull
