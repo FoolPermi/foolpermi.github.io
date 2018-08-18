@@ -7,22 +7,22 @@ tags: essay
 *KeKe,the first blog just greetings.You just see me zhuangbi but no shuohua,after I change such a theme I feel myself mengmengda.Okay,the first blog,just greetings.*
 <!-- more -->Hello world,you dongde.   
 ```c
-	printf("Hello,world");
+	printf("Hello, world");
 ```
 ```cpp
-	cout<<"Hello,Linda"<<endl;//so who is linda
+	cout<<"Hello, Linda"<<endl;//so who is linda
 ```
 
 ```python
-	print("Hello,world");
+	print("Hello, world");
 ```
 
 ```java
-	System.out.println("Hello,world");
+	System.out.println("Hello, world");
 ```
 
 ```ObjectiveC
-	NSLog(@"Hello,monkeys");
+	NSLog(@"Hello, monkeys");
 ```
 ```swift
 	print("Hello, world")
