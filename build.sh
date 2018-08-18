@@ -20,19 +20,17 @@ echo "copy public folder..."
 rm -rf ~/Documents/Blogs/tmp
 mkdir ~/Documents/Blogs/tmp
 cp -r ./public ~/Documents/Blogs/tmp
-git clean -fd public
+rm -r public
 git checkout 
 echo "git switch to master..."
 git checkout master
 echo "remove master public folder..."
 cp -r ~/Documents/Blogs/tmp/  ~/Documents/Blogs/foolpermi.github.io/
 echo "hexo deploy..."
-git add public/
-git commit -a
+git commit -m "updated at `date +%y%m%d`"
 echo "git push to master..."
 git pull
 git push
-git checkout
 echo "git switch to develop..."
 git checkout develop
 rm -rf ~/Documents/Blogs/tmp
