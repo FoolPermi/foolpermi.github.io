@@ -18,7 +18,7 @@ hexo g --config _config_white.yml
 echo "copy public folder..."
 rm -rf ~/Documents/Blogs/tmp
 mkdir ~/Documents/Blogs/tmp
-cp ./public ~/Documents/Blogs/tmp
+cp ./public/ ~/Documents/Blogs/tmp
 rm -rf ./public
 git checkout 
 echo "git switch to master..."
