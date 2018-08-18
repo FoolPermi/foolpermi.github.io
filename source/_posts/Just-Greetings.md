@@ -25,6 +25,6 @@ tags: essay
 	NSLog(@"Hello,monkeys");
 ```
 ```go
-	fmt.Println("Hello, wor")
+	fmt.Println("Hello, world")
 ```
 
