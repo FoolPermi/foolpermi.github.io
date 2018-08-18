@@ -3,6 +3,10 @@ echo "start build"
 echo "remove public folder..."
 rm -rf ./public
 echo "public folder removed..."
+git rm -r public/
+git add source/*
+git commit -m "add file..."
+git push
 echo "classic..."
 hexo g --config _config_classic.yml
 echo "dark..."
@@ -15,8 +19,7 @@ echo "copy public folder..."
 rm -rf ~/Documents/Blogs/tmp
 mkdir ~/Documents/Blogs/tmp
 cp ./public ~/Documents/Blogs/tmp
-echo "git stash..."
-git stash
+git checkout 
 echo "git switch to master..."
 git checkout master
 echo "remove master public folder..."
