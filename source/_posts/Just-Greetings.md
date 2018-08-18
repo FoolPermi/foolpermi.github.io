@@ -24,3 +24,7 @@ tags: essay
 ```ObjectiveC
 	NSLog(@"Hello,monkeys");
 ```
+```swift
+	fmt.Println("Hello, wor")
+```
+
