@@ -1,7 +1,7 @@
 echo git checkout develop
 echo "start build"
 echo "remove public folder..."
-git clean -fd public
+rm -rf public
 echo "public folder removed..."
 git add source/*
 git add ./build.sh
@@ -20,7 +20,7 @@ echo "copy public folder..."
 rm -rf ~/Documents/Blogs/tmp
 mkdir ~/Documents/Blogs/tmp
 cp -r ./public ~/Documents/Blogs/tmp
-rm -r public
+rm  public/
 git checkout 
 echo "git switch to master..."
 git checkout master
