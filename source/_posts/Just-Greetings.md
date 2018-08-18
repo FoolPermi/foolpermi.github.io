@@ -21,9 +21,6 @@ tags: essay
 	System.out.println("Hello, world");
 ```
 
-```ObjectiveC
-	NSLog(@"Hello, monkeys");
-```
 ```swift
 	print("Hello, world")
 ```
