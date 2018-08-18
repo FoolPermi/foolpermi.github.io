@@ -20,7 +20,7 @@ echo "copy public folder..."
 rm -rf ~/Documents/Blogs/tmp
 mkdir ~/Documents/Blogs/tmp
 cp -r ./public ~/Documents/Blogs/tmp
-rm -rf ./public
+git clean -fd public
 git checkout 
 echo "git switch to master..."
 git checkout master
@@ -31,6 +31,7 @@ git commit -a
 echo "git push to master..."
 git pull
 git push
+git checkout
 echo "git switch to develop..."
 git checkout develop
 rm -rf ~/Documents/Blogs/tmp
