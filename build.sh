@@ -28,7 +28,7 @@ echo "remove master public folder..."
 cp -r ~/Documents/Blogs/tmp/  ./
 echo "hexo deploy..."
 git add cactus-classic/* cactus-white/* cactus-light/* cactus-dark/*
-git commit -m "updated at `date +%y%m%d`"
+git commit -m "updated at `date +%c`"
 echo "git push to master..."
 git pull
 git push
