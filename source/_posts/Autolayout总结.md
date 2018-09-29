@@ -80,8 +80,7 @@ tags: cocoa
   [redView addConstraint:redHeightC];
   //这时候，redView的位置和尺寸都可以确定了，如下图
   ```
-  
-   <img src="http://pftj6uh66.bkt.clouddn.com/cocoa/Autolayout%E6%80%BB%E7%BB%93_01.jpg" width="320" height="568" align=center />
+  <img src="http://pftj6uh66.bkt.clouddn.com/cocoa/Autolayout%E6%80%BB%E7%BB%93_01.jpg" width="320" height="568" align=center />
   
 - 现在继续增加需求，我们在红色方块右边离它20间距，离 self.view 底部也20个间距，放置一个宽高相等的蓝色方块
   
@@ -104,8 +103,7 @@ tags: cocoa
      NSLayoutConstraint *blueHeight = [NSLayoutConstraint constraintWithItem:blueView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:redView attribute:NSLayoutAttributeHeight multiplier:1.0f constant:0.0f];
      [self.view addConstraint:blueHeight];    
   ```
-
-	<img src="http://pftj6uh66.bkt.clouddn.com/cocoa/Autolayout%E6%80%BB%E7%BB%93_02.jpg" width="320" height="568" align=center />
+  <img src="http://pftj6uh66.bkt.clouddn.com/cocoa/Autolayout%E6%80%BB%E7%BB%93_02.jpg" width="320" height="568" align=center />
 
 - 其实 Autolayout 的思想还是比较简单，刚开始使用的时候不要想着一气呵成，可以一个控件一个控件的实现依赖，分别满足其位置和尺寸的需求，如果几个控件一起弄得话，需要思路非常清晰，往往大家犯错是因为约束加多了，而不是加少了
 - 就如上面的例子，很多人在设置了与红色等高等宽以后，还同时设置顶部和底部对齐，这样高度就重复设置了。因为上下同时对齐不仅给予了垂直位置，也给予了高度，所以思路必须清晰。
@@ -139,8 +137,7 @@ tags: cocoa
   NSLayoutConstraint *yellowHeight = [NSLayoutConstraint constraintWithItem:yellowView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0f constant:50.0f];
   [yellowView addConstraint:yellowHeight];
   ```
-  
-   <img src="http://pftj6uh66.bkt.clouddn.com/cocoa/Autolayout%E6%80%BB%E7%BB%93_03.jpg" width="320" height="568" align=center />
+  <img src="http://pftj6uh66.bkt.clouddn.com/cocoa/Autolayout%E6%80%BB%E7%BB%93_03.jpg" width="320" height="568" align=center />
   
 - 接下来给黄色添加一个约束，这个约束涉及到优先级，代码如下
   
@@ -160,8 +157,7 @@ tags: cocoa
 - 这说明，最后添加的约束的优先级是低的，这个约束只有在它的冲突约束被抹掉以后，它才能实现
   
 - 也就是说，我把蓝色 view 移除以后，黄色 view相对于蓝色 view 左间距20这个约束就不成立了，那么黄色 view 会自动地变为与红色 view 的间距为20
-  
-   <img src="http://pftj6uh66.bkt.clouddn.com/cocoa/Autolayout%E6%80%BB%E7%BB%93_04.jpg" width="320" height="568" align=center />
+  <img src="http://pftj6uh66.bkt.clouddn.com/cocoa/Autolayout%E6%80%BB%E7%BB%93_04.jpg" width="320" height="568" align=center />
   
 - 最后加几行代码来实现这个动画吧
   
@@ -241,8 +237,7 @@ tags: cocoa
      [self.view addConstraints:Vconstraints];
      //运行结果如下图
   ```
-  
-   <img src="http://pftj6uh66.bkt.clouddn.com/cocoa/Autolayout%E6%80%BB%E7%BB%93_05.jpg" width="320" height="568" align=center />
+  <img src="http://pftj6uh66.bkt.clouddn.com/cocoa/Autolayout%E6%80%BB%E7%BB%93_05.jpg" width="320" height="568" align=center />
   
 - 如图，需求已经实现了，下面解释一下**format**里面奇怪的语法
   
@@ -294,8 +289,7 @@ tags: cocoa
      [self.view addConstraints:Vconstraints];
      //最终效果图如下:
   ```
-  
-   <img src="http://pftj6uh66.bkt.clouddn.com/cocoa/Autolayout%E6%80%BB%E7%BB%93_06.jpg" width="320" height="568" align=center />
+  <img src="http://pftj6uh66.bkt.clouddn.com/cocoa/Autolayout%E6%80%BB%E7%BB%93_06.jpg" width="320" height="568" align=center />
 
 ## Masonry实现Autolayout
 
