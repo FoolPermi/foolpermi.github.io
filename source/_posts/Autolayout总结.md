@@ -81,7 +81,7 @@ tags: cocoa
   //这时候，redView的位置和尺寸都可以确定了，如下图
   ```
   
-  <img src="http://pftj6uh66.bkt.clouddn.com/cocoa/Autolayout%E6%80%BB%E7%BB%93_01.jpg" width="320" height="568"/>
+   <img src="http://pftj6uh66.bkt.clouddn.com/cocoa/Autolayout%E6%80%BB%E7%BB%93_01.jpg" width="320" height="568"/>
   
 - 现在继续增加需求，我们在红色方块右边离它20间距，离 self.view 底部也20个间距，放置一个宽高相等的蓝色方块
   
@@ -140,7 +140,7 @@ tags: cocoa
   [yellowView addConstraint:yellowHeight];
   ```
   
-  <img src="http://pftj6uh66.bkt.clouddn.com/cocoa/Autolayout%E6%80%BB%E7%BB%93_03.jpg" width="320" height="568"/>
+   <img src="http://pftj6uh66.bkt.clouddn.com/cocoa/Autolayout%E6%80%BB%E7%BB%93_03.jpg" width="320" height="568"/>
   
 - 接下来给黄色添加一个约束，这个约束涉及到优先级，代码如下
   
@@ -161,7 +161,7 @@ tags: cocoa
   
 - 也就是说，我把蓝色 view 移除以后，黄色 view相对于蓝色 view 左间距20这个约束就不成立了，那么黄色 view 会自动地变为与红色 view 的间距为20
   
-  <img src="http://pftj6uh66.bkt.clouddn.com/cocoa/Autolayout%E6%80%BB%E7%BB%93_04.jpg" width="320" height="568"/>
+   <img src="http://pftj6uh66.bkt.clouddn.com/cocoa/Autolayout%E6%80%BB%E7%BB%93_04.jpg" width="320" height="568"/>
   
 - 最后加几行代码来实现这个动画吧
   
@@ -242,7 +242,7 @@ tags: cocoa
      //运行结果如下图
   ```
   
-  <img src="http://pftj6uh66.bkt.clouddn.com/cocoa/Autolayout%E6%80%BB%E7%BB%93_05.jpg" width="320" height="568"/>
+   <img src="http://pftj6uh66.bkt.clouddn.com/cocoa/Autolayout%E6%80%BB%E7%BB%93_05.jpg" width="320" height="568"/>
   
 - 如图，需求已经实现了，下面解释一下**format**里面奇怪的语法
   
@@ -295,7 +295,7 @@ tags: cocoa
      //最终效果图如下:
   ```
   
-  <img src="http://pftj6uh66.bkt.clouddn.com/cocoa/Autolayout%E6%80%BB%E7%BB%93_06.jpg" width="320" height="568"/>
+   <img src="http://pftj6uh66.bkt.clouddn.com/cocoa/Autolayout%E6%80%BB%E7%BB%93_06.jpg" width="320" height="568"/>
 
 ## Masonry实现Autolayout
 
