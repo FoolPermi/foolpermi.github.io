@@ -153,14 +153,19 @@ tags: cocoa
 
 
 - 约束的优先级的范围是0~1000，数值越大优先级越高，在不设置的情况下默认值是1000
-  
+
 - 这说明，最后添加的约束的优先级是低的，这个约束只有在它的冲突约束被抹掉以后，它才能实现
-  
+
 - 也就是说，我把蓝色 view 移除以后，黄色 view相对于蓝色 view 左间距20这个约束就不成立了，那么黄色 view 会自动地变为与红色 view 的间距为20
+
+  
+
   <img src="http://pftj6uh66.bkt.clouddn.com/cocoa/Autolayout%E6%80%BB%E7%BB%93_04.jpg" width="320" height="568" align=center />
+
   
+
 - 最后加几行代码来实现这个动画吧
-  
+
   ``` ObjectiveC
   - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
   //1.先把蓝色从父视图上移除
