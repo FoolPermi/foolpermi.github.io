@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="FoolPermi">
 <meta property="og:description" content="首先谢谢 LonelyRoamer   ，它的文章让我明白一些事情。整理如下，分享给大家：  一、内存管理的黄金法则:如果一个对象使用了  alloc、copy、mutableCopy、retain、new，那你就必须使用相应的 release 或 autorelease.">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-18T09:13:35.243Z">
+<meta property="og:updated_time" content="2018-09-30T07:26:55.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Objective-C的内存管理">
 <meta name="twitter:description" content="首先谢谢 LonelyRoamer   ，它的文章让我明白一些事情。整理如下，分享给大家：  一、内存管理的黄金法则:如果一个对象使用了  alloc、copy、mutableCopy、retain、new，那你就必须使用相应的 release 或 autorelease.">
@@ -80,7 +80,7 @@
         <li><a class="icon" href="/cactus-classic/2015/12/28/Objective-C的虚方法/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
         
         
-        <li><a class="icon" href="/cactus-classic/2015/12/25/Just-Greetings/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        <li><a class="icon" href="/cactus-classic/2015/12/25/Hello-World/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
         
         <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
         <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
@@ -95,17 +95,15 @@
       <ul>
   <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://foolpermi.github.io/2015/12/26/Objective-C的内存管理/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
   <li><a class="icon" href="https://twitter.com/share?url=http://foolpermi.github.io/2015/12/26/Objective-C的内存管理/&text=Objective-C的内存管理"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
-  /*
-    <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://foolpermi.github.io/2015/12/26/Objective-C的内存管理/&title=Objective-C的内存管理"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
-    <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://foolpermi.github.io/2015/12/26/Objective-C的内存管理/&is_video=false&description=Objective-C的内存管理"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
-  */
-  <li><a class="icon" href="mailto:?subject=Objective-C的内存管理&body=Check out this article: http://foolpermi.github.io/2015/12/26/Objective-C的内存管理/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://foolpermi.github.io/2015/12/26/Objective-C的内存管理/&title=Objective-C的内存管理"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://foolpermi.github.io/2015/12/26/Objective-C的内存管理/&is_video=false&description=Objective-C的内存管理"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
   <li><a class="icon" href="https://getpocket.com/save?url=http://foolpermi.github.io/2015/12/26/Objective-C的内存管理/&title=Objective-C的内存管理"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
   <li><a class="icon" href="http://reddit.com/submit?url=http://foolpermi.github.io/2015/12/26/Objective-C的内存管理/&title=Objective-C的内存管理"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://foolpermi.github.io/2015/12/26/Objective-C的内存管理/&title=Objective-C的内存管理"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://foolpermi.github.io/2015/12/26/Objective-C的内存管理/&title=Objective-C的内存管理"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
   <li><a class="icon" href="http://service.weibo.com/share/share.php?title=Objective-C的内存管理&url=http://foolpermi.github.io/2015/12/26/Objective-C的内存管理/&style=simple&searchPic=false" target="_blank"><i class="fab fa-weibo " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Objective-C的内存管理&body=Check out this article: http://foolpermi.github.io/2015/12/26/Objective-C的内存管理/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
   <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://foolpermi.github.io/2015/12/26/Objective-C的内存管理/&name=Objective-C的内存管理&description=&lt;p&gt;首先谢谢 &lt;a href=&#34;http://blog.csdn.net/lonelyroamer/article/details/7666851&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;LonelyRoamer&lt;/a&gt;   ，它的文章让我明白一些事情。整理如下，分享给大家： &lt;/p&gt;
-&lt;h2 id=&#34;一、内存管理的黄金法则&#34;&gt;&lt;a href=&#34;#一、内存管理的黄金法则&#34; class=&#34;headerlink&#34; title=&#34;一、内存管理的黄金法则:&#34;&gt;&lt;/a&gt;一、内存管理的黄金法则:&lt;/h2&gt;&lt;p&gt;如果一个对象使用了  alloc、copy、mutableCopy、retain、new，那你就必须使用相应的 release 或 autorelease.&lt;br&gt;"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+&lt;h2 id=&#34;一、内存管理的黄金法则&#34;&gt;&lt;a href=&#34;#一、内存管理的黄金法则&#34; class=&#34;headerlink&#34; title=&#34;一、内存管理的黄金法则:&#34;&gt;&lt;/a&gt;一、内存管理的黄金法则:&lt;/h2&gt;&lt;p&gt;如果一个对象使用了  alloc、copy、mutableCopy、retain、new，那你就必须使用相应的 release 或 autorelease.&lt;br&gt;"><i class="fab fa-tumblr-square " aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -239,17 +237,15 @@
       <ul>
   <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://foolpermi.github.io/2015/12/26/Objective-C的内存管理/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
   <li><a class="icon" href="https://twitter.com/share?url=http://foolpermi.github.io/2015/12/26/Objective-C的内存管理/&text=Objective-C的内存管理"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  /*
-    <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://foolpermi.github.io/2015/12/26/Objective-C的内存管理/&title=Objective-C的内存管理"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-    <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://foolpermi.github.io/2015/12/26/Objective-C的内存管理/&is_video=false&description=Objective-C的内存管理"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  */
-  <li><a class="icon" href="mailto:?subject=Objective-C的内存管理&body=Check out this article: http://foolpermi.github.io/2015/12/26/Objective-C的内存管理/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://foolpermi.github.io/2015/12/26/Objective-C的内存管理/&title=Objective-C的内存管理"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://foolpermi.github.io/2015/12/26/Objective-C的内存管理/&is_video=false&description=Objective-C的内存管理"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
   <li><a class="icon" href="https://getpocket.com/save?url=http://foolpermi.github.io/2015/12/26/Objective-C的内存管理/&title=Objective-C的内存管理"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
   <li><a class="icon" href="http://reddit.com/submit?url=http://foolpermi.github.io/2015/12/26/Objective-C的内存管理/&title=Objective-C的内存管理"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://foolpermi.github.io/2015/12/26/Objective-C的内存管理/&title=Objective-C的内存管理"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://foolpermi.github.io/2015/12/26/Objective-C的内存管理/&title=Objective-C的内存管理"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
   <li><a class="icon" href="http://service.weibo.com/share/share.php?title=Objective-C的内存管理&url=http://foolpermi.github.io/2015/12/26/Objective-C的内存管理/&style=simple&searchPic=false" target="_blank"><i class="fab fa-weibo fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Objective-C的内存管理&body=Check out this article: http://foolpermi.github.io/2015/12/26/Objective-C的内存管理/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
   <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://foolpermi.github.io/2015/12/26/Objective-C的内存管理/&name=Objective-C的内存管理&description=&lt;p&gt;首先谢谢 &lt;a href=&#34;http://blog.csdn.net/lonelyroamer/article/details/7666851&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;LonelyRoamer&lt;/a&gt;   ，它的文章让我明白一些事情。整理如下，分享给大家： &lt;/p&gt;
-&lt;h2 id=&#34;一、内存管理的黄金法则&#34;&gt;&lt;a href=&#34;#一、内存管理的黄金法则&#34; class=&#34;headerlink&#34; title=&#34;一、内存管理的黄金法则:&#34;&gt;&lt;/a&gt;一、内存管理的黄金法则:&lt;/h2&gt;&lt;p&gt;如果一个对象使用了  alloc、copy、mutableCopy、retain、new，那你就必须使用相应的 release 或 autorelease.&lt;br&gt;"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+&lt;h2 id=&#34;一、内存管理的黄金法则&#34;&gt;&lt;a href=&#34;#一、内存管理的黄金法则&#34; class=&#34;headerlink&#34; title=&#34;一、内存管理的黄金法则:&#34;&gt;&lt;/a&gt;一、内存管理的黄金法则:&lt;/h2&gt;&lt;p&gt;如果一个对象使用了  alloc、copy、mutableCopy、retain、new，那你就必须使用相应的 release 或 autorelease.&lt;br&gt;"><i class="fab fa-tumblr-square fa-lg" aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
