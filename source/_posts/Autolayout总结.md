@@ -158,11 +158,7 @@ tags: cocoa
 
 - 也就是说，我把蓝色 view 移除以后，黄色 view相对于蓝色 view 左间距20这个约束就不成立了，那么黄色 view 会自动地变为与红色 view 的间距为20
 
-  
-
   <img src="http://pftj6uh66.bkt.clouddn.com/cocoa/Autolayout%E6%80%BB%E7%BB%93_04.jpg" width="320" height="568" align=center />
-
-  
 
 - 最后加几行代码来实现这个动画吧
 
