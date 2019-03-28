@@ -11,7 +11,7 @@ tags: tips
 
 2.在 info.plist 文件中使用 **Fonts provided by application** 配置字体的信息，如下图所示：
 
-![](http://pftj6uh66.bkt.clouddn.com/tips/iOS%E4%B8%AD%E4%BD%BF%E7%94%A8%E5%A4%96%E9%83%A8%E5%AD%97%E4%BD%93_01.jpg)
+![](https://foolpermi-blog-1254115483.cos.ap-chengdu.myqcloud.com/images/tips/iOS%E4%B8%AD%E4%BD%BF%E7%94%A8%E5%A4%96%E9%83%A8%E5%AD%97%E4%BD%93_01.jpg)
 
 3.在项目中使用以下代码设置字体，也可以直接在 xib 或者 storyboard 中选择导入的字体
 
@@ -35,4 +35,4 @@ for (NSString *fontFamilyName in [UIFont familyNames]) {
 
 4.假如以上设置完成以后，仍然没有预期的效果，那么请在 **Build Phases** 的 **Copy Bundle Resources**中添加导入的字体
 
-![](http://pftj6uh66.bkt.clouddn.com/tips/iOS%E4%B8%AD%E4%BD%BF%E7%94%A8%E5%A4%96%E9%83%A8%E5%AD%97%E4%BD%93_02.jpg)
+![](https://foolpermi-blog-1254115483.cos.ap-chengdu.myqcloud.com/images/tips/iOS%E4%B8%AD%E4%BD%BF%E7%94%A8%E5%A4%96%E9%83%A8%E5%AD%97%E4%BD%93_02.jpg)

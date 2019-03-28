@@ -22,11 +22,11 @@ tags: cocoa
 ## 代码实现Autolayout
 
 - 先从一个简单的例子开始学习通过 Autolayout 代码来完成一个控件的**位置**和**尺寸**
-  
+
 - 我要在界面的左下方放置一个宽高各为50的红色 View，它距离屏幕左边缘和下边缘距离都是20
-  
+
 - 在此之前先介绍一个方法
-  
+
   ``` ObjectiveC
           /**
   *  这个是系统默认添加约束的方法，它是NSLayoutConstraint的类方法
@@ -80,10 +80,10 @@ tags: cocoa
   [redView addConstraint:redHeightC];
   //这时候，redView的位置和尺寸都可以确定了，如下图
   ```
-  <img src="http://pftj6uh66.bkt.clouddn.com/cocoa/Autolayout%E6%80%BB%E7%BB%93_01.jpg" width="320" height="568" align=center />
+  <img src="https://foolpermi-blog-1254115483.cos.ap-chengdu.myqcloud.com/images/cocoa/Autolayout%E6%80%BB%E7%BB%93_01.jpg" width="320" height="568" align=center />
 
 - 现在继续增加需求，我们在红色方块右边离它20间距，离 self.view 底部也20个间距，放置一个宽高相等的蓝色方块
-  
+
   ``` ObjectiveC
      //先创建一个蓝色的视图
      UIView *blueView = [[UIView alloc]init];
@@ -103,22 +103,22 @@ tags: cocoa
      NSLayoutConstraint *blueHeight = [NSLayoutConstraint constraintWithItem:blueView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:redView attribute:NSLayoutAttributeHeight multiplier:1.0f constant:0.0f];
      [self.view addConstraint:blueHeight];    
   ```
-  <img src="http://pftj6uh66.bkt.clouddn.com/cocoa/Autolayout%E6%80%BB%E7%BB%93_02.jpg" width="320" height="568" align=center />
-  
+  <img src="https://foolpermi-blog-1254115483.cos.ap-chengdu.myqcloud.com/images/cocoa/Autolayout%E6%80%BB%E7%BB%93_02.jpg" width="320" height="568" align=center />
+
 - 其实 Autolayout 的思想还是比较简单，刚开始使用的时候不要想着一气呵成，可以一个控件一个控件的实现依赖，分别满足其位置和尺寸的需求，如果几个控件一起弄得话，需要思路非常清晰，往往大家犯错是因为约束加多了，而不是加少了
-  
+
 - 就如上面的例子，很多人在设置了与红色等高等宽以后，还同时设置顶部和底部对齐，这样高度就重复设置了。因为上下同时对齐不仅给予了垂直位置，也给予了高度，所以思路必须清晰。
 
 ## Autolayout动画
 
 - 最后在原来的例子上做个小动画，让大家了解 Autolayout 是怎么做动画的
-  
+
 - 需求：将在蓝色方块的右边再加个同样大小的黄色方块，然后要求点击屏幕，蓝色的方块被移除，黄色方块取代蓝色方块的位置
-  
+
 - 这个例子主要涉及到 Autolayout 的另一个知识点：**优先级(priority)**
-  
+
 - 好了，下面添加黄色的方块
-  
+
   ``` ObjectiveC
   //先添加黄色View
   UIView *yellowView = [[UIView alloc]init];
@@ -138,10 +138,10 @@ tags: cocoa
   NSLayoutConstraint *yellowHeight = [NSLayoutConstraint constraintWithItem:yellowView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0f constant:50.0f];
   [yellowView addConstraint:yellowHeight];
   ```
-  <img src="http://pftj6uh66.bkt.clouddn.com/cocoa/Autolayout%E6%80%BB%E7%BB%93_03.jpg" width="320" height="568" align=center />
-  
+  <img src="https://foolpermi-blog-1254115483.cos.ap-chengdu.myqcloud.com/images/cocoa/Autolayout%E6%80%BB%E7%BB%93_03.jpg" width="320" height="568" align=center />
+
 - 接下来给黄色添加一个约束，这个约束涉及到优先级，代码如下
-  
+
   ``` ObjectiveC
   //1.yellowView创建另一个左边约束
   NSLayoutConstraint *yellowAnotherLeft = [NSLayoutConstraint constraintWithItem:yellowView attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:redView attribute:NSLayoutAttributeRight multiplier:1.0f constant:20.f];
@@ -154,10 +154,10 @@ tags: cocoa
 
 
 - 约束的优先级的范围是0~1000，数值越大优先级越高，在不设置的情况下默认值是1000
-  
+
 - 这说明，最后添加的约束的优先级是低的，这个约束只有在它的冲突约束被抹掉以后，它才能实现，也就是说，当把蓝色 view 移除以后，黄色 view相对于蓝色 view 左间距20这个约束就不成立了，那么黄色 view 会自动地变为与红色 view 的间距为20
-  
-  <img src="http://pftj6uh66.bkt.clouddn.com/cocoa/Autolayout%E6%80%BB%E7%BB%93_04.jpg" width="320" height="568"  align=center />
+
+  <img src="https://foolpermi-blog-1254115483.cos.ap-chengdu.myqcloud.com/images/cocoa/Autolayout%E6%80%BB%E7%BB%93_04.jpg" width="320" height="568"  align=center />
 
 
 - 最后加几行代码来实现这个动画吧
@@ -176,13 +176,13 @@ tags: cocoa
 ## VFL实现Autolayout
 
 - 之前介绍了使用苹果原始 API 实现 Autolayout，现在介绍使用 VFL (Visual Format Language) 来实现 Autolayout
-  
+
 - VFL 的思想与其它的实现方式有所不同，它更为宏观化，它将约束分成了两块：**水平方向 (H:) **和**垂直方向 (V:)**
-  
+
 - 也就是说在创建约束的时候，得把水平方向和垂直方向用字符串一并表示出来而不是一个一个的添加
-  
+
 - 下面看 VFL 的 API，它的 API 短了一些，但是要筹齐参数是件很麻烦的事情
-  
+
   ``` ObjectiveC
           /**
   *  VFL创建约束的API
@@ -206,13 +206,13 @@ tags: cocoa
   NSLayoutFormatAlignAllCenterY = (1 << NSLayoutAttributeCenterY),//水平方向中心对齐
   */
   ```
-  
+
 - 里面最重要的就是 **format** 参数，这个参数的难点在于其书写格式
-  
+
 - 通过例子来看 API 的使用，现在要在界面上添加一个红色的方块，高100，宽50，与父视图顶部边缘和左边缘距离为20
-  
+
 - 来看看代码是怎么实现的
-  
+
   ``` ObjectiveC
      UIView *redView = [[UIView alloc]init];
      redView.backgroundColor = [UIColor redColor];
@@ -238,19 +238,19 @@ tags: cocoa
      [self.view addConstraints:Vconstraints];
      //运行结果如下图
   ```
-  <img src="http://pftj6uh66.bkt.clouddn.com/cocoa/Autolayout%E6%80%BB%E7%BB%93_05.jpg" width="320" height="568" align=center />
-  
+  <img src="https://foolpermi-blog-1254115483.cos.ap-chengdu.myqcloud.com/images/cocoa/Autolayout%E6%80%BB%E7%BB%93_05.jpg" width="320" height="568" align=center />
+
 - 如图，需求已经实现了，下面解释一下**format**里面奇怪的语法
-  
+
   - 每个前面都要加 **@"H:"** 或者 **@"V:"**，分别表示水平和垂直方向
   - **@"|"**代表着边界，很形象
   - **@"-"**用来表示间隙，一般以这样的形式出现**@"-20-"**，这代表20的间距，也可以填写表示，如 **@"-margin-"**，之后设置替换参数 **metrics****
   - **@"[]"**中括号里放的是要添加约束的 View，如上边例子的 **redView**，要想设置宽度和高度就这样 **[redView(50)]**，水平方向上 **(H:)** 表示的数字是宽，垂直方向上 **(V:)** 表示的数字是高
-  
+
 - 基本的用法就是这样，更多的东西要在代码中体会，现在做一个稍微复杂的例子，这个例子和以前使用苹果原始 API实现的例子一样，就是在距离 self.view 的底部20间距的地方放置3个方块，红、蓝、黄分别间距20，宽高相同，都为50
-  
+
 - 接下来看代码
-  
+
   ``` ObjectiveC
      //translatesAutoresizingMaskIntoConstraints属性设置为NO，防止苹果把默认设置的Autoresizing属性转成Autolayout，造成错误
      //依次创建三个View
@@ -290,7 +290,7 @@ tags: cocoa
      [self.view addConstraints:Vconstraints];
      //最终效果图如下:
   ```
-  <img src="http://pftj6uh66.bkt.clouddn.com/cocoa/Autolayout%E6%80%BB%E7%BB%93_06.jpg" width="320" height="568" align=center />
+  <img src="https://foolpermi-blog-1254115483.cos.ap-chengdu.myqcloud.com/images/cocoa/Autolayout%E6%80%BB%E7%BB%93_06.jpg" width="320" height="568" align=center />
 
 ## Masonry实现Autolayout
 
