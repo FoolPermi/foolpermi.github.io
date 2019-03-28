@@ -28,7 +28,7 @@ tags: cocoa
 - 在此之前先介绍一个方法
 
   ``` ObjectiveC
-          /**
+  /**
   *  这个是系统默认添加约束的方法，它是NSLayoutConstraint的类方法
   *
   *  @param view1      传入想要添加约束的控件
@@ -184,7 +184,7 @@ tags: cocoa
 - 下面看 VFL 的 API，它的 API 短了一些，但是要筹齐参数是件很麻烦的事情
 
   ``` ObjectiveC
-          /**
+  /**
   *  VFL创建约束的API
   *
   *  @param format  传入某种格式构成的字符串，用以表达想要添加的约束，如@"H:|-margin-[redView(50)]"，水平方向上，redView与父控件左边缘保持“margin”间距，redView的宽为50
