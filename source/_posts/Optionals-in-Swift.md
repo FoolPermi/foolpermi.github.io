@@ -9,7 +9,7 @@ Swift 中有一种实用也很容易迷惑的特性**可选类型 (Optional)**�
 
 ## Basics
 
-声明一个可选类型的变量只需要在类型后面使用**问号 ( ? )**，如果声明了一个 optional 类型的变量，并且没有为其赋初值，那么 optional 会被自动设置为 nil。
+声明一个可选类型的变量只需要在类型后面使用**问号 (?)**，如果声明了一个 optional 类型的变量，并且没有为其赋初值，那么 optional 会被自动设置为 nil。
 
 ```swift
 var result: Int? = 30 // result要么包含一个Int值，要么为nil
@@ -21,7 +21,7 @@ result = nil
 
 ## Unwrapping optionals
 
-如果确定一个 optional 有值，那么可以使用叹号( ! )来获取optional的值，这个过程称为**可选值的解包 (unwrapping optionals)**。
+如果确定一个 optional 有值，那么可以使用**叹号 (!)**来获取optional的值，这个过程称为**可选值的解包 (unwrapping optionals)**。
 
 ```swift
 var result: Int? = 30
@@ -30,7 +30,7 @@ print(result) // Optional(30)
 print(result + 1) // error: value of type 'Int?' not unwrapped
 ```
 
-将一个可选值进行解包，通常有两种方法，一种是在确定 optional 有值的情况下，使用叹号( ! )进行**强制解包( force unwrapping)**。比如上面要获取 result 的值，就可以使用下面的代码实现。	
+将一个可选值进行解包，通常有两种方法，一种是在确定 optional 有值的情况下，使用叹号 (!) 进行**强制解包 (force unwrapping)**。比如上面要获取 result 的值，就可以使用下面的代码实现。	
 
 ```swift
 var unwrappedResult = result! 
@@ -97,7 +97,7 @@ if let authorName = authorName, let authorAge = authorAge, authorAge >= 40 {
 
 ## Implicitly unwrapped optionals
 
-有的时候，从程序的结构上来讲，一个可选值在初始化以后便不会再为 nil，在这些情况下，使用可选值的时候假如仍然需要使用叹号( ! )进行解包就显得非常多余。这个时候就可以使用**隐式解包的可选值 (implicity unwrapped optionals)**。隐式解包可选值在声明时使用叹号而非问号，使用的时候直接使用，不需要进行强制解包，因为其值不会为 nil，但是假如不小心将隐式解包的可选值赋为了 nil，在访问的时候就会触发运行时错误。
+有的时候，从程序的结构上来讲，一个可选值在初始化以后便不会再为 nil，在这些情况下，使用可选值的时候假如仍然需要使用叹号 (!) 进行解包就显得非常多余。这个时候就可以使用**隐式解包的可选值 (implicity unwrapped optionals)**。隐式解包可选值在声明时使用叹号而非问号，使用的时候直接使用，不需要进行强制解包，因为其值不会为 nil，但是假如不小心将隐式解包的可选值赋为了 nil，在访问的时候就会触发运行时错误。
 
 ```swift
 // an optional
@@ -113,7 +113,7 @@ let implicitString: String = assumedString // 不需要叹号
 
 ## Nil coalescing
 
-还有一种处理 optional 的方式，就是这儿介绍的 **nil coalescing**。考虑到一种情况，假如使用 optional 的时候，无论何时对 optional 进行解包都希望得到一个结果，不管可选值是不是 nil，这种情况下就可以设置一个默认值，当可选值为 nil 的时候，表达式就返回这个设定的默认值。设置默认值的语法是使用两个连续的问号( ?? )。
+还有一种处理 optional 的方式，就是这儿介绍的 **nil coalescing**。考虑到一种情况，假如使用 optional 的时候，无论何时对 optional 进行解包都希望得到一个结果，不管可选值是不是 nil，这种情况下就可以设置一个默认值，当可选值为 nil 的时候，表达式就返回这个设定的默认值。设置默认值的语法是使用两个连续的问号 (??)。
 
 ```swift
 var optionalInt: Int? = 10
