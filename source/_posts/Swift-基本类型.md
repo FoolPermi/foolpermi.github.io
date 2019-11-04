@@ -53,7 +53,7 @@ var greeting = "My name is \(name)" // "My name is Jay"
 // 多行字符串
 let bigStr = """
                 This is 
-                a Multi line
+                a Multiple lines
                 string.
              """
 
@@ -78,6 +78,86 @@ let myPet: Animal = "Dog"
 typealias Coordinates = (Int, Int)
 let xy: Coordinates = (2, 4)
 ```
+## Basic Control Flow
+### Bool 类型
+swift 中 Bool 类型的两种取值是 **true** 和 **false**.
+```swift
+let yes: Bool = true
+let no: Bool = false
+let and = (2 > 1) && ("Hello" == "World")
+let or = (2 > 1) || ("Hello" == "World")
+let not = !(2 > 1)
+var switchState = true
+switchState.toggle() // switchState = false
+switchState.toggle() // switchState = true
+```
+### if 语句
+swift 中 if 语句后面的条件不需要使用**括号()**。
+```swift
+if condition1 {
+
+} else if condition2 {
+
+} else {
+
+}
+```
+### while 语句
+和 if 语句类似，while 语句后面的条件也不需要使用括号。repeat-while 语句类似于其它语言中的 do-while, 循环体中的代码至少会被执行一次。
+```swift
+while condition {
+    loop code
+}
+repeat {
+    loop code
+} while condition
+```
+### for 语句
+swift 不支持 C Style 的 for 语句。而且在 for 语句的条件里面可以使用 where 关键字对循环的对象进行筛选。
+```swift
+for constant in range {
+    loop code
+}
+// eg1:
+let count = 10
+var sum = 0
+for i in 0...10 { // 此处 i 不需要使用 let 或 var 
+    sum += i
+}
+// eg2:
+let step = 5
+var sum = 0
+for _ in 0..<10 { // 如果不需要访问 i 的值，可以使用 _ 代替
+    sum += step
+}
+// eg3:
+var sum = 0
+for i in 0...10 where i % 2 == 0 { // 可以使用 where 来指定附加条件, 只有 where 条件为 true 时，循环体才会执行
+    sum += i
+}
+// eg4:
+var sum = 0
+for row in 0..<8 {
+    if row % 2 == 0 {
+        continue // 使用 continue 跳出本次循环
+    }
+    for column in 0..<8 {
+        sum += row * column
+    }
+}
+// eg5:
+var sum = 0
+rowLoop: for row in 0..<8 {
+    columnLoop: for column in 0..<8 {
+        if row == column {
+            continue rowLoop // 通过添加 label，跳出指定 level 循环
+        }
+        sum += row * column
+    }
+}
+```
+### switch 语句
+
 
 
 
