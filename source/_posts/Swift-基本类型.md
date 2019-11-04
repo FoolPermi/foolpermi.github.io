@@ -70,7 +70,7 @@ let y2 = location3D.y
 let y2 = location3D.z
 let (x3, y3, z3) = location3D
 ```
-## Type aliase
+## Type alias
 **typealias** 是 swift 中用来给类型指定别名的关键字，相当于 C 语言中的 typedef.
 ```swift
 typealias Animal = String
