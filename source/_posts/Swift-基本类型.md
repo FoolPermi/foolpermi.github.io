@@ -52,9 +52,9 @@ var name = "Jay"
 var greeting = "My name is \(name)" // "My name is Jay"
 // 多行字符串
 let bigStr = """
-            This is 
-            a Multi line
-            string.
+                This is 
+                a Multi line
+                string.
              """
 
 ```
@@ -67,7 +67,7 @@ let y1 = coordinates.1
 let location3D = (x: 2, y: 3, z: 4) 
 let x2 = location3D.x // 使用元素名访问 Tuple 中元素
 let y2 = location3D.y
-let y2 = location3D.z
+let z2 = location3D.z
 let (x3, y3, z3) = location3D
 ```
 ## Type alias
@@ -78,7 +78,6 @@ let myPet: Animal = "Dog"
 typealias Coordinates = (Int, Int)
 let xy: Coordinates = (2, 4)
 ```
-
 
 
 
