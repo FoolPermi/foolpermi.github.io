@@ -1,5 +1,5 @@
 ---
-title: Swift 基本类型
+title: Swift Basics
 date: 2019-11-4 21:56:37
 categories: Swift
 tags: swift
