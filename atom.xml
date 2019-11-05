@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>FoolPermi</title>
+  
+  <subtitle>Keep and carry on</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://foolpermi.github.io/"/>
+  <updated>2019-11-05T14:37:48.635Z</updated>
+  <id>http://foolpermi.github.io/</id>
+  
+  <author>
+    <name>FoolPermi</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Swift Basics</title>
+    <link href="http://foolpermi.github.io/2019/11/04/Swift-Basics/"/>
+    <id>http://foolpermi.github.io/2019/11/04/Swift-Basics/</id>
+    <published>2019-11-04T13:56:37.000Z</published>
+    <updated>2019-11-05T14:37:48.635Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;基础运算&quot;&gt;&lt;a href=&quot;#基础运算&quot; class=&quot;headerlink&quot; title=&quot;基础运算&quot;&gt;&lt;/a&gt;基础运算&lt;/h2&gt;&lt;p&gt;和其它编程语言一样，swift支持加 (+)、减 (-)、乘 (*)、除 (/)、取模 (%)、移位等多种基础运算。&lt;br&gt;&lt;figure class=&quot;highlight swift&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;2&lt;/span&gt; + &lt;span class=&quot;number&quot;&gt;6&lt;/span&gt; &lt;span class=&quot;comment&quot;&gt;// ok&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;+&lt;span class=&quot;number&quot;&gt;6&lt;/span&gt; &lt;span class=&quot;comment&quot;&gt;// ok&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;2&lt;/span&gt; +&lt;span class=&quot;number&quot;&gt;6&lt;/span&gt; &lt;span class=&quot;comment&quot;&gt;// error&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;+ &lt;span class=&quot;number&quot;&gt;6&lt;/span&gt; &lt;span class=&quot;comment&quot;&gt;// error&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;2&lt;/span&gt; - &lt;span class=&quot;number&quot;&gt;6&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;2&lt;/span&gt; * &lt;span class=&quot;number&quot;&gt;6&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;6&lt;/span&gt; / &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;6.0&lt;/span&gt; / &lt;span class=&quot;number&quot;&gt;2.0&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;28&lt;/span&gt; % &lt;span class=&quot;number&quot;&gt;10&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;(&lt;span class=&quot;number&quot;&gt;28.0&lt;/span&gt;).truncatingRemainder(dividingBy: &lt;span class=&quot;number&quot;&gt;10.0&lt;/span&gt;) &lt;span class=&quot;comment&quot;&gt;// 浮点数取模&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt; &amp;lt;&amp;lt; &lt;span class=&quot;number&quot;&gt;3&lt;/span&gt; &lt;span class=&quot;comment&quot;&gt;// 8&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;32&lt;/span&gt; &amp;gt;&amp;gt; &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;comment&quot;&gt;// 8&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;sin(&lt;span class=&quot;number&quot;&gt;45&lt;/span&gt; * &lt;span class=&quot;type&quot;&gt;Double&lt;/span&gt;.pi / &lt;span class=&quot;number&quot;&gt;180&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;cos(&lt;span class=&quot;number&quot;&gt;135&lt;/span&gt; * &lt;span class=&quot;type&quot;&gt;Double&lt;/span&gt;.pi / &lt;span class=&quot;number&quot;&gt;180&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;(&lt;span class=&quot;number&quot;&gt;2.0&lt;/span&gt;).squareRoot()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;max&lt;/span&gt;(&lt;span class=&quot;number&quot;&gt;5&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;10&lt;/span&gt;) &lt;span class=&quot;comment&quot;&gt;// 10&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;min&lt;/span&gt;(-&lt;span class=&quot;number&quot;&gt;5&lt;/span&gt;, -&lt;span class=&quot;number&quot;&gt;10&lt;/span&gt;) &lt;span class=&quot;comment&quot;&gt;// -10&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;h2 id=&quot;let-VS-var&quot;&gt;&lt;a href=&quot;#let-VS-var&quot; class=&quot;headerlink&quot; title=&quot;let VS var&quot;&gt;&lt;/a&gt;let VS var&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;let&lt;/strong&gt; 用来声明常量，&lt;strong&gt;var&lt;/strong&gt; 用来声明变量。声明常量或变量的时候可以不指定数据类型，编译器会进行推断。但是一旦确定类型以后，便只能赋予相同类型的变量值。&lt;br&gt;&lt;figure class=&quot;highlight swift&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; number: &lt;span class=&quot;type&quot;&gt;Int&lt;/span&gt; = &lt;span class=&quot;number&quot;&gt;10&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; pi: &lt;span class=&quot;type&quot;&gt;Double&lt;/span&gt; = &lt;span class=&quot;number&quot;&gt;3.14&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; name = &lt;span class=&quot;string&quot;&gt;&quot;Peter&quot;&lt;/span&gt; &lt;span class=&quot;comment&quot;&gt;// name is a string&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;name = &lt;span class=&quot;number&quot;&gt;15&lt;/span&gt; &lt;span class=&quot;comment&quot;&gt;// error&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;name = &lt;span class=&quot;string&quot;&gt;&quot;Linda&quot;&lt;/span&gt; &lt;span class=&quot;comment&quot;&gt;// ok&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Swift" scheme="http://foolpermi.github.io/categories/swift/"/>
+    
+    
+      <category term="swift" scheme="http://foolpermi.github.io/tags/swift/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Generics in Swift</title>
+    <link href="http://foolpermi.github.io/2016/11/28/Generics-in-Swift/"/>
+    <id>http://foolpermi.github.io/2016/11/28/Generics-in-Swift/</id>
+    <published>2016-11-28T13:43:52.000Z</published>
+    <updated>2019-11-05T14:37:48.633Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;strong&gt;泛型 (Generics)&lt;/strong&gt; 是 Swift 中最强大的特性之一，许多 Swift 的标准库也都是基于泛型的代码构建的。使用泛型可以让你根据自定义的需求，编写出适用于任意类型、灵活可重用的函数和类型。例如 Swift 中的 Array 和 Dictionary 都是泛型集合，你可以创建一个 Int 数组，也可以创建一个 String 数组，还可以创建其它类型的数组。当然，也可以创建任意指定类型的字典，本文的主要内容包括：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;泛型解决的问题 (The problems generic solve)&lt;/li&gt;
+&lt;li&gt;泛型函数 (Generic functions)&lt;/li&gt;
+&lt;li&gt;泛型类型 (Generic types)&lt;/li&gt;
+&lt;li&gt;扩展泛型类型 (Extending a generic type)&lt;/li&gt;
+&lt;li&gt;类型约束 (Type constrains)&lt;/li&gt;
+&lt;li&gt;关联类型 (Associated type)&lt;/li&gt;
+&lt;li&gt;Where 语句 (Generic where clauses)&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+      <category term="Swift" scheme="http://foolpermi.github.io/categories/swift/"/>
+    
+    
+      <category term="swift" scheme="http://foolpermi.github.io/tags/swift/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Enumerations in Swift</title>
+    <link href="http://foolpermi.github.io/2016/11/27/Enumerations-in-Swift/"/>
+    <id>http://foolpermi.github.io/2016/11/27/Enumerations-in-Swift/</id>
+    <published>2016-11-27T07:53:47.000Z</published>
+    <updated>2019-11-05T14:37:48.633Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;枚举为一组相关的值定义了一个共同的类型，以便在代码中以类型安全的方式使用这些值。在 C 语言中，枚举会为枚举成员分配一个对应的整形值。Swift 中的枚举更加灵活，可以不必为每一个成员提供对应的值。在 Swift 中这个值被称为&lt;strong&gt;原始值 (Raw Value)&lt;/strong&gt;，原始值的类型可以是字符串，字符，整形值或浮点数。与枚举有关的内容主要包括：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;基本语法 (Basics)&lt;/li&gt;
+&lt;li&gt;原始值 (Raw values)&lt;/li&gt;
+&lt;li&gt;关联值 (Associated values)&lt;/li&gt;
+&lt;li&gt;没有成员的枚举 (Case-less enumerations)&lt;/li&gt;
+&lt;li&gt;递归枚举 (Recursive enumerations)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;主要参考了 &lt;em&gt;Swift Apprentice&lt;/em&gt; 和 &lt;em&gt;The Swift Programming Language&lt;/em&gt;。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Swift" scheme="http://foolpermi.github.io/categories/swift/"/>
+    
+    
+      <category term="swift" scheme="http://foolpermi.github.io/tags/swift/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Closures in Swift</title>
+    <link href="http://foolpermi.github.io/2016/11/25/Closures-in-Swift/"/>
+    <id>http://foolpermi.github.io/2016/11/25/Closures-in-Swift/</id>
+    <published>2016-11-25T08:48:43.000Z</published>
+    <updated>2019-11-05T14:37:48.632Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;闭包是 Swift 中的重要语法，与 Objective-C 中的 block 类似，本文主要总结 Swift 中闭包的基本用法。主要参考了 &lt;em&gt;Swift Apprentice&lt;/em&gt; 和 &lt;em&gt;The Swift Programming Language&lt;/em&gt;，关于自动闭包的部分则参考了 &lt;a href=&quot;http://www.jianshu.com/p/f9ba4c41d9c7&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;&lt;em&gt;bestswifter&lt;/em&gt;&lt;/a&gt; 的文章。主要内容包括：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;基本语法 (Basics)&lt;/li&gt;
+&lt;li&gt;简化规则 (Short syntax)&lt;/li&gt;
+&lt;li&gt;无返回值的闭包 (Closures with no return value)&lt;/li&gt;
+&lt;li&gt;闭包的值捕获 (Capturing from enclosing scope)&lt;/li&gt;
+&lt;li&gt;逃逸闭包 (Escaping closures)&lt;/li&gt;
+&lt;li&gt;自动闭包 (Autoclosures)&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+      <category term="Swift" scheme="http://foolpermi.github.io/categories/swift/"/>
+    
+    
+      <category term="swift" scheme="http://foolpermi.github.io/tags/swift/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Optionals in Swift</title>
+    <link href="http://foolpermi.github.io/2016/11/22/Optionals-in-Swift/"/>
+    <id>http://foolpermi.github.io/2016/11/22/Optionals-in-Swift/</id>
+    <published>2016-11-22T13:37:25.000Z</published>
+    <updated>2019-11-05T14:37:48.634Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Swift 中有一种实用也很容易迷惑的特性&lt;strong&gt;可选类型 (Optional)&lt;/strong&gt;，所谓的 Optional 就是一个变量或者常量，这个变量或常量可以有值，也可以为 nil，只能为这两种情况。相当于有一个盒子，盒子只有两种状态，盒子中有个物体或者盒子为空，不管盒子中有没有物体，盒子一直都存在。&lt;/p&gt;
+&lt;h2 id=&quot;Basics&quot;&gt;&lt;a href=&quot;#Basics&quot; class=&quot;headerlink&quot; title=&quot;Basics&quot;&gt;&lt;/a&gt;Basics&lt;/h2&gt;&lt;p&gt;声明一个可选类型的变量只需要在类型后面使用&lt;strong&gt;问号 (?)&lt;/strong&gt;，如果声明了一个 optional 类型的变量，并且没有为其赋初值，那么 optional 会被自动设置为 nil。&lt;/p&gt;
+&lt;figure class=&quot;highlight swift&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; result: &lt;span class=&quot;type&quot;&gt;Int&lt;/span&gt;? = &lt;span class=&quot;number&quot;&gt;30&lt;/span&gt; &lt;span class=&quot;comment&quot;&gt;// result要么包含一个Int值，要么为nil&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;print&lt;/span&gt;(result) &lt;span class=&quot;comment&quot;&gt;// Optional(30)&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;result = &lt;span class=&quot;literal&quot;&gt;nil&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+      <category term="Swift" scheme="http://foolpermi.github.io/categories/swift/"/>
+    
+    
+      <category term="swift" scheme="http://foolpermi.github.io/tags/swift/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Structs and Classes in Swift</title>
+    <link href="http://foolpermi.github.io/2016/11/21/Structs-and-Classes-in-Swift/"/>
+    <id>http://foolpermi.github.io/2016/11/21/Structs-and-Classes-in-Swift/</id>
+    <published>2016-11-21T15:15:36.000Z</published>
+    <updated>2019-11-05T14:37:48.634Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;在 Swift 中&lt;strong&gt;结构体 (struct)&lt;/strong&gt; 和&lt;strong&gt;类 (class)&lt;/strong&gt; 有很多相似的地方，也有一些不同之处，下面记录并总结。内容主要参考了 &lt;em&gt;Swift Apprentice&lt;/em&gt;。&lt;/p&gt;
+&lt;h2 id=&quot;Struct&quot;&gt;&lt;a href=&quot;#Struct&quot; class=&quot;headerlink&quot; title=&quot;Struct&quot;&gt;&lt;/a&gt;Struct&lt;/h2&gt;&lt;h3 id=&quot;Basics&quot;&gt;&lt;a href=&quot;#Basics&quot; class=&quot;headerlink&quot; title=&quot;Basics&quot;&gt;&lt;/a&gt;Basics&lt;/h3&gt;&lt;p&gt;Struct 作为一种常见的数据类型，在许多编程语言中都存在。我们使用 Struct 封装特定的数据结构。Swift 中赋予了 Struct 很多特性，比如 Struct 中除了可以定义属性外，还可以定义&lt;strong&gt;方法 (method)&lt;/strong&gt; 和&lt;strong&gt;构造函数 (initializer)&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;举个例子，为了表示在平面坐标系中的位置，定义一个结构体 Location，其中包括两个属性 x 和 y。&lt;/p&gt;
+&lt;figure class=&quot;highlight swift&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Location&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; x: &lt;span class=&quot;type&quot;&gt;Int&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; y: &lt;span class=&quot;type&quot;&gt;Int&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;上面就定义了一个结构体，然后就可以实例化以后使用，假如你没有实现  &lt;strong&gt;init&lt;/strong&gt; 方法的话，结构体可以根据属性自动产生一个构造器:&lt;/p&gt;
+&lt;figure class=&quot;highlight swift&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; location = &lt;span class=&quot;type&quot;&gt;Location&lt;/span&gt;(x: &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;, y: &lt;span class=&quot;number&quot;&gt;4&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// 使用点运算符访问&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;print&lt;/span&gt;(location.x) &lt;span class=&quot;comment&quot;&gt;// 2&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;print&lt;/span&gt;(location.y) &lt;span class=&quot;comment&quot;&gt;// 4&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+      <category term="Swift" scheme="http://foolpermi.github.io/categories/swift/"/>
+    
+    
+      <category term="swift" scheme="http://foolpermi.github.io/tags/swift/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Properties in Swift</title>
+    <link href="http://foolpermi.github.io/2016/11/20/Properties-in-Swift/"/>
+    <id>http://foolpermi.github.io/2016/11/20/Properties-in-Swift/</id>
+    <published>2016-11-20T08:41:01.000Z</published>
+    <updated>2019-11-05T14:37:48.634Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;最近读了&lt;em&gt;Swift Apprentice&lt;/em&gt;, 将其中一些关于 Property 的知识总结一下。主要包括以下几个部分:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;存储属性 ( Stored Properties )&lt;/li&gt;
+&lt;li&gt;计算属性 ( Computed Properties )&lt;/li&gt;
+&lt;li&gt;类型属性 ( Typed Properties)&lt;/li&gt;
+&lt;li&gt;属性观察器 ( Property Observers )&lt;/li&gt;
+&lt;li&gt;延迟加载属性 ( Lazy Properties )&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+      <category term="Swift" scheme="http://foolpermi.github.io/categories/swift/"/>
+    
+    
+      <category term="swift" scheme="http://foolpermi.github.io/tags/swift/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>iOS中使用外部字体</title>
+    <link href="http://foolpermi.github.io/2016/11/04/iOS%E4%B8%AD%E4%BD%BF%E7%94%A8%E5%A4%96%E9%83%A8%E5%AD%97%E4%BD%93/"/>
+    <id>http://foolpermi.github.io/2016/11/04/iOS中使用外部字体/</id>
+    <published>2016-11-03T16:42:06.000Z</published>
+    <updated>2019-11-05T14:37:48.635Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;最近在 iOS 项目中使用到了外部字体，所以简单记录一下。使用外部静态字体基本上分为以下几个步骤：&lt;/p&gt;
+&lt;p&gt;1.将要使用的 ttf 或 otf 字体文件导入到项目中&lt;/p&gt;
+&lt;p&gt;2.在 info.plist 文件中使用 &lt;strong&gt;Fonts provided by application&lt;/strong&gt; 配置字体的信息，如下图所示：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://foolpermi-blog-1254115483.cos.ap-chengdu.myqcloud.com/images/tips/iOS%E4%B8%AD%E4%BD%BF%E7%94%A8%E5%A4%96%E9%83%A8%E5%AD%97%E4%BD%93_01.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;3.在项目中使用以下代码设置字体，也可以直接在 xib 或者 storyboard 中选择导入的字体&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="知识小集" scheme="http://foolpermi.github.io/categories/tips/"/>
+    
+    
+      <category term="tips" scheme="http://foolpermi.github.io/tags/tips/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Autolayout总结</title>
+    <link href="http://foolpermi.github.io/2016/03/10/Autolayout%E6%80%BB%E7%BB%93/"/>
+    <id>http://foolpermi.github.io/2016/03/10/Autolayout总结/</id>
+    <published>2016-03-10T14:59:38.000Z</published>
+    <updated>2019-11-05T14:37:48.632Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;Autolayout&quot;&gt;&lt;a href=&quot;#Autolayout&quot; class=&quot;headerlink&quot; title=&quot;Autolayout&quot;&gt;&lt;/a&gt;Autolayout&lt;/h2&gt;&lt;p&gt;最近两天看了几篇博客，查了相关的文档，认真研究了一下 Autolayout。很难想象我自学 iOS 这么久一直都没有系统地研究 Autolayout。因此决定写个总结。随着苹果的产品线的扩展，屏幕尺寸越来越多，Autolayout 的出现就是为了解决不同尺寸的屏幕的适配问题，还有后来的 sizeclass 技术，有关 sizeclass 的使用将在另外的文章中进行描述。Autolayout 的实现方式有很多种，苹果最初的 API，之后的 VFL，storyboard 以及第三方的 Masonry。    &lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Cocoa" scheme="http://foolpermi.github.io/categories/cocoa/"/>
+    
+    
+      <category term="cocoa" scheme="http://foolpermi.github.io/tags/cocoa/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Objective-C的虚方法</title>
+    <link href="http://foolpermi.github.io/2015/12/28/Objective-C%E7%9A%84%E8%99%9A%E6%96%B9%E6%B3%95/"/>
+    <id>http://foolpermi.github.io/2015/12/28/Objective-C的虚方法/</id>
+    <published>2015-12-28T11:59:59.000Z</published>
+    <updated>2019-11-05T14:37:48.634Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;OC 的方法都是虚方法:&lt;br&gt;1.父类的指针可以指向子类的对象&lt;br&gt;2.调用方法时不看指针看对象    &lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Objective-C" scheme="http://foolpermi.github.io/categories/objc/"/>
+    
+    
+      <category term="objc" scheme="http://foolpermi.github.io/tags/objc/"/>
+    
+  </entry>
+  
+</feed>
