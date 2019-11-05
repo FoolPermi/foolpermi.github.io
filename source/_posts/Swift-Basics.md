@@ -259,5 +259,3 @@ switch coordinates {
 }
 ```
 参考: Swift Apprentice
-
-
