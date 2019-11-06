@@ -7,11 +7,11 @@ tags: swift
 
 最近读了*Swift Apprentice*, 将其中一些关于 Property 的知识总结一下。主要包括以下几个部分:
 
-- 存储属性 ( Stored Properties )
-- 计算属性 ( Computed Properties )
-- 类型属性 ( Typed Properties)
-- 属性观察器 ( Property Observers )
-- 延迟加载属性 ( Lazy Properties )
+- 存储属性 (Stored Properties)
+- 计算属性 (Computed Properties)
+- 类型属性 (Typed Properties)
+- 属性观察器 (Property Observers)
+- 延迟加载属性 (Lazy Properties)
 
 <!---more--->
 

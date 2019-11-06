@@ -73,9 +73,9 @@ extension Location {
     let y = Double(self.y)
     let x = Double(self.x)
     guard x != 0 else {
-		return 0
+  return 0
     }
-	return y / x
+ return y / x
   }
   init() {
     x = 0
