@@ -182,3 +182,110 @@ rowLoop: for row in 0..<8 {
     }
 }
 ```
+
+### switch 语句
+
+swift 中的 switch 语句非常灵活，可以匹配多种 case，而且 break不是必需的，除非 case 下面没有任何需要执行的 code 时，需要使用 break。
+
+```swift
+// eg1:
+let animal = "Dog"
+switch animal {
+    case "Dog", "Cat":
+        print("It is a house animal")
+    default:
+        print("It is not a house animal")
+}
+// eg2:
+let hourOfDay = 12
+var timeOfDay = ""
+switch hourOfDay {
+    case 0, 1, 3, 4, 5:
+        timeOfDay = "Early morning"
+    case 6, 7, 8, 9, 10, 11:
+        timeOfDay = "Morning"
+    case 12, 13, 14, 15, 16:
+        timeOfDay = "Afternoon"
+    case 17, 18, 19:
+        timeOfDay = "Evening"
+    case 20, 21, 22, 23:
+        timeOfDay = "Later Evening"
+    default:
+        timeOfDay = "Invalid time"
+}
+print(timeOfDay)
+// eg3:
+let hourOfDay = 12
+var timeOfDay = ""
+switch hourOfDay {
+    case 0...5:
+        timeOfDay = "Early morning"
+    case 6...11:
+        timeOfDay = "Morning"
+    case 12...16:
+        timeOfDay = "Afternoon"
+    case 17...19:
+        timeOfDay = "Evening"
+    case 20...23:
+        timeOfDay = "Later Evening"
+    default:
+        timeOfDay = "Invalid time"
+}
+print(timeOfDay)
+// eg4:
+let num = 10
+switch num {
+    case let x where x % 2 == 0:
+        print("Even")
+    default:
+        print("Odd")
+}
+// eg5:
+let num = 10
+switch num {
+    case _ where num % 2 == 0:
+        print("Even")
+    default:
+        print("Odd")
+}
+// eg6:
+let coordinates = (x: 3, y: 2, z: 5)
+switch coordinates {
+    case (0, 0, 0):
+        print("Origin")
+    case (_, 0, 0):
+        print("X-axis")
+    case (0, _, 0):
+        print("Y-axis")
+    case (0, 0, _):
+        print("Z-axis")
+    default:
+        print("Somewhere")
+}
+// eg7:
+let coordinates = (x: 3, y: 2, z: 5)
+switch coordinates {
+    case (0, 0, 0):
+        print("Origin")
+    case (let x, 0, 0):
+        print("X-axis at x = \(x)")
+    case (0, let y, 0):
+        print("Y-axis at y = \(y)")
+    case (0, 0, let z):
+        print("Z-axis at z = \(z)")
+    case let(x, y, z):
+        print("Somewhere at (\(x), \(y), \(z))")
+}
+// eg8
+let coordinates = (x: 3, y: 2, z: 5)
+switch coordinates {
+    case let (x, y, _) where y == x:
+        print("Y-X Line")
+    case let (x, y, _) where y == x * x:
+        print("Y-X^2 Line")
+    default:
+        break
+}
+```
+
+参考: Swift Apprentice
