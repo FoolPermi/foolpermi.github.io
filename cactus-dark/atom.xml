@@ -151,13 +151,13 @@
     <link href="http://foolpermi.github.io/2016/11/21/Structs-and-Classes-in-Swift/"/>
     <id>http://foolpermi.github.io/2016/11/21/Structs-and-Classes-in-Swift/</id>
     <published>2016-11-21T15:15:36.000Z</published>
-    <updated>2019-11-21T15:31:02.612Z</updated>
+    <updated>2019-11-21T15:39:19.309Z</updated>
     
     <summary type="html">
     
       &lt;p&gt;在 Swift 中&lt;strong&gt;结构体 (struct)&lt;/strong&gt; 和&lt;strong&gt;类 (class)&lt;/strong&gt; 有很多相似的地方，也有一些不同之处，下面记录并总结。内容主要参考了 &lt;em&gt;Swift Apprentice&lt;/em&gt;。&lt;/p&gt;
 &lt;h2 id=&quot;Struct&quot;&gt;&lt;a href=&quot;#Struct&quot; class=&quot;headerlink&quot; title=&quot;Struct&quot;&gt;&lt;/a&gt;Struct&lt;/h2&gt;&lt;h3 id=&quot;Basics&quot;&gt;&lt;a href=&quot;#Basics&quot; class=&quot;headerlink&quot; title=&quot;Basics&quot;&gt;&lt;/a&gt;Basics&lt;/h3&gt;&lt;p&gt;Struct 作为一种常见的数据类型，在许多编程语言中都存在。我们使用 Struct 封装特定的数据结构。Swift 中赋予了 Struct 很多特性，比如 Struct 中除了可以定义属性外，还可以定义&lt;strong&gt;方法 (method)&lt;/strong&gt; 和&lt;strong&gt;构造函数 (initializer)&lt;/strong&gt;。&lt;/p&gt;
-&lt;p&gt;举个例子，为了表示在平面坐标系中的位置，定义一个结构体 Location，其中包括两个属性 x 和 y。&lt;/p&gt;
+&lt;p&gt;举个例子，为了表示在平面坐标系中的位置，定义一个结构体 Location, 其中包括两个属性 x 和 y。&lt;/p&gt;
 &lt;figure class=&quot;highlight swift&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Location&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; x: &lt;span class=&quot;type&quot;&gt;Int&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; y: &lt;span class=&quot;type&quot;&gt;Int&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;上面就定义了一个结构体，然后就可以实例化以后使用，假如你没有实现  &lt;strong&gt;init&lt;/strong&gt; 方法的话，结构体可以根据属性自动产生一个构造器:&lt;/p&gt;
 &lt;figure class=&quot;highlight swift&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; location = &lt;span class=&quot;type&quot;&gt;Location&lt;/span&gt;(x: &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;, y: &lt;span class=&quot;number&quot;&gt;4&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// 使用点运算符访问&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;print&lt;/span&gt;(location.x) &lt;span class=&quot;comment&quot;&gt;// 2&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;print&lt;/span&gt;(location.y) &lt;span class=&quot;comment&quot;&gt;// 4&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
