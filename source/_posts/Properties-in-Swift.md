@@ -65,7 +65,7 @@ let grade = person.fullName // Grace Hopper
 ```swift
 struct Contact {
   var fullName: String
-  let emailAddress: String // emailAddress是个常量，实例化完成后就不可以再修改
+  let emailAddress: String // emailAddress 是个常量，实例化完成后就不可以再修改
 }
 var person = Contact(fullName: "Linda", emailAddress: "sb@baidu.com") // 实例化
 person.emailAddress = "sb@sohu.com" // error: 不可以修改一个常量的值
@@ -81,7 +81,7 @@ struct Contact {
   let emailAddress: String
   var type = "Friend" // property with default value
 }
-// 设置默认值在一定程度上可以减少代码负担，缺点是Swift根据属性自动生成的构造函数中还需要指定type的值，除非你实现了一个自定义的构造函数
+// 设置默认值在一定程度上可以减少代码负担，缺点是 Swift 根据属性自动生成的构造函数中还需要指定 type 的值，除非你实现了一个自定义的构造函数
 var person = Contact(fullName: "Linda", emailAddress: "sb@baidu.com", type: "Friend")
 ```
 
@@ -107,7 +107,7 @@ var tv = TV(height: 53.93, width: 95.87)
 let size = tv.diagonal // 110
 ```
 
-上面的 diagonal 只有一个 **getter**，还可以实现一个 **setter**，因为计算属性不存储值，所以 **setter** 中一般是修改相关的存储属性的值。
+上面的 diagonal 只有一个 **getter**, 还可以实现一个 **setter**, 因为计算属性不存储值，所以 **setter** 中一般是修改相关的存储属性的值。
 
 ```swift
 var diagonal: Int {
@@ -119,7 +119,7 @@ var diagonal: Int {
   set {
     let ratioWidth = 16.0
     let ratioHeight = 9.0
-    // 修改 heigh t和 width
+    // 修改 height 和 width
     height = Double(newValue) * ratioHeight /
       sqrt(ratioWidth * ratioWidth + ratioHeight * ratioHeight)
     width = height * ratioWidth / ratioHeight
@@ -157,15 +157,15 @@ struct Level {
 现在，highestLevel 是 Level 类型的属性，而不是 Level 实例的属性，所以访问的时候使用类型名直接进行访问。
 
 ```swift
-// Error:不能通过实例访问类型属性
+// Error: 不能通过实例访问类型属性
 let highestLevel = level2.highestLevel
-// Right:只能使用类型名访问类型属性
+// Right: 只能使用类型名访问类型属性
 let highestLevel = Level.highestLevel
 ```
 
 ## Property observers
 
-在实现  Level 的时候，正确的操作应该是当一个新的关卡解锁 (unlocked) 的时候，用于标记最高关卡的 highestLevel 属性也随之改变。所以可以通过 Swift 的**属性观察器 (Property Observer)** 来监测属性的变化。属性观察器包括两个方法 **willSet** 和 **didSet**，两者只是调用的时机不同。
+在实现  Level 的时候，正确的操作应该是当一个新的关卡解锁 (unlocked) 的时候，用于标记最高关卡的 highestLevel 属性也随之改变。所以可以通过 Swift 的**属性观察器 (Property Observer)** 来监测属性的变化。属性观察器包括两个方法 **willSet** 和 **didSet**, 两者只是调用的时机不同。
 
 ```swift
 struct Level {
@@ -231,9 +231,9 @@ struct Circle {
 }
 ```
 
-上面的结构体 Circle 中定义了一个 Lazy Property，注意 Lazy Property 必须是一个变量 **var**，上面的 pi 的计算是一个闭包，所以后面有一对小括号，当访问 pi 的值时，闭包会被立即调用。实例化 Circle 的时候，尽管 pi 是存储属性，但并不需要提供 pi 的值，pi 的值会在第一次被访问的时候计算并存储起来。与之对比，属性 circumference 是一个计算属性，每次访问它的值都需要计算。注意 circumference 属性的 **getter** 前有一个 **mutating** 关键字，因为在 **getter** 中使用了 pi，在获取 circumference 的时候会导致 pi 被计算，而原来实例在初始化的时候并没有设置 pi 的值，所以实例发生了改变，从而需要 **mutating** 关键字。
+上面的结构体 Circle 中定义了一个 Lazy Property, 注意 Lazy Property 必须是一个变量 **var**, 上面的 pi 的计算是一个闭包，所以后面有一对小括号，当访问 pi 的值时，闭包会被立即调用。实例化 Circle 的时候，尽管 pi 是存储属性，但并不需要提供 pi 的值，pi 的值会在第一次被访问的时候计算并存储起来。与之对比，属性 circumference 是一个计算属性，每次访问它的值都需要计算。注意 circumference 属性的 **getter** 前有一个 **mutating** 关键字，因为在 **getter** 中使用了 pi, 在获取 circumference 的时候会导致 pi 被计算，而原来实例在初始化的时候并没有设置 pi 的值，所以实例发生了改变，从而需要 **mutating** 关键字。
 
 ```swift
-var circle = Circle(radius: 5) // 实例化一个Circle，此时pi还没有被计算
-let circumference = circle.circumference // 31.42, 此时pi也有了值
+var circle = Circle(radius: 5) // 实例化一个 Circle, 此时 pi 还没有被计算
+let circumference = circle.circumference // 31.42, 此时 pi 也有了值
 ```
