@@ -5,7 +5,7 @@ categories: Swift
 tags: swift
 ---
 
-最近读了*Swift Apprentice*, 将其中一些关于 Property 的知识总结一下。主要包括以下几个部分:
+最近读了*[Swift Apprentice](https://store.raywenderlich.com/products/swift-apprentice)*, 将其中一些关于 Property 的知识总结一下。主要包括以下几个部分:
 
 - 存储属性 (Stored Properties)
 - 计算属性 (Computed Properties)
@@ -24,9 +24,9 @@ struct Car {
 }
 ```
 
-上面的属性称为**存储属性 (stored property)**, 表示它们将会为每个 Car 的实例开辟内存并且存储值。
+上面的属性称为**存储属性 (Stored Property)**, 表示它们将会为每个 Car 的实例开辟内存并且存储值。
 
-除了存储属性外还有一种**计算属性 (computed property)**, 在创建实例的时候并不会为计算属性分配空间，而只是在需要的时候简单的计算它们的值。
+除了存储属性外还有一种**计算属性 (Computed Property)**, 在创建实例的时候并不会为计算属性分配空间，而只是在需要的时候简单的计算它们的值。
 
 ## Stored properties
 
