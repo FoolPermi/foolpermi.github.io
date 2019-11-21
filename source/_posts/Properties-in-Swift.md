@@ -24,9 +24,9 @@ struct Car {
 }
 ```
 
-上面的属性称为**存储属性 (stored property)**,表示它们将会为每个 Car 的实例开辟内存并且存储值。
+上面的属性称为**存储属性 (stored property)**, 表示它们将会为每个 Car 的实例开辟内存并且存储值。
 
-除了存储属性外还有一种**计算属性 (computed property)**,在创建实例的时候并不会为计算属性分配空间，而只是在需要的时候简单的计算它们的值。
+除了存储属性外还有一种**计算属性 (computed property)**, 在创建实例的时候并不会为计算属性分配空间，而只是在需要的时候简单的计算它们的值。
 
 ## Stored properties
 
@@ -39,20 +39,20 @@ struct Contact {
 }
 ```
 
-Contact 中的属性并没有赋上初始值，所以只能通过**构造函数 (initializer)**来实例化，Swift 会根据类型中的属性，自动生成一个构造函数。
+Contact 中的属性并没有赋上初始值，所以只能通过**构造函数 (initializer)** 来实例化，Swift 会根据类型中的属性，自动生成一个构造函数。
 
 ```swift
 var person = Contact(fullName: "Grace Murray", emailAddress: "grace@navy.mil")
 ```
 
-实例化完成以后，就可以使用**点运算符 (dot notation)**来访问实例中的属性:
+实例化完成以后，就可以使用**点运算符 (dot notation)** 来访问实例中的属性:
 
 ```swift
 let name = person.fullName // Grace Murray
 let email = person.emailAddress // grace@navy.mil
 ```
 
-如果存储属性的实例是变量，而且属性也是个变量，那么就可以给属性赋值，
+如果存储属性的结构体实例是变量，而且属性也是个变量，那么就可以给结构体的属性赋值，
 
 ```swift
 // Grace got married so she changed her name
@@ -60,7 +60,7 @@ person.fullName = "Grace Hopper"
 let grade = person.fullName // Grace Hopper
 ```
 
-如果一个属性在实例化以后不可以被改变的话，那么声明的时候可以使用 **let** 将其声明为常量。
+如果一个属性在实例化以后不希望被改变的话，那么声明的时候可以使用 **let** 将其声明为常量。
 
 ```swift
 struct Contact {
@@ -87,9 +87,9 @@ var person = Contact(fullName: "Linda", emailAddress: "sb@baidu.com", type: "Fri
 
 ## Computed properties
 
-**存储属性 (stored property)**既可以是常量也可以是变量，而**计算属性 (computed property)**只能是变量，而且必须明确指出属性的类型。
+**存储属性**既可以是常量也可以是变量，而**计算属性**只能是变量，而且必须明确指出属性的类型。
 
-下面以 TV 为例说明，其中包括 3 个属性，分别是 height 、width 、diagonal 分别表示 TV 的高、宽、对角线长度。
+下面以 TV 为例说明，其中包括 3 个属性 height 、width 、diagonal 分别表示 TV 的高、宽和对角线长度。
 
 ```swift
 struct TV {
@@ -107,7 +107,7 @@ var tv = TV(height: 53.93, width: 95.87)
 let size = tv.diagonal // 110
 ```
 
-上面的 diagonal 只有一个**getter**，还可以实现一个**setter**，因为计算属性不存储值，所以**setter**中一般都是通过修改相关的存储属性实现的。
+上面的 diagonal 只有一个 **getter**，还可以实现一个 **setter**，因为计算属性不存储值，所以 **setter** 中一般是修改相关的存储属性的值。
 
 ```swift
 var diagonal: Int {
@@ -119,7 +119,7 @@ var diagonal: Int {
   set {
     let ratioWidth = 16.0
     let ratioHeight = 9.0
-    // 修改height和width
+    // 修改 heigh t和 width
     height = Double(newValue) * ratioHeight /
       sqrt(ratioWidth * ratioWidth + ratioHeight * ratioHeight)
     width = height * ratioWidth / ratioHeight
@@ -147,17 +147,17 @@ let level2 = Level(id: 2, boss: "Squid", unlocked: false)
 
 ```swift
 struct Level {
-  static var highestLevel = 1 // 使用static标记一个类型属性
+  static var highestLevel = 1 // 使用 static 标记一个类型属性
   let id: Int
   var boss: String
   var unlocked: Bool
 }
 ```
 
-现在，highestLevel 是 Level 类型本身的属性，而不是 Level 的**实例 (instance)**。所以访问的时候使用类型名直接进行访问。
+现在，highestLevel 是 Level 类型的属性，而不是 Level 实例的属性，所以访问的时候使用类型名直接进行访问。
 
 ```swift
-// Error:不能通过实例访问类型属性 
+// Error:不能通过实例访问类型属性
 let highestLevel = level2.highestLevel
 // Right:只能使用类型名访问类型属性
 let highestLevel = Level.highestLevel
@@ -165,7 +165,7 @@ let highestLevel = Level.highestLevel
 
 ## Property observers
 
-在实现  Level 的时候，正确的操作应该是当一个新的关卡解锁 (unlocked) 的时候，用于标记最高关卡的 highestLevel 属性也随之改变。所以可以通过 Swift 的**属性观察器 (Property Observer)**来监测属性的变化。属性观察器包括两个方法 **willSet** 和 **didSet**，两者只是调用的时机不同。
+在实现  Level 的时候，正确的操作应该是当一个新的关卡解锁 (unlocked) 的时候，用于标记最高关卡的 highestLevel 属性也随之改变。所以可以通过 Swift 的**属性观察器 (Property Observer)** 来监测属性的变化。属性观察器包括两个方法 **willSet** 和 **didSet**，两者只是调用的时机不同。
 
 ```swift
 struct Level {
@@ -196,7 +196,7 @@ struct LightBulb {
     didSet {
       if current > LightBulb.maxCurrent {
         print("Current too high, falling back to previous setting.")
-      	current = oldValue
+        current = oldValue
       }
     }
   }
@@ -211,7 +211,7 @@ current = light.current // 40
 
 ## Lazy properties
 
-如果有一些属性，初始化的时候并不需要知道它们的值，而只在需要的时候才进行计算，就可以使用 **Lazy Property**。下面定义一个结构体 Circle 进行说明。
+如果有一些属性，初始化的时候并不需要知道它们的值，而只在需要的时候才进行计算，就可以使用 **Lazy Property** 。下面定义一个结构体 Circle 进行说明。
 
 ```swift
 struct Circle {
@@ -231,7 +231,7 @@ struct Circle {
 }
 ```
 
-上面的结构体 Circle 中定义了一个 **lazy property**，注意 **lazy property** 必须是一个变量 **var**，上面的 pi 的计算是一个闭包，所以后面有一对小括号，当访问 pi 的值时，闭包会被立即调用。实例化 Circle 的时候，尽管 pi 是存储属性，但并不需要提供 pi 的值，pi 的值会在第一次访问的时候被计算并存储起来。与之对比，属性 circumference 是一个计算属性，每次访问它的值都需要计算。注意 circumference 属性的 **getter** 前有一个 **mutating** 关键字，因为在 **getter** 中使用了 pi，在获取 circumference 的时候会导致 pi 被计算，而原来实例在初始化的时候并没有设置 pi 的值，所以实例发生了改变，从而需要 **mutating** 关键字。
+上面的结构体 Circle 中定义了一个 Lazy Property，注意 Lazy Property 必须是一个变量 **var**，上面的 pi 的计算是一个闭包，所以后面有一对小括号，当访问 pi 的值时，闭包会被立即调用。实例化 Circle 的时候，尽管 pi 是存储属性，但并不需要提供 pi 的值，pi 的值会在第一次被访问的时候计算并存储起来。与之对比，属性 circumference 是一个计算属性，每次访问它的值都需要计算。注意 circumference 属性的 **getter** 前有一个 **mutating** 关键字，因为在 **getter** 中使用了 pi，在获取 circumference 的时候会导致 pi 被计算，而原来实例在初始化的时候并没有设置 pi 的值，所以实例发生了改变，从而需要 **mutating** 关键字。
 
 ```swift
 var circle = Circle(radius: 5) // 实例化一个Circle，此时pi还没有被计算
