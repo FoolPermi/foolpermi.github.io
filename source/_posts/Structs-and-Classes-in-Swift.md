@@ -42,7 +42,7 @@ struct Location {
   func distanceToOrigin() -> Double {
     let x = Double(self.x)
     let y = Double(self.y)
-    return sqrt(x ** x + y ** y) 
+    return sqrt(x * x + y * y)
   }
 }
 // 调用结构体中的方法
@@ -53,14 +53,14 @@ print(distance) // 5.0
 
 ### Value type
 
-Struct 是**值类型 (value type)**，所以 Struct 在传递的时候拷贝的是**值**，而不是**引用**。
+Struct 是**值类型 (value type)**, 所以 Struct 在传递的时候拷贝的是**值**, 而不是**引用**。
 
 ```swift
 var location1 = Location(x: 3, y: 4)
 var location2 = location1
 location1.x = 4 // 更改 location1
 print(location1.x) // 4
-print(location2.x) // 3, location2的值不变，说明两个实例分别占用的不是同一块内存
+print(location2.x) // 3, location2 的值不变，说明两个实例分别占用的不是同一块内存
 ```
 
 ### Extensions
@@ -73,22 +73,22 @@ extension Location {
     let y = Double(self.y)
     let x = Double(self.x)
     guard x != 0 else {
-  return 0
+      return 0
     }
- return y / x
+    return y / x
   }
   init() {
     x = 0
     y = 0
   }
 }
-var location1 = Location() // 使用自定义的init
-var location2 = Location(x: 3, y: 4) // 使用自动生成的init
+var location1 = Location() // 使用自定义的 init
+var location2 = Location(x: 3, y: 4) // 使用自动生成的 init
 ```
 
 ### Conform to protocols
 
-Struct 可以遵守**协议 (protocols )**，并实现协议定义的属性或方法。下面遵守协议并实现 **description** 的过程如下:
+Struct 可以遵守**协议 (protocols)** 并实现协议中定义的属性或方法。下面遵守协议并实现 **description** 的过程如下:
 
 ```swift
 struct Location: CustomStringConvertible {
@@ -100,7 +100,7 @@ struct Location: CustomStringConvertible {
   func distanceToOrigin() -> Double {
     let x = Double(self.x)
     let y = Double(self.y)
-    return sqrt(x ** x + y ** y) 
+    return sqrt(x * x + y * y)
   }
 }
 ```
@@ -127,7 +127,7 @@ let john = Person(firstName: "Johnny", lastName: "Ivy")
 
 ### Reference type
 
-在Swift 中，结构体是一个**不可变的值类型 (immutable value)**，而类则是**可变的引用类型 (mutable reference)**。所以即使类中的某个方法改变了类的内容，也不需要在方法前使用 **mutating** 关键字。
+在 Swift 中，结构体是一个**不可变的值类型 (immutable value)**, 而类则是**可变的引用类型 (mutable reference)**。所以即使类中的某个方法改变了类的内容，也不需要在方法前使用 **mutating** 关键字。
 
 ```swift
 var person1 = Person(firstName: "Bruce", lastName: "Lee")
@@ -142,7 +142,7 @@ print(person2.firstName) // Jack
 ```swift
 var person1 = Person(firstName: "Bruce", lastName: "Lee")
 var person2 = Person(firstName: "Bruce", lastName: "Lee") // person2和person1名字相同，是同一个人?
-var person3 = person1 // person3和person1指向同一块内存
+var person3 = person1 // person3 和 person1 指向同一块内存
 print(person1 === person2) // false
 print(person1 === person3) // true
 ```
@@ -151,18 +151,18 @@ print(person1 === person3) // true
 
 ```swift
 let person = Person(firstName: "Bruce", lastName: "Lee") // person为常量
-person.firstName = "Jack" // 更改person的属性
+person.firstName = "Jack" // 更改 person 的属性
 print(person.firstName) // Jack, 属性的值仍然被改变了
 ```
 
 ### Extensions
 
-与结构体类似，类也可以通过 extension 添加方法和计算属性。假如要添加一个计算属性  fullName，实现如下：
+与结构体类似，类也可以通过 extension 添加方法和计算属性。假如要添加一个计算属性 fullName, 实现如下：
 
 ```swift
 extension Person {
   var fullName: String {
-	return "\(firstName) \(lastName)"
+    return "\(firstName) \(lastName)"
   }
 }
 ```
@@ -209,7 +209,7 @@ class Person {
     self.lastName = lastName
   }
 }
-class Student: Person { // Student继承自Person
+class Student: Person { // Student 继承自 Person
   var grades: [Grade] = []
   func recordGrade(_ grade: Grade) {
     grades.append(grade)
@@ -247,32 +247,32 @@ Swift 中的类不支持多继承，一个子类最多允许继承自一个父�
 
 ```swift
 import Foundation
-// 定义一个基类Animal，计算属性用于获取动物的名字，方法用于描述动物被打了以后的反应
+// 定义一个基类 Animal, 计算属性用于获取动物的名字，方法用于描述动物被打了以后的反应
 class Animal {
   func beBeaten() {
     return
   }
 }
-// Cat 继承自Animal，并重写了beBeaten()方法
+// Cat 继承自 Animal，并重写了 beBeaten() 方法
 class Cat: Animal {
   override func beBeaten() {
     print("Bark and jump to high!")
   }
   
 }
-// Dog继承自Animal，并重写了beBeaten()方法
+// Dog 继承自 Animal，并重写了 beBeaten() 方法
 class Dog: Animal {
   override func beBeaten() {
     print("Give a hard bit!")
-  } 
+  }
 }
-// Frog继承自Animal，并重写了beBeaten()方法
+// Frog 继承自 Animal，并重写了 beBeaten() 方法
 class Frog: Animal {
   override func beBeaten() {
     print("Do nothing!")
   }
 }
-// 定义一个Human类，用于攻击animal，注意beatAnimal(:)的参数类型是Animal，并没有指明具体是哪种Animal
+// 定义一个 Human 类，用于攻击 animala, 注意b eatAnimal(:) 的参数类型是 Animal, 并没有指明具体是哪种 Animal
 class Human {
   var name: String
   init(name: String) {
@@ -300,9 +300,9 @@ linda.beatAnimal(animal: frog) // Do nothing!
 class Animal {
   func beBeaten() -> Void {
     return
-  } 
+  }
 }
-// Human类不可以被继承
+// Human 类不可以被继承
 final class Human {
   var name: String
   init(name: String) {
@@ -315,7 +315,7 @@ final class Human {
 class Man: Human { // Error
   
 }
-// 被标记为final的方法或属性不可以被重写
+// 被标记为 final 的方法或属性不可以被重写
 class Human {
   var name: String
   init(name: String) {
@@ -355,7 +355,7 @@ class Person {
 
 class Student: Person {
   var sports: [String]
-  required init(firstName: String, lastName: String) { // 不需要override 关键字，但需要required关键字以保证Student的子类也必须实现此方法
+  required init(firstName: String, lastName: String) { // 不需要 override 关键字，但需要 required 关键字以保证Student 的子类也必须实现此方法
     self.sports = []
     print("I am a student")
     super.init(firstName: firstName, lastName: lastName)
@@ -390,9 +390,9 @@ var jack: Student? = Student(firstName: "Jack", lastName: "Bush")
 denny?.partner = jack
 jack?.partner = denny
 denny = nil
-jack = nil // 即使denny和jack都变成nil, 内存也没被释放，这就是因为产生了循环引用
+jack = nil // 即使 denny 和 jack 都变成nil, 内存也没被释放，这就是因为产生了循环引用
 
-// 解决办法是将partner改成weak，swift中的属性默认是strong
+// 解决办法是将 partner 改成 weaka, swift 中的属性默认是 strong
 class Student: Person {
   weak var partner: Student?
   deinit {
@@ -400,4 +400,3 @@ class Student: Person {
   }
 }
 ```
-
