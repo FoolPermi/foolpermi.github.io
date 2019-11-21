@@ -176,11 +176,11 @@
     <link href="http://foolpermi.github.io/2016/11/20/Properties-in-Swift/"/>
     <id>http://foolpermi.github.io/2016/11/20/Properties-in-Swift/</id>
     <published>2016-11-20T08:41:01.000Z</published>
-    <updated>2019-11-21T14:46:06.134Z</updated>
+    <updated>2019-11-21T15:10:31.671Z</updated>
     
     <summary type="html">
     
-      &lt;p&gt;最近读了&lt;em&gt;Swift Apprentice&lt;/em&gt;, 将其中一些关于 Property 的知识总结一下。主要包括以下几个部分:&lt;/p&gt;
+      &lt;p&gt;最近读了&lt;em&gt;&lt;a href=&quot;https://store.raywenderlich.com/products/swift-apprentice&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Swift Apprentice&lt;/a&gt;&lt;/em&gt;, 将其中一些关于 Property 的知识总结一下。主要包括以下几个部分:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;存储属性 (Stored Properties)&lt;/li&gt;
 &lt;li&gt;计算属性 (Computed Properties)&lt;/li&gt;

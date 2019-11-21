@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="FoolPermi">
 <meta property="og:description" content="最近读了Swift Apprentice, 将其中一些关于 Property 的知识总结一下。主要包括以下几个部分:  存储属性 (Stored Properties) 计算属性 (Computed Properties) 类型属性 (Typed Properties) 属性观察器 (Property Observers) 延迟加载属性 (Lazy Properties)">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-11-21T14:46:06.134Z">
+<meta property="og:updated_time" content="2019-11-21T15:10:31.671Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Properties in Swift">
 <meta name="twitter:description" content="最近读了Swift Apprentice, 将其中一些关于 Property 的知识总结一下。主要包括以下几个部分:  存储属性 (Stored Properties) 计算属性 (Computed Properties) 类型属性 (Typed Properties) 属性观察器 (Property Observers) 延迟加载属性 (Lazy Properties)">
@@ -102,7 +102,7 @@
   <li><a class="icon" href="http://digg.com/submit?url=http://foolpermi.github.io/2016/11/20/Properties-in-Swift/&title=Properties in Swift"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
   <li><a class="icon" href="http://service.weibo.com/share/share.php?title=Properties in Swift&url=http://foolpermi.github.io/2016/11/20/Properties-in-Swift/&style=simple&searchPic=false" target="_blank"><i class="fab fa-weibo " aria-hidden="true"></i></a></li>
   <li><a class="icon" href="mailto:?subject=Properties in Swift&body=Check out this article: http://foolpermi.github.io/2016/11/20/Properties-in-Swift/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://foolpermi.github.io/2016/11/20/Properties-in-Swift/&name=Properties in Swift&description=&lt;p&gt;最近读了&lt;em&gt;Swift Apprentice&lt;/em&gt;, 将其中一些关于 Property 的知识总结一下。主要包括以下几个部分:&lt;/p&gt;
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://foolpermi.github.io/2016/11/20/Properties-in-Swift/&name=Properties in Swift&description=&lt;p&gt;最近读了&lt;em&gt;&lt;a href=&#34;https://store.raywenderlich.com/products/swift-apprentice&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Swift Apprentice&lt;/a&gt;&lt;/em&gt;, 将其中一些关于 Property 的知识总结一下。主要包括以下几个部分:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;存储属性 (Stored Properties)&lt;/li&gt;
 &lt;li&gt;计算属性 (Computed Properties)&lt;/li&gt;
@@ -153,7 +153,7 @@
   
 
   <div class="content" itemprop="articleBody">
-    <p>最近读了<em>Swift Apprentice</em>, 将其中一些关于 Property 的知识总结一下。主要包括以下几个部分:</p>
+    <p>最近读了<em><a href="https://store.raywenderlich.com/products/swift-apprentice" target="_blank" rel="noopener">Swift Apprentice</a></em>, 将其中一些关于 Property 的知识总结一下。主要包括以下几个部分:</p>
 <ul>
 <li>存储属性 (Stored Properties)</li>
 <li>计算属性 (Computed Properties)</li>
@@ -164,8 +164,8 @@
 <a id="more"></a>
 <p>在下面的例子中，结构体 Car 有两个属性，存储了两个字符串常量。</p>
 <figure class="highlight swift"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Car</span> </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> make: <span class="type">String</span></span><br><span class="line">  <span class="keyword">let</span> color: <span class="type">String</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>上面的属性称为<strong>存储属性 (stored property)</strong>, 表示它们将会为每个 Car 的实例开辟内存并且存储值。</p>
-<p>除了存储属性外还有一种<strong>计算属性 (computed property)</strong>, 在创建实例的时候并不会为计算属性分配空间，而只是在需要的时候简单的计算它们的值。</p>
+<p>上面的属性称为<strong>存储属性 (Stored Property)</strong>, 表示它们将会为每个 Car 的实例开辟内存并且存储值。</p>
+<p>除了存储属性外还有一种<strong>计算属性 (Computed Property)</strong>, 在创建实例的时候并不会为计算属性分配空间，而只是在需要的时候简单的计算它们的值。</p>
 <h2 id="Stored-properties"><a href="#Stored-properties" class="headerlink" title="Stored properties"></a>Stored properties</h2><p>假如你想创建一个通讯录，那么通讯录中的每一条联系人的组成可能是下面这样:</p>
 <figure class="highlight swift"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Contact</span> </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> fullName: <span class="type">String</span></span><br><span class="line">  <span class="keyword">var</span> emailAddress: <span class="type">String</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>Contact 中的属性并没有赋上初始值，所以只能通过<strong>构造函数 (initializer)</strong> 来实例化，Swift 会根据类型中的属性，自动生成一个构造函数。</p>
@@ -243,7 +243,7 @@
   <li><a class="icon" href="http://digg.com/submit?url=http://foolpermi.github.io/2016/11/20/Properties-in-Swift/&title=Properties in Swift"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
   <li><a class="icon" href="http://service.weibo.com/share/share.php?title=Properties in Swift&url=http://foolpermi.github.io/2016/11/20/Properties-in-Swift/&style=simple&searchPic=false" target="_blank"><i class="fab fa-weibo fa-lg" aria-hidden="true"></i></a></li>
   <li><a class="icon" href="mailto:?subject=Properties in Swift&body=Check out this article: http://foolpermi.github.io/2016/11/20/Properties-in-Swift/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://foolpermi.github.io/2016/11/20/Properties-in-Swift/&name=Properties in Swift&description=&lt;p&gt;最近读了&lt;em&gt;Swift Apprentice&lt;/em&gt;, 将其中一些关于 Property 的知识总结一下。主要包括以下几个部分:&lt;/p&gt;
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://foolpermi.github.io/2016/11/20/Properties-in-Swift/&name=Properties in Swift&description=&lt;p&gt;最近读了&lt;em&gt;&lt;a href=&#34;https://store.raywenderlich.com/products/swift-apprentice&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Swift Apprentice&lt;/a&gt;&lt;/em&gt;, 将其中一些关于 Property 的知识总结一下。主要包括以下几个部分:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;存储属性 (Stored Properties)&lt;/li&gt;
 &lt;li&gt;计算属性 (Computed Properties)&lt;/li&gt;
