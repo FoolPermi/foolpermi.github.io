@@ -13,7 +13,7 @@ tags: swift
 
 Struct 作为一种常见的数据类型，在许多编程语言中都存在。我们使用 Struct 封装特定的数据结构。Swift 中赋予了 Struct 很多特性，比如 Struct 中除了可以定义属性外，还可以定义**方法 (method)** 和**构造函数 (initializer)**。
 
-举个例子，为了表示在平面坐标系中的位置，定义一个结构体 Location，其中包括两个属性 x 和 y。
+举个例子，为了表示在平面坐标系中的位置，定义一个结构体 Location, 其中包括两个属性 x 和 y。
 
 ```swift
 struct Location {
@@ -193,7 +193,7 @@ class Student {
 }
 ```
 
-可以看到 Student 也是 Person，所以可以在现有的 Person 类基础上进行扩展来减少代码冗余。
+可以看到 Student 也是 Person, 所以可以在现有的 Person 类基础上进行扩展来减少代码冗余。
 
 ```swift
 struct Grade {
@@ -253,26 +253,26 @@ class Animal {
     return
   }
 }
-// Cat 继承自 Animal，并重写了 beBeaten() 方法
+// Cat 继承自 Animal, 并重写了 beBeaten() 方法
 class Cat: Animal {
   override func beBeaten() {
     print("Bark and jump to high!")
   }
   
 }
-// Dog 继承自 Animal，并重写了 beBeaten() 方法
+// Dog 继承自 Animal, 并重写了 beBeaten() 方法
 class Dog: Animal {
   override func beBeaten() {
     print("Give a hard bit!")
   }
 }
-// Frog 继承自 Animal，并重写了 beBeaten() 方法
+// Frog 继承自 Animal, 并重写了 beBeaten() 方法
 class Frog: Animal {
   override func beBeaten() {
     print("Do nothing!")
   }
 }
-// 定义一个 Human 类，用于攻击 animala, 注意b eatAnimal(:) 的参数类型是 Animal, 并没有指明具体是哪种 Animal
+// 定义一个 Human 类, 用于攻击 animala, 注意 beatAnimal(:) 的参数类型是 Animal, 并没有指明具体是哪种 Animal
 class Human {
   var name: String
   init(name: String) {
@@ -355,7 +355,7 @@ class Person {
 
 class Student: Person {
   var sports: [String]
-  required init(firstName: String, lastName: String) { // 不需要 override 关键字，但需要 required 关键字以保证Student 的子类也必须实现此方法
+  required init(firstName: String, lastName: String) { // 不需要 override 关键字，但需要 required 关键字以保证  Student 的子类也必须实现此方法
     self.sports = []
     print("I am a student")
     super.init(firstName: firstName, lastName: lastName)
@@ -390,9 +390,9 @@ var jack: Student? = Student(firstName: "Jack", lastName: "Bush")
 denny?.partner = jack
 jack?.partner = denny
 denny = nil
-jack = nil // 即使 denny 和 jack 都变成nil, 内存也没被释放，这就是因为产生了循环引用
+jack = nil // 即使 denny 和 jack 都变成 nil, 内存也没被释放，这就是因为产生了循环引用
 
-// 解决办法是将 partner 改成 weaka, swift 中的属性默认是 strong
+// 解决办法是将 partner 改成 weak, swift 中的属性默认是 strong
 class Student: Person {
   weak var partner: Student?
   deinit {
