@@ -290,7 +290,7 @@ switch coordinates {
 
 ## Functions
 
-swift 中使用 func 关键字来标识一个函数，一个函数的基本组成包含以下几个部分:
+swift 中使用 **func** 关键字来标识一个函数，一个函数的基本组成包含以下几个部分:
 
 ```swift
 func functionName(para1: Type, para2: Type, ...) -> returnType {
