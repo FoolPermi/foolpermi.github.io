@@ -288,4 +288,90 @@ switch coordinates {
 }
 ```
 
+## Functions
+
+swift 中使用 func 关键字来标识一个函数，一个函数的基本组成包含以下几个部分:
+
+```swift
+func functionName(para1: Type, para2: Type, ...) -> returnType {
+    // function body
+    ...
+}
+```
+
+下面的例子代表了 swift 中函数的基本命名规则和调用方法。
+
+```swift
+// eg1:
+func printMyName() {
+    print("My name is Peter")
+}
+printMyName()
+// eg2:
+func printMultipleOf(multiplier: Int, andValue: Int) {
+    print("\(multiplier) * \(andValue) = \(multiplier * andValue)")
+}
+printMultipleOf(multiplier: 5, andValue: 10)
+// eg3:
+func printMultipleOf(multiplier: Int, and value: Int) {
+    print("\(multiplier) * \(value) = \(multiplier * value)")
+}
+printMultipleOf(multiplier: 4, and: 2)
+// eg4:
+func printMultipleOf(_ multiplier: Int, and value: Int) {
+    print("\(multiplier) * \(value) = \(multiplier * value)")
+}
+printMultipleOf(4, and: 2)
+// eg5:
+func printMultipleOf(_ multiplier: Int, _ value: Int) {
+    print("\(multiplier) * \(value) = \(multiplier * value)")
+}
+printMultipleOf(4, 2)
+// eg6:
+func printMultipleOf(_ multiplier: Int, _ value: Int = 1) {
+    print("\(multiplier) * \(value) = \(multiplier * value)")
+}
+printMultipleOf(4)
+// eg7: return value
+func multiply(_ number: Int, by multiplier: Int) -> Int {
+    return number * multiplier 
+}
+let result = multiply(4, by: 2)
+// eg8: return tuple
+func multiplyAndDivide(_ number: Int, by factor: Int) -> (product: Int, quotient: Int) {
+    return (number * factor, number / factor)
+}
+let result = multiplyAndDivide(4, by: 2)
+let product = result.product
+let quotient = result.quotient
+```
+
+由于函数中的参数采用值传递的方式，因此，如果要修改函数的参数的值，需要使用 **inout** 关键字对参数进行标记。
+
+```swift
+func incrementAndPrint(_ value: inout Int) {
+    value += 1
+    print(value)
+}
+var value = 5;
+incrementAndPrint(&value)
+```
+
+使用 /// 可以给函数添加注释，在编辑器中进行输入的时候，注释的内容会作为提示。
+
+```swift
+/// Calculate the average of three values
+/// - Parameters:
+/// - a: The first value
+/// - b: The second value
+/// - c: The third value
+/// - Returns: The average of the three values
+func calculateAverage(of a: Double, and b: Double, and c: Double) -> Double {
+    let total = a + b + c
+    let average = total / 3
+    return average
+}
+calculateAverage(of:1, and: 3, and: 5)
+```
+
 参考: Swift Apprentice
