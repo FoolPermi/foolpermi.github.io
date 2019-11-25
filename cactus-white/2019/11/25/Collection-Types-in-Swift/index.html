@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="同各种常见的语言一样，swift 中也包括各种集合类型。swift 中的集合类型可以分为以下几种: Array, Set, Dictionary.声明一个集合类型的时候，必须明确指出集合类型是 let 还是 var, 使用的关键字不同将决定集合中的元素在声明以后是否可以改变。 Array数组是按照一定顺序存储相同类型数据的合集。数组元素的下标从 0 开始，依次递增。 Creating Arrays">
+<meta name="keywords" content="swift">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Collection Types in Swift">
+<meta property="og:url" content="http://foolpermi.github.io/2019/11/25/Collection-Types-in-Swift/index.html">
+<meta property="og:site_name" content="FoolPermi">
+<meta property="og:description" content="同各种常见的语言一样，swift 中也包括各种集合类型。swift 中的集合类型可以分为以下几种: Array, Set, Dictionary.声明一个集合类型的时候，必须明确指出集合类型是 let 还是 var, 使用的关键字不同将决定集合中的元素在声明以后是否可以改变。 Array数组是按照一定顺序存储相同类型数据的合集。数组元素的下标从 0 开始，依次递增。 Creating Arrays">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-11-25T16:03:17.484Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Collection Types in Swift">
+<meta name="twitter:description" content="同各种常见的语言一样，swift 中也包括各种集合类型。swift 中的集合类型可以分为以下几种: Array, Set, Dictionary.声明一个集合类型的时候，必须明确指出集合类型是 let 还是 var, 使用的关键字不同将决定集合中的元素在声明以后是否可以改变。 Array数组是按照一定顺序存储相同类型数据的合集。数组元素的下标从 0 开始，依次递增。 Creating Arrays">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/cactus-white/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/cactus-white/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/cactus-white/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>Collection Types in Swift</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/cactus-white/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/cactus-white/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/cactus-white/">Home</a></li>
+         
+          <li><a href="/cactus-white/about/">About</a></li>
+         
+          <li><a href="/cactus-white/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/FoolPermi">Projects</a></li>
+         
+          <li><a href="/cactus-white/search/">Search</a></li>
+         
+          <li><a href="/cactus-white/atom.xml">RSS</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" href="/cactus-white/2019/11/04/Swift-Basics/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://foolpermi.github.io/2019/11/25/Collection-Types-in-Swift/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://foolpermi.github.io/2019/11/25/Collection-Types-in-Swift/&text=Collection Types in Swift"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://foolpermi.github.io/2019/11/25/Collection-Types-in-Swift/&title=Collection Types in Swift"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://foolpermi.github.io/2019/11/25/Collection-Types-in-Swift/&is_video=false&description=Collection Types in Swift"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://foolpermi.github.io/2019/11/25/Collection-Types-in-Swift/&title=Collection Types in Swift"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://foolpermi.github.io/2019/11/25/Collection-Types-in-Swift/&title=Collection Types in Swift"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://foolpermi.github.io/2019/11/25/Collection-Types-in-Swift/&title=Collection Types in Swift"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://service.weibo.com/share/share.php?title=Collection Types in Swift&url=http://foolpermi.github.io/2019/11/25/Collection-Types-in-Swift/&style=simple&searchPic=false" target="_blank"><i class="fab fa-weibo " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Collection Types in Swift&body=Check out this article: http://foolpermi.github.io/2019/11/25/Collection-Types-in-Swift/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://foolpermi.github.io/2019/11/25/Collection-Types-in-Swift/&name=Collection Types in Swift&description="><i class="fab fa-tumblr-square " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Array"><span class="toc-number">1.</span> <span class="toc-text">Array</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Creating-Arrays"><span class="toc-number">1.1.</span> <span class="toc-text">Creating Arrays</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Accessing-elements"><span class="toc-number">1.2.</span> <span class="toc-text">Accessing elements</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ArraySlice"><span class="toc-number">1.3.</span> <span class="toc-text">ArraySlice</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Modifying-Arrays"><span class="toc-number">1.4.</span> <span class="toc-text">Modifying Arrays</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Array-Iteration"><span class="toc-number">1.5.</span> <span class="toc-text">Array Iteration</span></a></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index my4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Collection Types in Swift
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">FoolPermi</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2019-11-25T15:13:54.000Z" itemprop="datePublished">25 Nov 2019</time>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/cactus-white/tags/swift/">swift</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p>同各种常见的语言一样，swift 中也包括各种集合类型。swift 中的集合类型可以分为以下几种: <strong>Array</strong>, <strong>Set</strong>, <strong>Dictionary</strong>.<br>声明一个集合类型的时候，必须明确指出集合类型是 <strong>let</strong> 还是 <strong>var</strong>, 使用的关键字不同将决定集合中的元素在声明以后是否可以改变。</p>
+<h2 id="Array"><a href="#Array" class="headerlink" title="Array"></a>Array</h2><p>数组是按照一定顺序存储相同类型数据的合集。数组元素的下标从 0 开始，依次递增。</p>
+<h3 id="Creating-Arrays"><a href="#Creating-Arrays" class="headerlink" title="Creating Arrays"></a>Creating Arrays</h3><p>创建数组的方法有很多种，可以使用 <strong>[]</strong> 来创建一个数组，也可以使用 <strong>Array</strong> 关键字来创建一个数组。创建数组的时候可以明确指出数组中元素的类型，如果没有指出，编译器会根据数组中的元素进行类型推断。</p>
+<figure class="highlight swift"><table><tr><td class="code"><pre><span class="line"><span class="comment">// eg1:</span></span><br><span class="line"><span class="keyword">let</span> evenNumbers = [<span class="number">2</span>, <span class="number">4</span>, <span class="number">6</span>, <span class="number">8</span>] <span class="comment">// 数组的类型为[Int]</span></span><br><span class="line"><span class="comment">// eg2:</span></span><br><span class="line"><span class="keyword">var</span> subscribers: [<span class="type">String</span>] = [] <span class="comment">// 创建空数组，必须指定数组类型</span></span><br><span class="line"><span class="comment">// eg3:</span></span><br><span class="line"><span class="keyword">let</span> allZeros = <span class="type">Array</span>(repeating: <span class="number">0</span>, <span class="built_in">count</span>: <span class="number">5</span>) <span class="comment">// [0, 0, 0, 0, 0]</span></span><br></pre></td></tr></table></figure>
+<h3 id="Accessing-elements"><a href="#Accessing-elements" class="headerlink" title="Accessing elements"></a>Accessing elements</h3><p>数组中有很多的属性和方法，可以使用数组中的属性和方法来操作和访问数组中的元素。</p>
+<figure class="highlight swift"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> players = [<span class="string">"Alisa"</span>, <span class="string">"Bob"</span>, <span class="string">"Cindy"</span>, <span class="string">"Dennis"</span>]</span><br><span class="line"><span class="built_in">print</span>(players.isEmpty) <span class="comment">// false</span></span><br><span class="line"><span class="built_in">print</span>(players.<span class="built_in">count</span>) <span class="comment">// 4</span></span><br><span class="line"><span class="keyword">var</span> currentPlayer = players.first <span class="comment">// access first element</span></span><br><span class="line"><span class="built_in">print</span>(currentPlayer <span class="keyword">as</span> <span class="type">Any</span>) <span class="comment">// currentPlayer is optional</span></span><br><span class="line"><span class="built_in">print</span>(players.last <span class="keyword">as</span> <span class="type">Any</span>) <span class="comment">// last element is also optional</span></span><br><span class="line">currentPlayer = players.<span class="built_in">min</span>() <span class="comment">// optional</span></span><br><span class="line"><span class="keyword">var</span> firstPlayer = players[<span class="number">0</span>] <span class="comment">// 使用下标访问</span></span><br><span class="line">players.<span class="built_in">contains</span>(<span class="string">"Bob"</span>) <span class="comment">// 元素检查</span></span><br></pre></td></tr></table></figure>
+<h3 id="ArraySlice"><a href="#ArraySlice" class="headerlink" title="ArraySlice"></a>ArraySlice</h3><p>可以给数组指定一个 range, 然后可以返回一个包含部分元素的子数组，也称为切片。创建一个切片的方法如下。</p>
+<figure class="highlight swift"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> players = [<span class="string">"Alisa"</span>, <span class="string">"Bob"</span>, <span class="string">"Cindy"</span>, <span class="string">"Dennis"</span>]</span><br><span class="line"><span class="keyword">let</span> upcomingPlayersSlice = players[<span class="number">1</span>...<span class="number">2</span>]</span><br><span class="line"><span class="built_in">print</span>(upcomingPlayersSlice[<span class="number">1</span>], upcomingPlayersSlice[<span class="number">2</span>]) <span class="comment">// "Bob", "Cindy"</span></span><br></pre></td></tr></table></figure>
+<h3 id="Modifying-Arrays"><a href="#Modifying-Arrays" class="headerlink" title="Modifying Arrays"></a>Modifying Arrays</h3><p>使用 var 声明的数组在创建以后可以进行增加/删除/插入/更新元素等操作。</p>
+<figure class="highlight swift"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> players = [<span class="string">"Alisa"</span>, <span class="string">"Bob"</span>, <span class="string">"Cindy"</span>, <span class="string">"Dennis"</span>]</span><br><span class="line"><span class="comment">// add elements</span></span><br><span class="line">players.append(<span class="string">"Eli"</span>)</span><br><span class="line">players += [<span class="string">"Gina"</span>]</span><br><span class="line"><span class="comment">// remove elements</span></span><br><span class="line"><span class="keyword">var</span> removedPlayer = players.removeLast()</span><br><span class="line">removedPlayer = players.remove(at: <span class="number">2</span>)</span><br><span class="line"><span class="comment">// insert elements</span></span><br><span class="line">players.insert(<span class="string">"Frank"</span>, at: <span class="number">3</span>)</span><br><span class="line"><span class="comment">// update elements</span></span><br><span class="line">players[<span class="number">4</span>] = <span class="string">"Linda"</span></span><br><span class="line"><span class="comment">// swap elements</span></span><br><span class="line">players.swapAt(<span class="number">1</span>, <span class="number">3</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="Array-Iteration"><a href="#Array-Iteration" class="headerlink" title="Array Iteration"></a>Array Iteration</h3><p>使用 for-in 遍历数组中的元素及其下标。</p>
+<figure class="highlight swift"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> players = [<span class="string">"Alisa"</span>, <span class="string">"Bob"</span>, <span class="string">"Cindy"</span>, <span class="string">"Dennis"</span>]</span><br><span class="line"><span class="keyword">for</span> player <span class="keyword">in</span> players &#123;</span><br><span class="line">    <span class="built_in">print</span>(player)</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span> (index, player) <span class="keyword">in</span> players.enumerated() &#123;</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"<span class="subst">\(index + <span class="number">1</span>)</span>. <span class="subst">\(player)</span>"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+  </div>
+</article>
+
+
+
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/cactus-white/">Home</a></li>
+         
+          <li><a href="/cactus-white/about/">About</a></li>
+         
+          <li><a href="/cactus-white/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/FoolPermi">Projects</a></li>
+         
+          <li><a href="/cactus-white/search/">Search</a></li>
+         
+          <li><a href="/cactus-white/atom.xml">RSS</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Array"><span class="toc-number">1.</span> <span class="toc-text">Array</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Creating-Arrays"><span class="toc-number">1.1.</span> <span class="toc-text">Creating Arrays</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Accessing-elements"><span class="toc-number">1.2.</span> <span class="toc-text">Accessing elements</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ArraySlice"><span class="toc-number">1.3.</span> <span class="toc-text">ArraySlice</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Modifying-Arrays"><span class="toc-number">1.4.</span> <span class="toc-text">Modifying Arrays</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Array-Iteration"><span class="toc-number">1.5.</span> <span class="toc-text">Array Iteration</span></a></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://foolpermi.github.io/2019/11/25/Collection-Types-in-Swift/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://foolpermi.github.io/2019/11/25/Collection-Types-in-Swift/&text=Collection Types in Swift"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://foolpermi.github.io/2019/11/25/Collection-Types-in-Swift/&title=Collection Types in Swift"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://foolpermi.github.io/2019/11/25/Collection-Types-in-Swift/&is_video=false&description=Collection Types in Swift"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://foolpermi.github.io/2019/11/25/Collection-Types-in-Swift/&title=Collection Types in Swift"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://foolpermi.github.io/2019/11/25/Collection-Types-in-Swift/&title=Collection Types in Swift"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://foolpermi.github.io/2019/11/25/Collection-Types-in-Swift/&title=Collection Types in Swift"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://service.weibo.com/share/share.php?title=Collection Types in Swift&url=http://foolpermi.github.io/2019/11/25/Collection-Types-in-Swift/&style=simple&searchPic=false" target="_blank"><i class="fab fa-weibo fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Collection Types in Swift&body=Check out this article: http://foolpermi.github.io/2019/11/25/Collection-Types-in-Swift/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://foolpermi.github.io/2019/11/25/Collection-Types-in-Swift/&name=Collection Types in Swift&description="><i class="fab fa-tumblr-square fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2019 FoolPermi
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/cactus-white/">Home</a></li>
+         
+          <li><a href="/cactus-white/about/">About</a></li>
+         
+          <li><a href="/cactus-white/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/FoolPermi">Projects</a></li>
+         
+          <li><a href="/cactus-white/search/">Search</a></li>
+         
+          <li><a href="/cactus-white/atom.xml">RSS</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>
+<!-- styles -->
+<link rel="stylesheet" href="/cactus-white/lib/font-awesome/css/fontawesome-all.min.css">
+<link rel="stylesheet" href="/cactus-white/lib/justified-gallery/css/justifiedGallery.min.css">
+
+<!-- jquery -->
+<script src="/cactus-white/lib/jquery/jquery.min.js"></script>
+<script src="/cactus-white/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<script src="/cactus-white/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+    <script type="text/javascript">
+        (function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-120913198-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+<!-- Disqus Comments -->
+
+
