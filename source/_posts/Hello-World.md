@@ -9,7 +9,7 @@ Hello, the first blog just greetings.
 
 {% codeblock hello.c lang:c %}printf("hello, world"); {% endcodeblock %}
 
-{% codeblock hello.cpp lang:cpp %}cout<<"Hello, Linda"<<endl; //so who is linda {% endcodeblock %}
+{% codeblock hello.cpp lang:cpp %}cout<<"Hello, Linda"<<endl; // so who is linda {% endcodeblock %}
 
 {% codeblock hello.py lang:python %}print "Hello, world" {% endcodeblock %}
 
