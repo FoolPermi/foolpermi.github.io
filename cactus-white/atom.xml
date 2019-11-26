@@ -6,7 +6,7 @@
   <link href="/cactus-white/atom.xml" rel="self"/>
   
   <link href="http://foolpermi.github.io/"/>
-  <updated>2019-11-26T15:43:13.974Z</updated>
+  <updated>2019-11-26T15:46:31.160Z</updated>
   <id>http://foolpermi.github.io/</id>
   
   <author>
@@ -21,17 +21,14 @@
     <link href="http://foolpermi.github.io/2019/11/25/Collection-Types-in-Swift/"/>
     <id>http://foolpermi.github.io/2019/11/25/Collection-Types-in-Swift/</id>
     <published>2019-11-25T15:13:54.000Z</published>
-    <updated>2019-11-26T15:43:13.974Z</updated>
+    <updated>2019-11-26T15:46:31.160Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;p&gt;同各种常见的语言一样，swift 中也包括各种集合类型。swift 中的集合类型可以分为以下几种: &lt;strong&gt;Array&lt;/strong&gt;, &lt;strong&gt;Set&lt;/strong&gt;,
-        
-      
+      &lt;p&gt;同各种常见的语言一样，swift 中也包括各种集合类型。swift 中的集合类型可以分为以下几种: &lt;strong&gt;Array&lt;/strong&gt;, &lt;strong&gt;Set&lt;/strong&gt;, &lt;strong&gt;Dictionary&lt;/strong&gt;.&lt;br&gt;声明一个集合类型的时候，必须明确指出集合类型是 &lt;strong&gt;let&lt;/strong&gt; 还是 &lt;strong&gt;var&lt;/strong&gt;, 使用的关键字不同将决定集合中的元素在声明以后是否可以改变。&lt;/p&gt;
+&lt;h2 id=&quot;Array&quot;&gt;&lt;a href=&quot;#Array&quot; class=&quot;headerlink&quot; title=&quot;Array&quot;&gt;&lt;/a&gt;Array&lt;/h2&gt;&lt;p&gt;数组是按照一定顺序存储相同类型数据的合集。数组元素的下标从 0 开始，依次递增。&lt;/p&gt;
+&lt;h3 id=&quot;Creating-Array&quot;&gt;&lt;a href=&quot;#Creating-Array&quot; class=&quot;headerlink&quot; title=&quot;Creating Array&quot;&gt;&lt;/a&gt;Creating Array&lt;/h3&gt;&lt;p&gt;创建数组的方法有很多种，可以使用 &lt;strong&gt;[]&lt;/strong&gt; 来创建一个数组，也可以使用 &lt;strong&gt;Array&lt;/strong&gt; 关键字来创建一个数组。创建数组的时候可以明确指出数组中元素的类型，如果没有指出，编译器会根据数组中的元素进行类型推断。&lt;/p&gt;
+&lt;figure class=&quot;highlight swift&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// eg1:&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; evenNumbers = [&lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;4&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;6&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;8&lt;/span&gt;] &lt;span class=&quot;comment&quot;&gt;// 数组的类型为[Int]&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// eg2:&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; subscribers: [&lt;span class=&quot;type&quot;&gt;String&lt;/span&gt;] = [] &lt;span class=&quot;comment&quot;&gt;// 创建空数组，必须指定数组类型&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// eg3:&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; allZeros = &lt;span class=&quot;type&quot;&gt;Array&lt;/span&gt;(repeating: &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;, &lt;span class=&quot;built_in&quot;&gt;count&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;5&lt;/span&gt;) &lt;span class=&quot;comment&quot;&gt;// [0, 0, 0, 0, 0]&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
     
     </summary>
     
@@ -127,18 +124,18 @@
     <link href="http://foolpermi.github.io/2016/11/25/Closures-in-Swift/"/>
     <id>http://foolpermi.github.io/2016/11/25/Closures-in-Swift/</id>
     <published>2016-11-25T08:48:43.000Z</published>
-    <updated>2019-11-25T14:58:00.147Z</updated>
+    <updated>2019-11-26T15:59:33.920Z</updated>
     
     <summary type="html">
     
-      &lt;p&gt;闭包是 Swift 中的重要语法，与 Objective-C 中的 block 类似，本文主要总结 Swift 中闭包的基本用法。主要参考了 &lt;em&gt;Swift Apprentice&lt;/em&gt; 和 &lt;em&gt;The Swift Programming Language&lt;/em&gt;，关于自动闭包的部分则参考了 &lt;a href=&quot;http://www.jianshu.com/p/f9ba4c41d9c7&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;&lt;em&gt;bestswifter&lt;/em&gt;&lt;/a&gt; 的文章。主要内容包括：&lt;/p&gt;
+      &lt;p&gt;闭包是 Swift 中的重要语法，与 Objective-C 中的 block 类似，本文主要总结 Swift 中闭包的基本用法。主要参考了 &lt;em&gt;Swift Apprentice&lt;/em&gt; 和 &lt;em&gt;The Swift Programming Language&lt;/em&gt;. 主要内容包括：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;基本语法 (Basics)&lt;/li&gt;
 &lt;li&gt;简化规则 (Short syntax)&lt;/li&gt;
-&lt;li&gt;无返回值的闭包 (Closures with no return value)&lt;/li&gt;
+&lt;li&gt;无返回值的闭包 (Closures without return value)&lt;/li&gt;
 &lt;li&gt;闭包的值捕获 (Capturing from enclosing scope)&lt;/li&gt;
 &lt;li&gt;逃逸闭包 (Escaping closures)&lt;/li&gt;
-&lt;li&gt;自动闭包 (Autoclosures)&lt;/li&gt;
+&lt;li&gt;自动闭包 (Auto closures)&lt;/li&gt;
 &lt;/ul&gt;
     
     </summary>
