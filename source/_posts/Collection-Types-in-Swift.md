@@ -132,3 +132,41 @@ for score in namesAndScores.values{
     print("\(score)")
 }
 ```
+
+## Set
+
+Set 用来存储类型相同且没有确定顺序的值。与数组的主要区别是集合中的元素是无序的，而且集合中的元素不允许重复。
+
+### Creating Set
+
+```swift
+let setOne: Set<Int> = [1]
+let someSet = Set([1, 3, 2, 4])
+```
+
+### Accessing Set
+
+```swift
+var someSet: Set<Int> = [1, 3, 2, 4]
+someSet.contains(1) // true
+someSet.contains(5) // false
+```
+
+### Modifying Set
+
+```swift
+var someSet:Set<Int> = [1, 3, 2, 4]
+someSet.insert(5)
+someSet.remove(1)
+```
+
+### Set Iteration
+
+```swift
+var someSet: Set<Int> = [1, 3, 2, 4]
+for num in someSet {
+    print("\(num)")
+}
+```
+
+## Strings
