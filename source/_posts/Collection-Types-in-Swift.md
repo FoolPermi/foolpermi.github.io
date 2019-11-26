@@ -23,7 +23,7 @@ var subscribers: [String] = [] // 创建空数组，必须指定数组类型
 // eg3:
 let allZeros = Array(repeating: 0, count: 5) // [0, 0, 0, 0, 0]
 ```
-
+<!---more--->
 ### Accessing Array
 
 数组中有很多的属性和方法，可以使用数组中的属性和方法来操作和访问数组中的元素。
