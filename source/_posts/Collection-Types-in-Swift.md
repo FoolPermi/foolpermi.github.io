@@ -11,7 +11,7 @@ tags: swift
 
 数组是按照一定顺序存储相同类型数据的合集。数组元素的下标从 0 开始，依次递增。
 
-### Creating Arrays
+### Creating Array
 
 创建数组的方法有很多种，可以使用 **[]** 来创建一个数组，也可以使用 **Array** 关键字来创建一个数组。创建数组的时候可以明确指出数组中元素的类型，如果没有指出，编译器会根据数组中的元素进行类型推断。
 
@@ -24,7 +24,7 @@ var subscribers: [String] = [] // 创建空数组，必须指定数组类型
 let allZeros = Array(repeating: 0, count: 5) // [0, 0, 0, 0, 0]
 ```
 
-### Accessing elements
+### Accessing Array
 
 数组中有很多的属性和方法，可以使用数组中的属性和方法来操作和访问数组中的元素。
 
@@ -50,7 +50,7 @@ let upcomingPlayersSlice = players[1...2]
 print(upcomingPlayersSlice[1], upcomingPlayersSlice[2]) // "Bob", "Cindy"
 ```
 
-### Modifying Arrays
+### Modifying Array
 
 使用 var 声明的数组在创建以后可以进行增加/删除/插入/更新元素等操作。
 
@@ -81,5 +81,54 @@ for player in players {
 }
 for (index, player) in players.enumerated() {
     print("\(index + 1). \(player)")
+}
+```
+
+## Dictionary
+
+Dictionary 是一种存储多个相同类型的值的容器。每个值 (value) 都关联唯一的键 (key), 键作为字典中的这个值数据的标识符。和数组中的数据项不同，字典中的数据项并没有具体顺序。
+
+### Creating Dictionary
+
+```swift
+var nameAndScores = ["Anna": 2, "Linda": 6, "Ermei": 3, "Bella": 5] // type: [String: Int]
+nameAndScores = [:] // make existed dictionary empty
+// create an empty dictionary
+var namesAndAges: [String: Int] = [:]
+```
+
+### Accessing Dictionary
+
+```swift
+var namesAndScores = ["Anna": 2, "Linda": 6, "Ermei": 3, "Bella": 5]
+var scoreOfAnna = namesAndScores["Anna"] // 2
+namesAndScores.isEmpty // false
+namesAndScores.count // 4
+```
+
+### Modifying Dictionary
+
+```swift
+var namesAndScores = ["Anna": 2, "Linda": 6, "Ermei": 3, "Bella": 5]
+namesAndScores.updateValue(4, forKey: "Ermei")
+namesAndScores["Bella"] = 7 // update element, add it if not exist
+namesAndScores.removeValue(forKey: "Anna")
+namesAndScores["Linda"] = nil // remove element
+```
+
+如果 Dictionary 中的 value 是 optinal 类型的元素，通过 `dic[key] = nil`, 的方式仍然会移除元素，如果想要将 optional 的元素设置为 nil, 必须使用 `dic.updateValue(nil, forKey: key)` 的方式。
+
+### Dictionary Iteration
+
+```swift
+var namesAndScores = ["Anna": 2, "Linda": 6, "Ermei": 3, "Bella": 5]
+for (name, score) in namesAndScores {
+    print("\(name) - \(score)")
+}
+for name in namesAndScores.keys {
+    print("\(name)")
+}
+for score in namesAndScores.values{
+    print("\(score)")
 }
 ```
