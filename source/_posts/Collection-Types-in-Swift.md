@@ -170,3 +170,95 @@ for num in someSet {
 ```
 
 ## Strings
+
+Swift 中 String 类似于集合类型，所以可以使用集合类型遍历的方法来遍历一个 String。和普通的集合类型有所区别的是，不可以使用下标来直接获取 String 中指定位置的字符。因为 String 中的字符由于编码方式的差异，可能需要不同字节长度的存储空间。
+
+### Creating/Accessing Strings
+
+```swift
+let string = "Ray"
+var greeting = String("Hello World")
+for char in string {
+    print(char)
+}
+let strLen = string.count
+let secondChar = string[1] // error
+let cafeNormal = "café"
+let cafeCombining = "cafe\u{0301}"
+cafeNormal.count // 4
+cafeCombining.count // 4
+cafeNormal.unicodeScalars.count // 4
+cafeCombining.unicodeScalars.count // 5
+
+let equal = cafeNormal == cafeCombining // true
+```
+
+### Indexing Strings
+
+```swift
+let cafeNormal = "café"
+let firstIdx = cafeNormal.startIndex
+let firstChar = cafeNormal[firstIdx]
+
+let fourthIdx = cafeNormal.index(cafeNormal.startIndex, offsetBy: 3)
+let fourthChar = cafeNormal[fourthIdx] // é
+fourthChar.unicodeScalars.count // 1
+fourthChar.unicodeScalars.forEach { codePoint in
+    print(codePoint.value)
+}
+
+let lastIdx = cafeNormal.index(before: cafeNormal.endIndex)
+let lastChar = cafeNormal[lastIdx] // é
+```
+
+### Strings as Collections
+
+```swift
+let name = "Matt"
+let backwardsName = name.reversed() // ReversedCollection<String>
+let thirdCharIdx = backwardsName.index(backwardsName.startIndex, offsetBy: 2)
+let thirdChar = backwardsName[thirdCharIdx]
+
+let backwardsNameStr = String(backwardsName)
+```
+
+### Raw Strings
+
+当 String 中含有需要转译的字符时，为了避免转译，可以使用 '#' 来标记为 **Raw String**.
+
+```swift
+let raw1 = #"Raw "No Escaping" \(no interpolation!). Use all the \ you want!"#
+print(raw1) // Raw "No Escaping" \(no interpolation!). Use all the \ you want!
+let raw2 = ##"Aren't we "# clever"##
+print(raw2) // Aren't we "# clever
+let can = "can do that too"
+let raw3 = #"Yes we \#(can)!"#
+print(raw3) // Yes we can do that too!
+```
+
+### Substrings
+
+```swift
+let fullName = "Peter Xu"
+let spaceIdx = fullName.firstIndex(of: " ")!
+let firstName = fullName[fullName.startIndex..<spaceIdx] // "Peter"
+let firstName = fullName[..<spaceIdx] // "Peter"
+let lastName = fullName[fullName.index(after: spaceIdx)...]
+```
+
+### Characters
+
+```swift
+let singleChar: Character = "x"
+singleChar.isASCII // true
+let emojiChar: Character = "🤣"
+emojiChar.isASCII // false
+let space: Character = " "
+space.isWhitespace // true
+let hexDigital: Character = "d"
+hexDigital.isHexDigit // true
+let thaiNine: Character = "๙"
+thaiNine.wholeNumberValue // 9
+```
+
+### Encoding
