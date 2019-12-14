@@ -6,7 +6,7 @@
   <link href="/cactus-light/atom.xml" rel="self"/>
   
   <link href="http://foolpermi.github.io/"/>
-  <updated>2019-12-14T08:57:08.770Z</updated>
+  <updated>2019-12-14T09:08:59.627Z</updated>
   <id>http://foolpermi.github.io/</id>
   
   <author>
@@ -17,57 +17,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Collection Types in Swift</title>
-    <link href="http://foolpermi.github.io/2019/11/25/Collection-Types-in-Swift/"/>
-    <id>http://foolpermi.github.io/2019/11/25/Collection-Types-in-Swift/</id>
-    <published>2019-11-25T15:13:54.000Z</published>
-    <updated>2019-12-14T08:57:08.770Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;同各种常见的语言一样，swift 中也包括各种集合类型。swift 中的集合类型可以分为以下几种: &lt;strong&gt;Array&lt;/strong&gt;, &lt;strong&gt;Set&lt;/strong&gt;, &lt;strong&gt;Dictionary&lt;/strong&gt;.&lt;br&gt;声明一个集合类型的时候，必须明确指出集合类型是 &lt;strong&gt;let&lt;/strong&gt; 还是 &lt;strong&gt;var&lt;/strong&gt;, 使用的关键字不同将决定集合中的元素在声明以后是否可以改变。&lt;/p&gt;
-&lt;h2 id=&quot;Array&quot;&gt;&lt;a href=&quot;#Array&quot; class=&quot;headerlink&quot; title=&quot;Array&quot;&gt;&lt;/a&gt;Array&lt;/h2&gt;&lt;p&gt;数组是按照一定顺序存储相同类型数据的合集。数组元素的下标从 0 开始，依次递增。&lt;/p&gt;
-&lt;h3 id=&quot;Creating-Array&quot;&gt;&lt;a href=&quot;#Creating-Array&quot; class=&quot;headerlink&quot; title=&quot;Creating Array&quot;&gt;&lt;/a&gt;Creating Array&lt;/h3&gt;&lt;p&gt;创建数组的方法有很多种，可以使用 &lt;strong&gt;[]&lt;/strong&gt; 来创建一个数组，也可以使用 &lt;strong&gt;Array&lt;/strong&gt; 关键字来创建一个数组。创建数组的时候可以明确指出数组中元素的类型，如果没有指出，编译器会根据数组中的元素进行类型推断。&lt;/p&gt;
-&lt;figure class=&quot;highlight swift&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// eg1:&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; evenNumbers = [&lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;4&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;6&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;8&lt;/span&gt;] &lt;span class=&quot;comment&quot;&gt;// 数组的类型为[Int]&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// eg2:&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; subscribers: [&lt;span class=&quot;type&quot;&gt;String&lt;/span&gt;] = [] &lt;span class=&quot;comment&quot;&gt;// 创建空数组，必须指定数组类型&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// eg3:&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; allZeros = &lt;span class=&quot;type&quot;&gt;Array&lt;/span&gt;(repeating: &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;, &lt;span class=&quot;built_in&quot;&gt;count&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;5&lt;/span&gt;) &lt;span class=&quot;comment&quot;&gt;// [0, 0, 0, 0, 0]&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-    
-    </summary>
-    
-      <category term="Swift" scheme="http://foolpermi.github.io/categories/swift/"/>
-    
-    
-      <category term="swift" scheme="http://foolpermi.github.io/tags/swift/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Swift Basics</title>
-    <link href="http://foolpermi.github.io/2019/11/04/Swift-Basics/"/>
-    <id>http://foolpermi.github.io/2019/11/04/Swift-Basics/</id>
-    <published>2019-11-04T13:56:37.000Z</published>
-    <updated>2019-11-25T14:58:00.151Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;基础运算&quot;&gt;&lt;a href=&quot;#基础运算&quot; class=&quot;headerlink&quot; title=&quot;基础运算&quot;&gt;&lt;/a&gt;基础运算&lt;/h2&gt;&lt;p&gt;和其它编程语言一样，swift支持加 (+)、减 (-)、乘 (*)、除 (/)、取模 (%)、移位等多种基础运算。&lt;/p&gt;
-&lt;figure class=&quot;highlight swift&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;2&lt;/span&gt; + &lt;span class=&quot;number&quot;&gt;6&lt;/span&gt; &lt;span class=&quot;comment&quot;&gt;// ok&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;+&lt;span class=&quot;number&quot;&gt;6&lt;/span&gt; &lt;span class=&quot;comment&quot;&gt;// ok&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;2&lt;/span&gt; +&lt;span class=&quot;number&quot;&gt;6&lt;/span&gt; &lt;span class=&quot;comment&quot;&gt;// error&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;+ &lt;span class=&quot;number&quot;&gt;6&lt;/span&gt; &lt;span class=&quot;comment&quot;&gt;// error&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;2&lt;/span&gt; - &lt;span class=&quot;number&quot;&gt;6&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;2&lt;/span&gt; * &lt;span class=&quot;number&quot;&gt;6&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;6&lt;/span&gt; / &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;6.0&lt;/span&gt; / &lt;span class=&quot;number&quot;&gt;2.0&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;28&lt;/span&gt; % &lt;span class=&quot;number&quot;&gt;10&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;(&lt;span class=&quot;number&quot;&gt;28.0&lt;/span&gt;).truncatingRemainder(dividingBy: &lt;span class=&quot;number&quot;&gt;10.0&lt;/span&gt;) &lt;span class=&quot;comment&quot;&gt;// 浮点数取模&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt; &amp;lt;&amp;lt; &lt;span class=&quot;number&quot;&gt;3&lt;/span&gt; &lt;span class=&quot;comment&quot;&gt;// 8&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;32&lt;/span&gt; &amp;gt;&amp;gt; &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;comment&quot;&gt;// 8&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;sin(&lt;span class=&quot;number&quot;&gt;45&lt;/span&gt; * &lt;span class=&quot;type&quot;&gt;Double&lt;/span&gt;.pi / &lt;span class=&quot;number&quot;&gt;180&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;cos(&lt;span class=&quot;number&quot;&gt;135&lt;/span&gt; * &lt;span class=&quot;type&quot;&gt;Double&lt;/span&gt;.pi / &lt;span class=&quot;number&quot;&gt;180&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;(&lt;span class=&quot;number&quot;&gt;2.0&lt;/span&gt;).squareRoot()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;max&lt;/span&gt;(&lt;span class=&quot;number&quot;&gt;5&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;10&lt;/span&gt;) &lt;span class=&quot;comment&quot;&gt;// 10&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;min&lt;/span&gt;(-&lt;span class=&quot;number&quot;&gt;5&lt;/span&gt;, -&lt;span class=&quot;number&quot;&gt;10&lt;/span&gt;) &lt;span class=&quot;comment&quot;&gt;// -10&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h2 id=&quot;let-VS-var&quot;&gt;&lt;a href=&quot;#let-VS-var&quot; class=&quot;headerlink&quot; title=&quot;let VS var&quot;&gt;&lt;/a&gt;let VS var&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;let&lt;/strong&gt; 用来声明常量，&lt;strong&gt;var&lt;/strong&gt; 用来声明变量。声明常量或变量的时候可以不指定数据类型，编译器会进行推断。但是一旦确定类型以后，便只能赋予相同类型的变量值。&lt;/p&gt;
-&lt;figure class=&quot;highlight swift&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; number: &lt;span class=&quot;type&quot;&gt;Int&lt;/span&gt; = &lt;span class=&quot;number&quot;&gt;10&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; pi: &lt;span class=&quot;type&quot;&gt;Double&lt;/span&gt; = &lt;span class=&quot;number&quot;&gt;3.14&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; name = &lt;span class=&quot;string&quot;&gt;&quot;Peter&quot;&lt;/span&gt; &lt;span class=&quot;comment&quot;&gt;// name is a string&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;name = &lt;span class=&quot;number&quot;&gt;15&lt;/span&gt; &lt;span class=&quot;comment&quot;&gt;// error&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;name = &lt;span class=&quot;string&quot;&gt;&quot;Linda&quot;&lt;/span&gt; &lt;span class=&quot;comment&quot;&gt;// ok&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-    
-    </summary>
-    
-      <category term="Swift" scheme="http://foolpermi.github.io/categories/swift/"/>
-    
-    
-      <category term="swift" scheme="http://foolpermi.github.io/tags/swift/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Generics in Swift</title>
-    <link href="http://foolpermi.github.io/2016/11/28/Generics-in-Swift/"/>
-    <id>http://foolpermi.github.io/2016/11/28/Generics-in-Swift/</id>
-    <published>2016-11-28T13:43:52.000Z</published>
-    <updated>2019-11-25T14:58:00.148Z</updated>
+    <link href="http://foolpermi.github.io/2017/11/28/Generics-in-Swift/"/>
+    <id>http://foolpermi.github.io/2017/11/28/Generics-in-Swift/</id>
+    <published>2017-11-28T13:43:52.000Z</published>
+    <updated>2019-12-14T09:08:59.627Z</updated>
     
     <summary type="html">
     
@@ -92,23 +46,47 @@
   </entry>
   
   <entry>
-    <title>Enumerations in Swift</title>
-    <link href="http://foolpermi.github.io/2016/11/27/Enumerations-in-Swift/"/>
-    <id>http://foolpermi.github.io/2016/11/27/Enumerations-in-Swift/</id>
-    <published>2016-11-27T07:53:47.000Z</published>
-    <updated>2019-11-25T14:58:00.147Z</updated>
+    <title>Properties in Swift</title>
+    <link href="http://foolpermi.github.io/2017/11/25/Properties-in-Swift/"/>
+    <id>http://foolpermi.github.io/2017/11/25/Properties-in-Swift/</id>
+    <published>2017-11-25T08:41:01.000Z</published>
+    <updated>2019-12-14T09:09:09.053Z</updated>
     
     <summary type="html">
     
-      &lt;p&gt;枚举为一组相关的值定义了一个共同的类型，以便在代码中以类型安全的方式使用这些值。在 C 语言中，枚举会为枚举成员分配一个对应的整形值。Swift 中的枚举更加灵活，可以不必为每一个成员提供对应的值。在 Swift 中这个值被称为&lt;strong&gt;原始值 (Raw Value)&lt;/strong&gt;，原始值的类型可以是字符串，字符，整形值或浮点数。与枚举有关的内容主要包括：&lt;/p&gt;
+      &lt;p&gt;最近读了&lt;em&gt;&lt;a href=&quot;https://store.raywenderlich.com/products/swift-apprentice&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Swift Apprentice&lt;/a&gt;&lt;/em&gt;, 将其中一些关于 Property 的知识总结一下。主要包括以下几个部分:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;基本语法 (Basics)&lt;/li&gt;
-&lt;li&gt;原始值 (Raw values)&lt;/li&gt;
-&lt;li&gt;关联值 (Associated values)&lt;/li&gt;
-&lt;li&gt;没有成员的枚举 (Case-less enumerations)&lt;/li&gt;
-&lt;li&gt;递归枚举 (Recursive enumerations)&lt;/li&gt;
+&lt;li&gt;存储属性 (Stored Properties)&lt;/li&gt;
+&lt;li&gt;计算属性 (Computed Properties)&lt;/li&gt;
+&lt;li&gt;类型属性 (Typed Properties)&lt;/li&gt;
+&lt;li&gt;属性观察器 (Property Observers)&lt;/li&gt;
+&lt;li&gt;延迟加载属性 (Lazy Properties)&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;主要参考了 &lt;em&gt;Swift Apprentice&lt;/em&gt; 和 &lt;em&gt;The Swift Programming Language&lt;/em&gt;。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Swift" scheme="http://foolpermi.github.io/categories/swift/"/>
+    
+    
+      <category term="swift" scheme="http://foolpermi.github.io/tags/swift/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Structs and Classes in Swift</title>
+    <link href="http://foolpermi.github.io/2017/11/20/Structs-and-Classes-in-Swift/"/>
+    <id>http://foolpermi.github.io/2017/11/20/Structs-and-Classes-in-Swift/</id>
+    <published>2017-11-20T15:15:36.000Z</published>
+    <updated>2019-12-14T09:09:12.221Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;在 Swift 中&lt;strong&gt;结构体 (struct)&lt;/strong&gt; 和&lt;strong&gt;类 (class)&lt;/strong&gt; 有很多相似的地方，也有一些不同之处，下面记录并总结。内容主要参考了 &lt;em&gt;Swift Apprentice&lt;/em&gt;。&lt;/p&gt;
+&lt;h2 id=&quot;Struct&quot;&gt;&lt;a href=&quot;#Struct&quot; class=&quot;headerlink&quot; title=&quot;Struct&quot;&gt;&lt;/a&gt;Struct&lt;/h2&gt;&lt;h3 id=&quot;Basics&quot;&gt;&lt;a href=&quot;#Basics&quot; class=&quot;headerlink&quot; title=&quot;Basics&quot;&gt;&lt;/a&gt;Basics&lt;/h3&gt;&lt;p&gt;Struct 作为一种常见的数据类型，在许多编程语言中都存在。我们使用 Struct 封装特定的数据结构。Swift 中赋予了 Struct 很多特性，比如 Struct 中除了可以定义属性外，还可以定义&lt;strong&gt;方法 (method)&lt;/strong&gt; 和&lt;strong&gt;构造函数 (initializer)&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;举个例子，为了表示在平面坐标系中的位置，定义一个结构体 Location, 其中包括两个属性 x 和 y。&lt;/p&gt;
+&lt;figure class=&quot;highlight swift&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Location&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; x: &lt;span class=&quot;type&quot;&gt;Int&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; y: &lt;span class=&quot;type&quot;&gt;Int&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;上面就定义了一个结构体，然后就可以实例化以后使用，假如你没有实现  &lt;strong&gt;init&lt;/strong&gt; 方法的话，结构体可以根据属性自动产生一个构造器:&lt;/p&gt;
+&lt;figure class=&quot;highlight swift&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; location = &lt;span class=&quot;type&quot;&gt;Location&lt;/span&gt;(x: &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;, y: &lt;span class=&quot;number&quot;&gt;4&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// 使用点运算符访问&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;print&lt;/span&gt;(location.x) &lt;span class=&quot;comment&quot;&gt;// 2&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;print&lt;/span&gt;(location.y) &lt;span class=&quot;comment&quot;&gt;// 4&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
     
     </summary>
     
@@ -121,10 +99,10 @@
   
   <entry>
     <title>Closures in Swift</title>
-    <link href="http://foolpermi.github.io/2016/11/25/Closures-in-Swift/"/>
-    <id>http://foolpermi.github.io/2016/11/25/Closures-in-Swift/</id>
-    <published>2016-11-25T08:48:43.000Z</published>
-    <updated>2019-11-26T15:59:33.920Z</updated>
+    <link href="http://foolpermi.github.io/2017/11/10/Closures-in-Swift/"/>
+    <id>http://foolpermi.github.io/2017/11/10/Closures-in-Swift/</id>
+    <published>2017-11-10T08:48:43.000Z</published>
+    <updated>2019-12-14T09:08:50.727Z</updated>
     
     <summary type="html">
     
@@ -149,10 +127,10 @@
   
   <entry>
     <title>Optionals in Swift</title>
-    <link href="http://foolpermi.github.io/2016/11/22/Optionals-in-Swift/"/>
-    <id>http://foolpermi.github.io/2016/11/22/Optionals-in-Swift/</id>
-    <published>2016-11-22T13:37:25.000Z</published>
-    <updated>2019-11-25T14:58:00.149Z</updated>
+    <link href="http://foolpermi.github.io/2017/11/01/Optionals-in-Swift/"/>
+    <id>http://foolpermi.github.io/2017/11/01/Optionals-in-Swift/</id>
+    <published>2017-11-01T13:37:25.000Z</published>
+    <updated>2019-12-14T09:09:02.982Z</updated>
     
     <summary type="html">
     
@@ -170,20 +148,23 @@
   </entry>
   
   <entry>
-    <title>Structs and Classes in Swift</title>
-    <link href="http://foolpermi.github.io/2016/11/21/Structs-and-Classes-in-Swift/"/>
-    <id>http://foolpermi.github.io/2016/11/21/Structs-and-Classes-in-Swift/</id>
-    <published>2016-11-21T15:15:36.000Z</published>
-    <updated>2019-11-25T14:58:00.150Z</updated>
+    <title>Enumerations in Swift</title>
+    <link href="http://foolpermi.github.io/2017/10/10/Enumerations-in-Swift/"/>
+    <id>http://foolpermi.github.io/2017/10/10/Enumerations-in-Swift/</id>
+    <published>2017-10-10T07:53:47.000Z</published>
+    <updated>2019-12-14T09:08:55.310Z</updated>
     
     <summary type="html">
     
-      &lt;p&gt;在 Swift 中&lt;strong&gt;结构体 (struct)&lt;/strong&gt; 和&lt;strong&gt;类 (class)&lt;/strong&gt; 有很多相似的地方，也有一些不同之处，下面记录并总结。内容主要参考了 &lt;em&gt;Swift Apprentice&lt;/em&gt;。&lt;/p&gt;
-&lt;h2 id=&quot;Struct&quot;&gt;&lt;a href=&quot;#Struct&quot; class=&quot;headerlink&quot; title=&quot;Struct&quot;&gt;&lt;/a&gt;Struct&lt;/h2&gt;&lt;h3 id=&quot;Basics&quot;&gt;&lt;a href=&quot;#Basics&quot; class=&quot;headerlink&quot; title=&quot;Basics&quot;&gt;&lt;/a&gt;Basics&lt;/h3&gt;&lt;p&gt;Struct 作为一种常见的数据类型，在许多编程语言中都存在。我们使用 Struct 封装特定的数据结构。Swift 中赋予了 Struct 很多特性，比如 Struct 中除了可以定义属性外，还可以定义&lt;strong&gt;方法 (method)&lt;/strong&gt; 和&lt;strong&gt;构造函数 (initializer)&lt;/strong&gt;。&lt;/p&gt;
-&lt;p&gt;举个例子，为了表示在平面坐标系中的位置，定义一个结构体 Location, 其中包括两个属性 x 和 y。&lt;/p&gt;
-&lt;figure class=&quot;highlight swift&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Location&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; x: &lt;span class=&quot;type&quot;&gt;Int&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; y: &lt;span class=&quot;type&quot;&gt;Int&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;上面就定义了一个结构体，然后就可以实例化以后使用，假如你没有实现  &lt;strong&gt;init&lt;/strong&gt; 方法的话，结构体可以根据属性自动产生一个构造器:&lt;/p&gt;
-&lt;figure class=&quot;highlight swift&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; location = &lt;span class=&quot;type&quot;&gt;Location&lt;/span&gt;(x: &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;, y: &lt;span class=&quot;number&quot;&gt;4&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// 使用点运算符访问&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;print&lt;/span&gt;(location.x) &lt;span class=&quot;comment&quot;&gt;// 2&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;print&lt;/span&gt;(location.y) &lt;span class=&quot;comment&quot;&gt;// 4&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+      &lt;p&gt;枚举为一组相关的值定义了一个共同的类型，以便在代码中以类型安全的方式使用这些值。在 C 语言中，枚举会为枚举成员分配一个对应的整形值。Swift 中的枚举更加灵活，可以不必为每一个成员提供对应的值。在 Swift 中这个值被称为&lt;strong&gt;原始值 (Raw Value)&lt;/strong&gt;，原始值的类型可以是字符串，字符，整形值或浮点数。与枚举有关的内容主要包括：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;基本语法 (Basics)&lt;/li&gt;
+&lt;li&gt;原始值 (Raw values)&lt;/li&gt;
+&lt;li&gt;关联值 (Associated values)&lt;/li&gt;
+&lt;li&gt;没有成员的枚举 (Case-less enumerations)&lt;/li&gt;
+&lt;li&gt;递归枚举 (Recursive enumerations)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;主要参考了 &lt;em&gt;Swift Apprentice&lt;/em&gt; 和 &lt;em&gt;The Swift Programming Language&lt;/em&gt;。&lt;/p&gt;
     
     </summary>
     
@@ -195,22 +176,41 @@
   </entry>
   
   <entry>
-    <title>Properties in Swift</title>
-    <link href="http://foolpermi.github.io/2016/11/20/Properties-in-Swift/"/>
-    <id>http://foolpermi.github.io/2016/11/20/Properties-in-Swift/</id>
-    <published>2016-11-20T08:41:01.000Z</published>
-    <updated>2019-11-25T14:58:00.150Z</updated>
+    <title>Collection Types in Swift</title>
+    <link href="http://foolpermi.github.io/2017/10/03/Collection-Types-in-Swift/"/>
+    <id>http://foolpermi.github.io/2017/10/03/Collection-Types-in-Swift/</id>
+    <published>2017-10-03T15:13:54.000Z</published>
+    <updated>2019-12-14T09:08:53.125Z</updated>
     
     <summary type="html">
     
-      &lt;p&gt;最近读了&lt;em&gt;&lt;a href=&quot;https://store.raywenderlich.com/products/swift-apprentice&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Swift Apprentice&lt;/a&gt;&lt;/em&gt;, 将其中一些关于 Property 的知识总结一下。主要包括以下几个部分:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;存储属性 (Stored Properties)&lt;/li&gt;
-&lt;li&gt;计算属性 (Computed Properties)&lt;/li&gt;
-&lt;li&gt;类型属性 (Typed Properties)&lt;/li&gt;
-&lt;li&gt;属性观察器 (Property Observers)&lt;/li&gt;
-&lt;li&gt;延迟加载属性 (Lazy Properties)&lt;/li&gt;
-&lt;/ul&gt;
+      &lt;p&gt;同各种常见的语言一样，swift 中也包括各种集合类型。swift 中的集合类型可以分为以下几种: &lt;strong&gt;Array&lt;/strong&gt;, &lt;strong&gt;Set&lt;/strong&gt;, &lt;strong&gt;Dictionary&lt;/strong&gt;.&lt;br&gt;声明一个集合类型的时候，必须明确指出集合类型是 &lt;strong&gt;let&lt;/strong&gt; 还是 &lt;strong&gt;var&lt;/strong&gt;, 使用的关键字不同将决定集合中的元素在声明以后是否可以改变。&lt;/p&gt;
+&lt;h2 id=&quot;Array&quot;&gt;&lt;a href=&quot;#Array&quot; class=&quot;headerlink&quot; title=&quot;Array&quot;&gt;&lt;/a&gt;Array&lt;/h2&gt;&lt;p&gt;数组是按照一定顺序存储相同类型数据的合集。数组元素的下标从 0 开始，依次递增。&lt;/p&gt;
+&lt;h3 id=&quot;Creating-Array&quot;&gt;&lt;a href=&quot;#Creating-Array&quot; class=&quot;headerlink&quot; title=&quot;Creating Array&quot;&gt;&lt;/a&gt;Creating Array&lt;/h3&gt;&lt;p&gt;创建数组的方法有很多种，可以使用 &lt;strong&gt;[]&lt;/strong&gt; 来创建一个数组，也可以使用 &lt;strong&gt;Array&lt;/strong&gt; 关键字来创建一个数组。创建数组的时候可以明确指出数组中元素的类型，如果没有指出，编译器会根据数组中的元素进行类型推断。&lt;/p&gt;
+&lt;figure class=&quot;highlight swift&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// eg1:&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; evenNumbers = [&lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;4&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;6&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;8&lt;/span&gt;] &lt;span class=&quot;comment&quot;&gt;// 数组的类型为[Int]&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// eg2:&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; subscribers: [&lt;span class=&quot;type&quot;&gt;String&lt;/span&gt;] = [] &lt;span class=&quot;comment&quot;&gt;// 创建空数组，必须指定数组类型&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// eg3:&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; allZeros = &lt;span class=&quot;type&quot;&gt;Array&lt;/span&gt;(repeating: &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;, &lt;span class=&quot;built_in&quot;&gt;count&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;5&lt;/span&gt;) &lt;span class=&quot;comment&quot;&gt;// [0, 0, 0, 0, 0]&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+      <category term="Swift" scheme="http://foolpermi.github.io/categories/swift/"/>
+    
+    
+      <category term="swift" scheme="http://foolpermi.github.io/tags/swift/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Swift Basics</title>
+    <link href="http://foolpermi.github.io/2017/10/01/Swift-Basics/"/>
+    <id>http://foolpermi.github.io/2017/10/01/Swift-Basics/</id>
+    <published>2017-10-01T13:56:37.000Z</published>
+    <updated>2019-12-14T09:09:17.866Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;基础运算&quot;&gt;&lt;a href=&quot;#基础运算&quot; class=&quot;headerlink&quot; title=&quot;基础运算&quot;&gt;&lt;/a&gt;基础运算&lt;/h2&gt;&lt;p&gt;和其它编程语言一样，swift支持加 (+)、减 (-)、乘 (*)、除 (/)、取模 (%)、移位等多种基础运算。&lt;/p&gt;
+&lt;figure class=&quot;highlight swift&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;2&lt;/span&gt; + &lt;span class=&quot;number&quot;&gt;6&lt;/span&gt; &lt;span class=&quot;comment&quot;&gt;// ok&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;+&lt;span class=&quot;number&quot;&gt;6&lt;/span&gt; &lt;span class=&quot;comment&quot;&gt;// ok&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;2&lt;/span&gt; +&lt;span class=&quot;number&quot;&gt;6&lt;/span&gt; &lt;span class=&quot;comment&quot;&gt;// error&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;+ &lt;span class=&quot;number&quot;&gt;6&lt;/span&gt; &lt;span class=&quot;comment&quot;&gt;// error&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;2&lt;/span&gt; - &lt;span class=&quot;number&quot;&gt;6&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;2&lt;/span&gt; * &lt;span class=&quot;number&quot;&gt;6&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;6&lt;/span&gt; / &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;6.0&lt;/span&gt; / &lt;span class=&quot;number&quot;&gt;2.0&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;28&lt;/span&gt; % &lt;span class=&quot;number&quot;&gt;10&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;(&lt;span class=&quot;number&quot;&gt;28.0&lt;/span&gt;).truncatingRemainder(dividingBy: &lt;span class=&quot;number&quot;&gt;10.0&lt;/span&gt;) &lt;span class=&quot;comment&quot;&gt;// 浮点数取模&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt; &amp;lt;&amp;lt; &lt;span class=&quot;number&quot;&gt;3&lt;/span&gt; &lt;span class=&quot;comment&quot;&gt;// 8&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;32&lt;/span&gt; &amp;gt;&amp;gt; &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;comment&quot;&gt;// 8&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;sin(&lt;span class=&quot;number&quot;&gt;45&lt;/span&gt; * &lt;span class=&quot;type&quot;&gt;Double&lt;/span&gt;.pi / &lt;span class=&quot;number&quot;&gt;180&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;cos(&lt;span class=&quot;number&quot;&gt;135&lt;/span&gt; * &lt;span class=&quot;type&quot;&gt;Double&lt;/span&gt;.pi / &lt;span class=&quot;number&quot;&gt;180&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;(&lt;span class=&quot;number&quot;&gt;2.0&lt;/span&gt;).squareRoot()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;max&lt;/span&gt;(&lt;span class=&quot;number&quot;&gt;5&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;10&lt;/span&gt;) &lt;span class=&quot;comment&quot;&gt;// 10&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;min&lt;/span&gt;(-&lt;span class=&quot;number&quot;&gt;5&lt;/span&gt;, -&lt;span class=&quot;number&quot;&gt;10&lt;/span&gt;) &lt;span class=&quot;comment&quot;&gt;// -10&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h2 id=&quot;let-VS-var&quot;&gt;&lt;a href=&quot;#let-VS-var&quot; class=&quot;headerlink&quot; title=&quot;let VS var&quot;&gt;&lt;/a&gt;let VS var&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;let&lt;/strong&gt; 用来声明常量，&lt;strong&gt;var&lt;/strong&gt; 用来声明变量。声明常量或变量的时候可以不指定数据类型，编译器会进行推断。但是一旦确定类型以后，便只能赋予相同类型的变量值。&lt;/p&gt;
+&lt;figure class=&quot;highlight swift&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; number: &lt;span class=&quot;type&quot;&gt;Int&lt;/span&gt; = &lt;span class=&quot;number&quot;&gt;10&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; pi: &lt;span class=&quot;type&quot;&gt;Double&lt;/span&gt; = &lt;span class=&quot;number&quot;&gt;3.14&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; name = &lt;span class=&quot;string&quot;&gt;&quot;Peter&quot;&lt;/span&gt; &lt;span class=&quot;comment&quot;&gt;// name is a string&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;name = &lt;span class=&quot;number&quot;&gt;15&lt;/span&gt; &lt;span class=&quot;comment&quot;&gt;// error&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;name = &lt;span class=&quot;string&quot;&gt;&quot;Linda&quot;&lt;/span&gt; &lt;span class=&quot;comment&quot;&gt;// ok&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
     
     </summary>
     

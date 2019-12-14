@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="泛型 (Generics) 是 Swift 中最强大的特性之一，许多 Swift 的标准库也都是基于泛型的代码构建的。使用泛型可以让你根据自定义的需求，编写出适用于任意类型、灵活可重用的函数和类型。例如 Swift 中的 Array 和 Dictionary 都是泛型集合，你可以创建一个 Int 数组，也可以创建一个 String 数组，还可以创建其它类型的数组。当然，也可以创建任意指定类型的字典">
+<meta name="keywords" content="swift">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Generics in Swift">
+<meta property="og:url" content="http://foolpermi.github.io/2017/11/28/Generics-in-Swift/index.html">
+<meta property="og:site_name" content="FoolPermi">
+<meta property="og:description" content="泛型 (Generics) 是 Swift 中最强大的特性之一，许多 Swift 的标准库也都是基于泛型的代码构建的。使用泛型可以让你根据自定义的需求，编写出适用于任意类型、灵活可重用的函数和类型。例如 Swift 中的 Array 和 Dictionary 都是泛型集合，你可以创建一个 Int 数组，也可以创建一个 String 数组，还可以创建其它类型的数组。当然，也可以创建任意指定类型的字典">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-12-14T09:08:59.627Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Generics in Swift">
+<meta name="twitter:description" content="泛型 (Generics) 是 Swift 中最强大的特性之一，许多 Swift 的标准库也都是基于泛型的代码构建的。使用泛型可以让你根据自定义的需求，编写出适用于任意类型、灵活可重用的函数和类型。例如 Swift 中的 Array 和 Dictionary 都是泛型集合，你可以创建一个 Int 数组，也可以创建一个 String 数组，还可以创建其它类型的数组。当然，也可以创建任意指定类型的字典">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/cactus-classic/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/cactus-classic/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/cactus-classic/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>Generics in Swift</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/cactus-classic/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/cactus-classic/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/cactus-classic/">Home</a></li>
+         
+          <li><a href="/cactus-classic/about/">About</a></li>
+         
+          <li><a href="/cactus-classic/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/FoolPermi">Projects</a></li>
+         
+          <li><a href="/cactus-classic/search/">Search</a></li>
+         
+          <li><a href="/cactus-classic/atom.xml">RSS</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" href="/cactus-classic/2017/11/25/Properties-in-Swift/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://foolpermi.github.io/2017/11/28/Generics-in-Swift/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://foolpermi.github.io/2017/11/28/Generics-in-Swift/&text=Generics in Swift"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://foolpermi.github.io/2017/11/28/Generics-in-Swift/&title=Generics in Swift"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://foolpermi.github.io/2017/11/28/Generics-in-Swift/&is_video=false&description=Generics in Swift"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://foolpermi.github.io/2017/11/28/Generics-in-Swift/&title=Generics in Swift"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://foolpermi.github.io/2017/11/28/Generics-in-Swift/&title=Generics in Swift"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://foolpermi.github.io/2017/11/28/Generics-in-Swift/&title=Generics in Swift"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://service.weibo.com/share/share.php?title=Generics in Swift&url=http://foolpermi.github.io/2017/11/28/Generics-in-Swift/&style=simple&searchPic=false" target="_blank"><i class="fab fa-weibo " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Generics in Swift&body=Check out this article: http://foolpermi.github.io/2017/11/28/Generics-in-Swift/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://foolpermi.github.io/2017/11/28/Generics-in-Swift/&name=Generics in Swift&description=&lt;p&gt;&lt;strong&gt;泛型 (Generics)&lt;/strong&gt; 是 Swift 中最强大的特性之一，许多 Swift 的标准库也都是基于泛型的代码构建的。使用泛型可以让你根据自定义的需求，编写出适用于任意类型、灵活可重用的函数和类型。例如 Swift 中的 Array 和 Dictionary 都是泛型集合，你可以创建一个 Int 数组，也可以创建一个 String 数组，还可以创建其它类型的数组。当然，也可以创建任意指定类型的字典，本文的主要内容包括：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;泛型解决的问题 (The problems generic solve)&lt;/li&gt;
+&lt;li&gt;泛型函数 (Generic functions)&lt;/li&gt;
+&lt;li&gt;泛型类型 (Generic types)&lt;/li&gt;
+&lt;li&gt;扩展泛型类型 (Extending a generic type)&lt;/li&gt;
+&lt;li&gt;类型约束 (Type constrains)&lt;/li&gt;
+&lt;li&gt;关联类型 (Associated type)&lt;/li&gt;
+&lt;li&gt;Where 语句 (Generic where clauses)&lt;/li&gt;
+&lt;/ul&gt;"><i class="fab fa-tumblr-square " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#The-problem-generics-solve"><span class="toc-number">1.</span> <span class="toc-text">The problem generics solve</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Generic-functions"><span class="toc-number">2.</span> <span class="toc-text">Generic functions</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Generic-types"><span class="toc-number">3.</span> <span class="toc-text">Generic types</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Extending-a-generic-type"><span class="toc-number">4.</span> <span class="toc-text">Extending a generic type</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Type-constraints"><span class="toc-number">5.</span> <span class="toc-text">Type constraints</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Associated-type"><span class="toc-number">6.</span> <span class="toc-text">Associated type</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Generic-where-clauses"><span class="toc-number">7.</span> <span class="toc-text">Generic where clauses</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index my4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Generics in Swift
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">FoolPermi</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2017-11-28T13:43:52.000Z" itemprop="datePublished">28 Nov 2017</time>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/cactus-classic/tags/swift/">swift</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p><strong>泛型 (Generics)</strong> 是 Swift 中最强大的特性之一，许多 Swift 的标准库也都是基于泛型的代码构建的。使用泛型可以让你根据自定义的需求，编写出适用于任意类型、灵活可重用的函数和类型。例如 Swift 中的 Array 和 Dictionary 都是泛型集合，你可以创建一个 Int 数组，也可以创建一个 String 数组，还可以创建其它类型的数组。当然，也可以创建任意指定类型的字典，本文的主要内容包括：</p>
+<ul>
+<li>泛型解决的问题 (The problems generic solve)</li>
+<li>泛型函数 (Generic functions)</li>
+<li>泛型类型 (Generic types)</li>
+<li>扩展泛型类型 (Extending a generic type)</li>
+<li>类型约束 (Type constrains)</li>
+<li>关联类型 (Associated type)</li>
+<li>Where 语句 (Generic where clauses)</li>
+</ul>
+<a id="more"></a>
+<h2 id="The-problem-generics-solve"><a href="#The-problem-generics-solve" class="headerlink" title="The problem generics solve"></a>The problem generics solve</h2><p>下面是一个标准的非泛型函数 swapTwoInts，用来交换两个 Int 值：</p>
+<figure class="highlight swift"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">swapTwoInts</span><span class="params">(<span class="number">_</span> a: <span class="keyword">inout</span> Int, <span class="number">_</span> b: <span class="keyword">inout</span> Int)</span></span> &#123;</span><br><span class="line">  <span class="keyword">let</span> temp = a</span><br><span class="line">  a = b</span><br><span class="line">  b = temp</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上面的代码使用输入输出参数 (inout) 来交换 a 和 b 的值：</p>
+<figure class="highlight swift"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> someInt = <span class="number">3</span></span><br><span class="line"><span class="keyword">var</span> anotherInt = <span class="number">107</span></span><br><span class="line">swapTwoInts(&amp;someInt, &amp;anotherInt)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">"someInt = <span class="subst">\(someInt)</span>, anotherInt = <span class="subst">\(anotherInt)</span>"</span>) <span class="comment">// someInt = 107, anotherInt = 3</span></span><br></pre></td></tr></table></figure>
+<p>当然，swapTwoInts 函数挺有用，但是缺点也同样明显，就是它只能交换 Int 的值，如果想要交换两个 Double 或者 String 的值，你还必须重写一个类似的函数：</p>
+<figure class="highlight swift"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">swapTwoDoubles</span><span class="params">(<span class="number">_</span> a: <span class="keyword">inout</span> Double, <span class="number">_</span> b: <span class="keyword">inout</span> Double)</span></span> &#123;</span><br><span class="line">  <span class="keyword">let</span> temp = a</span><br><span class="line">  a = b</span><br><span class="line">  b = temp</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">swapTwoStrings</span><span class="params">(<span class="number">_</span> a: <span class="keyword">inout</span> String, <span class="number">_</span> b: <span class="keyword">inout</span> String)</span></span> &#123;</span><br><span class="line">  <span class="keyword">let</span> temp = a</span><br><span class="line">  a = b</span><br><span class="line">  b = temp</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>可以看出，上面的函数除了参数类型以外，实现过程完全相同。在实际应用中，通常需要一个更实用更灵活的函数来交换两个任意类型的值，这就需要使用泛型代码。</p>
+<h2 id="Generic-functions"><a href="#Generic-functions" class="headerlink" title="Generic functions"></a>Generic functions</h2><p>泛型函数可适用于任意类型，下面的 swapTwoValues 函数就是上面3个函数的泛型版本：</p>
+<figure class="highlight swift"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">swapTwoValues</span>&lt;T&gt;<span class="params">(<span class="number">_</span> a: <span class="keyword">inout</span> T, <span class="number">_</span> b: <span class="keyword">inout</span> T)</span></span> &#123;</span><br><span class="line">  <span class="keyword">let</span> temp = a</span><br><span class="line">  a = b </span><br><span class="line">  b = temp</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>swapTwoValues的函数主体和之前的函数完全相同，唯一的不同是在函数声明的时候：</p>
+<figure class="highlight swift"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">swapTwoInts</span><span class="params">(<span class="number">_</span> a: <span class="keyword">inout</span> Int, <span class="number">_</span> b: <span class="keyword">inout</span> Int)</span></span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">swapTwoValues</span>&lt;T&gt;<span class="params">(<span class="number">_</span> a: <span class="keyword">inout</span> T, <span class="number">_</span> b: <span class="keyword">inout</span> T)</span></span></span><br></pre></td></tr></table></figure>
+<p>这个泛型函数的声明使用了占位类型名 (这里是 T) 来代替实际类型名 (例如 Int、Double、String)。占位类型符 T 并没有指出具体是什么类型，但它约束了 a 和 b 必须是同一类型。在函数调用的时候会根据实际传入的类型决定 T 的类型。现在函数 swapTwoValues 和前面的函数一样调用，只是这个函数可以接受两个任意类型的参数，只是这两个参数类型必须相同。</p>
+<figure class="highlight swift"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> someInt = <span class="number">3</span></span><br><span class="line"><span class="keyword">var</span> anotherInt = <span class="number">107</span></span><br><span class="line">swapTwoValues(&amp;someInt, &amp;anotherInt)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">"someInt = <span class="subst">\(someInt)</span>, anotherInt = <span class="subst">\(anotherInt)</span>"</span>) <span class="comment">// someInt = 107, anotherInt = 3</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> someStr = <span class="string">"hello"</span></span><br><span class="line"><span class="keyword">var</span> anotherStr = <span class="string">"world"</span></span><br><span class="line">swapTwoValues(&amp;someStr, &amp;anotherStr) </span><br><span class="line"><span class="built_in">print</span>(<span class="string">"someStr = <span class="subst">\(someStr)</span>, anotherStr = <span class="subst">\(anotherStr)</span>"</span>) <span class="comment">// someStr = world, anotherStr = hello</span></span><br></pre></td></tr></table></figure>
+<h2 id="Generic-types"><a href="#Generic-types" class="headerlink" title="Generic types"></a>Generic types</h2><p>除了泛型函数，Swift 还允许定义泛型类型，这些自定义的结构体、类、枚举可以适用于任何类型，类似于 Array 和 Dictionary。下面的例子是编写一个名为 Stack 的泛型集合类型，首先展示一个非泛型的版本：</p>
+<figure class="highlight swift"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">IntStack</span> </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> items = [<span class="type">Int</span>]()</span><br><span class="line">  <span class="keyword">mutating</span> <span class="function"><span class="keyword">func</span> <span class="title">push</span><span class="params">(<span class="number">_</span> item: Int)</span></span> &#123;</span><br><span class="line">    items.append(item)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">mutating</span> <span class="function"><span class="keyword">func</span> <span class="title">pop</span><span class="params">()</span></span> -&gt; <span class="type">Int</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> items.removeLast()</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上面的结构体可以进行入栈和出栈的操作，但是只适用于 Int 类型，对应的泛型版本如下：</p>
+<figure class="highlight swift"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Stack</span>&lt;<span class="title">Element</span>&gt; </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> items = [<span class="type">Element</span>]()</span><br><span class="line">  <span class="keyword">mutating</span> <span class="function"><span class="keyword">func</span> <span class="title">push</span><span class="params">(<span class="number">_</span> item: Element)</span></span> &#123;</span><br><span class="line">    items.append(item)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">mutating</span> <span class="function"><span class="keyword">func</span> <span class="title">pop</span><span class="params">()</span></span> -&gt; <span class="type">Element</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> items.removeLast()</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Stack 基本上和 IntStack 相同，只是用占位类型 Element 代替了实际类型 Int，这个类型参数包裹在紧随结构体名的一对尖括号里。Element 为待提供的类型定义了一个占位符，这种占位符可以在结构体中需要类型信息的时候使用。使用泛型版本的 Stack 就可以创建 Swift 中任意有效类型的栈，就像 Array 和 Dictionary 那样。在 Stack 实例化的时候，可以在尖括号中写出 Stack 中的数据类型：</p>
+<figure class="highlight swift"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> stackOfStrings = <span class="type">Stack</span>&lt;<span class="type">String</span>&gt;()</span><br><span class="line">stackOfStrings.push(<span class="string">"uno"</span>)</span><br><span class="line">stackOfStrings.push(<span class="string">"dos"</span>)</span><br><span class="line">stackOfStrings.push(<span class="string">"tres"</span>)</span><br><span class="line"><span class="keyword">let</span> fromTheTop = stackOfStrings.pop()</span><br></pre></td></tr></table></figure>
+<h2 id="Extending-a-generic-type"><a href="#Extending-a-generic-type" class="headerlink" title="Extending a generic type"></a>Extending a generic type</h2><p>当扩展一个泛型类型的时候并不需要在扩展的定义中提供类型参数列表，原始类型定义中声明的类型参数列表在扩展中可以直接使用，并且这些来自原始类型的参数名称会被用作原始定义中类型参数的引用。下面扩展泛型类型 Stack，为其添加一个名为 topItem 的只读计算属性用来返回栈顶的元素：</p>
+<figure class="highlight swift"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">extension</span> <span class="title">Stack</span> </span>&#123; <span class="comment">// 并没有类型列表</span></span><br><span class="line">  <span class="keyword">var</span> topItem: <span class="type">Element</span>? &#123;</span><br><span class="line">    <span class="keyword">return</span> items.isEmpty ? <span class="literal">nil</span> : items[items.<span class="built_in">count</span> - <span class="number">1</span>]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这个扩展并没有定义一个类型参数列表，原有 Stack 中的类型参数列表可以直接使用。</p>
+<h2 id="Type-constraints"><a href="#Type-constraints" class="headerlink" title="Type constraints"></a>Type constraints</h2><p>可以给一个类型参数添加约束以使得类型符合特定的条件。在一个类型参数名后面放置一个类名或协议名，并用冒号进行分隔，来定义类型约束，它们将成为类型参数列表的一部分。对泛型函数添加类型约束的基本语法如下：</p>
+<figure class="highlight swift"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">someFunction</span>&lt;T: SomeClass, U: SomeProtocol&gt;<span class="params">(someT: T, someU: U)</span></span> &#123;</span><br><span class="line">  <span class="comment">// 泛型函数的实现部分</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上面这个函数有两个类型参数。第一个类型参数 是T，有一个要求 T 必须是 SomeClass 子类的类型约束；第二个类型参数是U，有一个要求 U 必须符合 SomeProtocol 协议的类型约束。</p>
+<h2 id="Associated-type"><a href="#Associated-type" class="headerlink" title="Associated type"></a>Associated type</h2><p>当定义一个协议时，有的时候声明一个或多个关联类型作为协议定义的一部分是非常有用的，一个关联类型作为协议的一部分，给定了类型的一个占位名作用于关联类型上，实际类型在协议被实现前是不需要指定的。使用 typealias 指定关联类型。</p>
+<figure class="highlight swift"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">protocol</span> <span class="title">Container</span> </span>&#123;</span><br><span class="line">  associatedtype <span class="type">ItemType</span></span><br><span class="line">  <span class="keyword">mutating</span> <span class="function"><span class="keyword">func</span> <span class="title">append</span><span class="params">(item: ItemType)</span></span></span><br><span class="line">  <span class="keyword">var</span> <span class="built_in">count</span>: <span class="type">Int</span> &#123; <span class="keyword">get</span> &#125;</span><br><span class="line">  <span class="keyword">subscript</span>(i: <span class="type">Int</span>) -&gt; <span class="type">ItemType</span> &#123; <span class="keyword">get</span> &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Container 定义了一个容器必须满足的3个要求：</p>
+<ul>
+<li>必须可以通过 append 方法添加一个新的 item 到容器中</li>
+<li>必须可以通过使用 count 属性获取容器中元素的个数</li>
+<li>必须可以通过索引获取容器中的各个元素</li>
+</ul>
+<p>这里让早先的 IntStack 类型遵守 Container 协议：</p>
+<figure class="highlight swift"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">IntStack</span>: <span class="title">Container</span> </span>&#123;</span><br><span class="line">  <span class="comment">// IntStack的原始实现</span></span><br><span class="line">  <span class="keyword">var</span> items = [<span class="type">Int</span>]()</span><br><span class="line">  <span class="keyword">mutating</span> <span class="function"><span class="keyword">func</span> <span class="title">push</span><span class="params">(<span class="number">_</span> item: Int)</span></span> &#123;</span><br><span class="line">    items.append(item)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">mutating</span> <span class="function"><span class="keyword">func</span> <span class="title">pop</span><span class="params">()</span></span> -&gt; <span class="type">Int</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> items.removeLast()</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 遵守Container协议的实现</span></span><br><span class="line">  <span class="keyword">typealias</span> <span class="type">ItemType</span> = <span class="type">Int</span></span><br><span class="line">  <span class="keyword">mutating</span> <span class="function"><span class="keyword">func</span> <span class="title">append</span><span class="params">(item: Int)</span></span>&#123;</span><br><span class="line">    <span class="keyword">self</span>.push(item)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">var</span> <span class="built_in">count</span>: <span class="type">Int</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> items.<span class="built_in">count</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">subscript</span>(i: <span class="type">Int</span>) -&gt; <span class="type">Int</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> items[i]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>还可以生成遵循 Container 协议的泛型版本的 Stack 类型：</p>
+<figure class="highlight swift"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Stack</span>&lt;<span class="title">T</span>&gt;: <span class="title">Container</span> </span>&#123;</span><br><span class="line">  <span class="comment">// Stack的原始实现</span></span><br><span class="line">  <span class="keyword">var</span> items = [<span class="type">T</span>]()</span><br><span class="line">  <span class="keyword">mutating</span> <span class="function"><span class="keyword">func</span> <span class="title">push</span><span class="params">(<span class="number">_</span> item: T)</span></span> &#123;</span><br><span class="line">    items.append(item)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">mutating</span> <span class="function"><span class="keyword">func</span> <span class="title">pop</span><span class="params">()</span></span> -&gt; <span class="type">T</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> items.removeLast()</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 遵守Container协议的实现</span></span><br><span class="line">  <span class="keyword">mutating</span> <span class="function"><span class="keyword">func</span> <span class="title">append</span><span class="params">(item: T)</span></span> &#123;</span><br><span class="line">    <span class="keyword">self</span>.push(item)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">var</span> <span class="built_in">count</span>: <span class="type">Int</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> items.<span class="built_in">count</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">subscript</span>(i: <span class="type">Int</span>) -&gt; <span class="type">T</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> items[i]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Generic-where-clauses"><a href="#Generic-where-clauses" class="headerlink" title="Generic where clauses"></a>Generic where clauses</h2><p>对关联类型定义约束是非常有用的，你可以在参数列表中通过 where 语句定义参数的约束。一个 where 语句可以使一个关联类型遵守一个特定的协议。可以写一个 where 语句，紧跟在类型参数列表的后面，where 语句后跟一个或多个针对关联类型的约束。</p>
+<figure class="highlight swift"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">allItemsMatch</span>&lt;C1: Container, C2: Container&gt;<span class="params">(someContainer: C1, anotherContainer: C2)</span></span> -&gt; <span class="type">Bool</span> <span class="keyword">where</span> <span class="type">C1</span>.<span class="type">ItemType</span> == <span class="type">C2</span>.<span class="type">ItemType</span>, <span class="type">C1</span>.<span class="type">ItemType</span>: <span class="type">Equatable</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> someContainer.<span class="built_in">count</span> != anotherContainer.<span class="built_in">count</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">for</span> i <span class="keyword">in</span> <span class="number">0</span>..&lt;someContainer.<span class="built_in">count</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> someContainer[i] != anotherContainer[i] &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>参考：<em>The Swift Programming Language</em></p>
+
+  </div>
+</article>
+
+
+
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/cactus-classic/">Home</a></li>
+         
+          <li><a href="/cactus-classic/about/">About</a></li>
+         
+          <li><a href="/cactus-classic/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/FoolPermi">Projects</a></li>
+         
+          <li><a href="/cactus-classic/search/">Search</a></li>
+         
+          <li><a href="/cactus-classic/atom.xml">RSS</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#The-problem-generics-solve"><span class="toc-number">1.</span> <span class="toc-text">The problem generics solve</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Generic-functions"><span class="toc-number">2.</span> <span class="toc-text">Generic functions</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Generic-types"><span class="toc-number">3.</span> <span class="toc-text">Generic types</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Extending-a-generic-type"><span class="toc-number">4.</span> <span class="toc-text">Extending a generic type</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Type-constraints"><span class="toc-number">5.</span> <span class="toc-text">Type constraints</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Associated-type"><span class="toc-number">6.</span> <span class="toc-text">Associated type</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Generic-where-clauses"><span class="toc-number">7.</span> <span class="toc-text">Generic where clauses</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://foolpermi.github.io/2017/11/28/Generics-in-Swift/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://foolpermi.github.io/2017/11/28/Generics-in-Swift/&text=Generics in Swift"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://foolpermi.github.io/2017/11/28/Generics-in-Swift/&title=Generics in Swift"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://foolpermi.github.io/2017/11/28/Generics-in-Swift/&is_video=false&description=Generics in Swift"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://foolpermi.github.io/2017/11/28/Generics-in-Swift/&title=Generics in Swift"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://foolpermi.github.io/2017/11/28/Generics-in-Swift/&title=Generics in Swift"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://foolpermi.github.io/2017/11/28/Generics-in-Swift/&title=Generics in Swift"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://service.weibo.com/share/share.php?title=Generics in Swift&url=http://foolpermi.github.io/2017/11/28/Generics-in-Swift/&style=simple&searchPic=false" target="_blank"><i class="fab fa-weibo fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Generics in Swift&body=Check out this article: http://foolpermi.github.io/2017/11/28/Generics-in-Swift/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://foolpermi.github.io/2017/11/28/Generics-in-Swift/&name=Generics in Swift&description=&lt;p&gt;&lt;strong&gt;泛型 (Generics)&lt;/strong&gt; 是 Swift 中最强大的特性之一，许多 Swift 的标准库也都是基于泛型的代码构建的。使用泛型可以让你根据自定义的需求，编写出适用于任意类型、灵活可重用的函数和类型。例如 Swift 中的 Array 和 Dictionary 都是泛型集合，你可以创建一个 Int 数组，也可以创建一个 String 数组，还可以创建其它类型的数组。当然，也可以创建任意指定类型的字典，本文的主要内容包括：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;泛型解决的问题 (The problems generic solve)&lt;/li&gt;
+&lt;li&gt;泛型函数 (Generic functions)&lt;/li&gt;
+&lt;li&gt;泛型类型 (Generic types)&lt;/li&gt;
+&lt;li&gt;扩展泛型类型 (Extending a generic type)&lt;/li&gt;
+&lt;li&gt;类型约束 (Type constrains)&lt;/li&gt;
+&lt;li&gt;关联类型 (Associated type)&lt;/li&gt;
+&lt;li&gt;Where 语句 (Generic where clauses)&lt;/li&gt;
+&lt;/ul&gt;"><i class="fab fa-tumblr-square fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2019 FoolPermi
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/cactus-classic/">Home</a></li>
+         
+          <li><a href="/cactus-classic/about/">About</a></li>
+         
+          <li><a href="/cactus-classic/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/FoolPermi">Projects</a></li>
+         
+          <li><a href="/cactus-classic/search/">Search</a></li>
+         
+          <li><a href="/cactus-classic/atom.xml">RSS</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>
+<!-- styles -->
+<link rel="stylesheet" href="/cactus-classic/lib/font-awesome/css/fontawesome-all.min.css">
+<link rel="stylesheet" href="/cactus-classic/lib/justified-gallery/css/justifiedGallery.min.css">
+
+<!-- jquery -->
+<script src="/cactus-classic/lib/jquery/jquery.min.js"></script>
+<script src="/cactus-classic/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<script src="/cactus-classic/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+    <script type="text/javascript">
+        (function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-120913198-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+<!-- Disqus Comments -->
+
+
