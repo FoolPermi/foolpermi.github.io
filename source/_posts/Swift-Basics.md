@@ -1,6 +1,6 @@
 ---
 title: Swift Basics
-date: 2019-11-4 21:56:37
+date: 2017-10-01 21:56:37
 categories: Swift
 tags: swift
 ---

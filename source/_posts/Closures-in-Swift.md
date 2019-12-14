@@ -1,6 +1,6 @@
 ---
 title: Closures in Swift
-date: 2016-11-25 16:48:43
+date: 2017-11-10 16:48:43
 categories: Swift
 tags: swift
 ---

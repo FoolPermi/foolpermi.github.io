@@ -1,6 +1,6 @@
 ---
 title: Collection Types in Swift
-date: 2019-11-25 23:13:54
+date: 2017-10-03 23:13:54
 categories: Swift
 tags: swift
 ---

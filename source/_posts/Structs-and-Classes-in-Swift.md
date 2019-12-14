@@ -1,6 +1,6 @@
 ---
 title: Structs and Classes in Swift
-date: 2016-11-21 23:15:36
+date: 2017-11-20 23:15:36
 categories: Swift
 tags: swift
 ---

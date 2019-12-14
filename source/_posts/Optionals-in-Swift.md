@@ -1,6 +1,6 @@
 ---
 title: Optionals in Swift
-date: 2016-11-22 21:37:25
+date: 2017-11-01 21:37:25
 categories: Swift
 tags: swift
 ---

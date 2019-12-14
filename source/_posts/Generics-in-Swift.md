@@ -1,6 +1,6 @@
 ---
 title: Generics in Swift
-date: 2016-11-28 21:43:52
+date: 2017-11-28 21:43:52
 categories: Swift
 tags: swift
 ---

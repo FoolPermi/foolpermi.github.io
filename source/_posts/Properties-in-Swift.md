@@ -1,6 +1,6 @@
 ---
 title: Properties in Swift
-date: 2016-11-20 16:41:01
+date: 2017-11-25 16:41:01
 categories: Swift
 tags: swift
 ---

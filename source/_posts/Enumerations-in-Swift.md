@@ -1,6 +1,6 @@
 ---
 title: Enumerations in Swift
-date: 2016-11-27 15:53:47
+date: 2017-10-10 15:53:47
 categories: Swift
 tags: swift
 ---
